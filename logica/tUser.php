@@ -7,19 +7,24 @@ class tUser{
     private $points;
     private $avatar;//TODO
 
-    //builder
-    public function __construct($user, $mail, $password, $idFaculty){
+    public function __construct(){}
+
+    public function loginUser($user, $mail, $password, $idFaculty, $points){
+        $this->user = $user;
+        $this->mail = $mail;
+        $this->password = $password;
+        $this->idFaculty = $idFaculty;
+        $this->points = $points;
+    }
+
+    public function regNewUser($user, $mail, $password, $idFaculty){
         $this->user = $user;
         $this->mail = $mail;
         $this->password = $password;
         $this->idFaculty = $idFaculty;
         $this->points = 0;
     }
-
-    public static function newtUser(){
-        return new self("","","","",);
-    }
-
+    
     //Funciones GET y SET de los atrivutos
     public function getUser() {
         return $this->user;

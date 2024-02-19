@@ -1,7 +1,6 @@
 <?
     class userDAO{
 
-        //construvtor que guarde instancia de la conexion de la bbdd
         protected $db;
 
         public function __construct(){
@@ -48,17 +47,19 @@
 
         public function login(tUser $user){
             $conn = $this->db->getConnection();
-            $tUser = $user->getUser();
+            $nickUser = $user->getUser();
             $pass = $user->getPassword();
 
-            $query = "SELECT * FROM usuario WHERE usuario = '$tUser'";
+            $query = "SELECT * FROM usuario WHERE usuario = '$nickUser'";
             $resultado = $conn->query($query);
             if($resultado->num_rows === 1){
                 $fila = $resultado->fetch_assoc();
                 if(password_verify($pass, $fila['password'])){
-
+                    $usuario = new tUser();
+                    $usuario->loginUser($nickUser, $fila[''], $pass, $fila[''], $fila['']);//TODO
+                    return $usuario;
                 }else{
-                    
+                    //TODO
                 }
             }else{
 

@@ -8,8 +8,9 @@ class UserSA{
     }
 
     public function registerNewUser($user, $mail, $password, $idFaculty){
-        $objUser = new tUser($user, $mail, $password, $idFaculty);//¿Mejor hacerlo con constructor con parametros o sin?
-
+        $objUser = new tUser();
+        $objUser->regNewUser($user, $mail, $password, $idFaculty);
+        
         return $this->dao->registration($objUser);
     }
 

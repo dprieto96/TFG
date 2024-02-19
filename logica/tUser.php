@@ -24,7 +24,12 @@ class tUser{
         $this->idFaculty = $idFaculty;
         $this->points = 0;
     }
-    
+
+    public function initUser($user, $password){
+        $this->user = $user;
+        $this->password = $password;
+    }
+
     //Funciones GET y SET de los atrivutos
     public function getUser() {
         return $this->user;

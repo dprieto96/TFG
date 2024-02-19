@@ -2,12 +2,20 @@
 session_start();
 
 
-$nickUser = htmlspecialchars(trim(strip_tags($_POST[""])));
-$mailUser = htmlspecialchars(trim(strip_tags($_POST[""])));
+$nickUser = htmlspecialchars(trim(strip_tags($_POST["username"])));
+$mailUser = htmlspecialchars(trim(strip_tags($_POST["password"])));
 
 $userSA = new UserSA();
+$user = $userSA->loginUser($nickUser, $password);
 
-//llamar a la funcion del dao para hacer login
+if ($user != NULL) {
+    $_SESSION['login'] = true;
+    $_SESSION['usuario'] = $user->getUser();
+    $_SESSION['puntos'] = $user->getPoints();
+    header('location: index.php');
+}else{
+    $_SESSION['login'] = false;
+}
 
 
 

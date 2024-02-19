@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: grid;
+}
+
+#header-main {
+    background: url('../img/fondo-inicio.jpg');
+    background-size: cover; 
+}
+
+#header-main-about-us {
+    background-color: #DBE7C9;
+    
+}
+
+header {
+    position: absolute;
+    width: 100%;
+    height: 10vh; /* Altura del 10% de la ventana */
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    margin-top: 10vh;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10%;
+    height: 90vh; /* Altura del 90% de la ventana */
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(32, 47, 29);
+}
+
+/* --------------------------------------------- Estilos del header ----------------------------------------*/
+#logo {
+    margin-left: 5%;
+}
+
+#logo a{
+    text-decoration: none;
+    color: #345a18;
+    font-size: 150%;
+    font-family:'Times New Roman', Times, serif
+}
+
+nav {
+    margin-right: 20px;
+}
+
+nav ul {
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav li a {
+    color: rgb(32, 47, 29);
+    text-decoration: none;
+}
+
+/* ------------------------------ Estilos del botón de login ------------------------- */
+#login {
+    background-color: #345a18;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ------------------------------ Estilos para la ventana emergente de login y registro ------------------------ */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #EAECCC;
+    padding: 20px;
+    border-radius: 5%;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.modal-content a{
+    text-decoration: none;
+    color: #345a18;
+}
+
+.avatar {
+    max-width: 100px; /* Establece el ancho máximo de la imagen */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    border-radius: 50px;
+}
+
+input[type="submit"] {
+    background-color: #345a18; /* Color de fondo predeterminado */
+    color: white; /* Color de texto predeterminado */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos cuando el usuario pasa el mouse sobre el botón */
+input[type="submit"]:hover {
+    background-color: #789461; /* Color de fondo al pasar el mouse */
+}
+
+/* Para hacer la página responsive */
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #logo {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    nav {
+        margin: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    main {
+        margin-top: 40vh;
+        padding: 5%;
+        height: auto;
+    }
+}
+
+
+
+/*-------------------------------------------------- Estilos del footer -------------------------------------------*/
+.site-footer {
+    background-color: #50623A; /* Color de fondo del footer */
+    color: #DBE7C9; /* Color del texto del footer */
+    font-size: 16px; /* Tamaño de fuente del texto del footer */
+    padding-top: 30px; /* Espaciado superior del footer */
+    padding-left: 30px; /* Espaciado izquierdo del footer */
+    padding-right: 30px; /* Espaciado derecho del footer */
+    padding-bottom: 10px; /* Espaciado inferior del footer */
+}
+
+/* Contenedor de las columnas del footer */
+.footer-columns {
+    display: flex; /* Mostrar las columnas del footer en una fila */
+    justify-content: space-around; /* Distribuir el espacio entre las columnas */
+    flex-wrap: wrap; /* Permitir que las columnas se envuelvan en dispositivos más pequeños */
+}
+
+/* Estilos de las columnas del footer */
+.footer-column {
+    flex: 1; /* Hace que las columnas tengan el mismo ancho */
+    padding: 0 20px; /* Ajusta el espaciado interno de las columnas según sea necesario */
+}
+
+/* Asegurarse de que el texto en las columnas del footer no se desborde */
+.footer-column h4,
+.footer-column div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilos de las redes sociales y enlaces de las páginas */
+.social-links,
+.site-pages {
+    display: flex; /* Utilizar flexbox para colocar elementos en línea */
+    justify-content: left;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos más pequeños */
+}
+
+.social-links i,
+.site-pages a {
+    text-decoration: none;
+    margin: 0 10px; /* Espaciado entre elementos */
+    color: #DBE7C9;
+    
+}
+
+.social-links i{
+    font-size: 25px;
+}
+
+/* Para cambiar a disposición de columna en dispositivos más pequeños */
+@media (max-width: 768px) {
+    .footer-columns {
+        flex-direction: column; /* Cambiar a disposición de columna */
+        align-items: center; /* Centrar los elementos en la columna */
+    }
+
+    .footer-column {
+        width: 100%; /* Hacer que las columnas ocupen todo el ancho */
+        padding: 10px 0; /* Ajustar el espaciado interno de las columnas */
+    }
+
+    .social-links i,
+    .site-pages a {
+        margin: 15px 5px; /* Añadir espacio entre elementos en la columna */
+        
+    }
+}
+
+/* Estilos del texto de copyright */
+.copyright {
+    text-align: center; /* Alinea el texto al centro */
+    margin-top: 20px; /* Espaciado superior */
+    font-size: 14px; /* Tamaño de fuente del texto de copyright */
+}
+
+.copyright a{
+    text-decoration: none;
+    color: #DBE7C9;
+}
+
+
+

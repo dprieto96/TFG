@@ -16,7 +16,9 @@
 		
 		function getConnection(){
 			if(!isset($this->conexion)){
+				
 				$this->conexion = new mysqli($this->host,$this->dbUser,$this->dbPassword,$this->dbName);
+				
 				if($this->conexion->connect_errno){
 					echo "Error de conexión a la BD: (" . $this->conexion->connect_errno . ") " . $this->conexion->connect_error;
       				exit();

@@ -79,5 +79,3 @@ class tUser{
         $this->avatar = $avatar;
     }
 }
-
-?>

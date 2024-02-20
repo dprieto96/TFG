@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innova</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="public/css/styles.css">
     
 </head>
 
@@ -14,7 +14,7 @@
     <div id="header-main">
 
         <?php
-        require('includes/header.php');
+        require('app/view/includes/header.php');
         ?>
 
         <main>
@@ -26,15 +26,15 @@
     </div>
 
     <?php
-    require('includes/footer.php');
+    require('app/view/includes/footer.php');
     ?>
 
-    <?php include('popups/login_form.php'); ?>
-    <?php include('popups/register_form.php'); ?>
-    <?php include('popups/perfil.php'); ?>
+    <?php include('app/view/popups/login_form.php'); ?>
+    <?php include('app/view/popups/register_form.php'); ?>
+    <?php include('app/view/popups/perfil.php'); ?>
 
 
-    <script src="js/script.js"></script>
+    <script src="public/js/script.js"></script>
 </body>
 
 </html>

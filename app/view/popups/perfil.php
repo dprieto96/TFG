@@ -2,7 +2,7 @@
 <div id="perfil" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closePerfilModal()">&times;</span>
-            <img class="avatar" src="img/chico.jpg">
+            <img class="avatar" src="/TFG/public/img/chico.jpg">
             <h2>Álvaro</h2>
             <p>1000 Puntos</p>
             <p>Facultad de Informática</p>

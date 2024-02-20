@@ -1,0 +1,174 @@
+.container {
+    display: flex;
+}
+
+.main-container {
+    margin-top: -150px; /* Ajustar el margen superior negativo según sea necesario */
+}
+
+.left-column {
+    width: 70%;
+    border: 2px solid #009879;
+    border-radius: 20px;
+    background-color: #E9F7EF;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.space-between {
+    width: 10%; /* Ajustar el tamaño del espacio entre columnas según sea necesario */
+}
+
+.right-column {
+    width: 30%;
+    border: 2px solid #009879;
+    border-radius: 20px;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    background-color: #E9F7EF;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.ranking-title {
+    color: #345a18; /* Color del texto del título */
+    font-size: 24px; /* Tamaño de fuente del título */
+    margin-bottom: 20px; /* Espaciado inferior del título */
+}
+
+.sombra2 {
+    text-shadow: 2px 4px 3px #009879;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Arial Black';
+}
+
+.frame-image {
+    position: absolute;
+    top: 42.8%;
+    left: 73.7%;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+}
+
+.frame-avatar {
+    border-radius: 20px;
+    width: 25%;
+    height: 35%;
+    margin: auto;
+    padding-bottom: 2%;
+}
+
+* {
+    /* Change your font family */
+    font-family: sans-serif;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 3%;
+    margin-top: 2%;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 75%;
+}
+
+.content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.form-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-row {
+    margin-bottom: 2%;
+    margin-left: 25%;
+}
+
+label {
+    text-align: left;
+    display: inline-block; /* Cambiar la visualización a bloque */
+    width: 100px;
+    font-weight: bold;
+    color: #009879;
+}
+
+label + label {
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+.medal-container {
+    position: relative;
+    display: inline-block;
+}
+
+.medal-container label {
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    color: black;
+    font-weight: bold;
+}
+
+#medal-name1 {
+    top: 36%;
+    left: 15%;
+}
+
+#medal-score1 {
+    top: 66%;
+    left: 13%;
+}
+
+#medal-name2 {
+    top: 36%;
+    left: 45%;
+}
+
+#medal-score2 {
+    top: 66%;;
+    left: 45%;
+}
+
+#medal-name3 {
+    top: 36%;
+    left: 76%;
+}
+
+#medal-score3 {
+    top: 66%;
+    left: 76%;
+}

@@ -13,6 +13,7 @@ class UserSA{
 
     public function loginUser($user, $password) {
         $objUser = new tUser();
+
         $objUser->initUser($user, $password);
 
         return $this->dao->login($objUser);

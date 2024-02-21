@@ -12,8 +12,8 @@
             <input type="password" id="reg-password" name="reg-password" placeholder="Contraseña" required>
             <input type="password" id="reg-confirm-password" name="reg-confirm-password" placeholder="Repetir Contraseña" required>
             <select name="idFacultad">
-                <option value=1>Informatica</option>
-                <option value=2>Bellas Artes</option>
+                <option value=Informatica>Informatica</option>
+                <option value=Bellas_Artes>Bellas Artes</option>
             </select>
             <input type="submit" value="Registrarse">
         </form>

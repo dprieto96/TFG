@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,7 +21,11 @@
         <main>
             <div class="main-container">
                 <h1>Juntos, potenciamos un futuro sostenible</h1>
-                <button id="login" onclick="openLoginModal()">Iniciar sesión</button>
+                <?php 
+                    if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
+                        echo '<button id="login" onclick="openLoginModal()">Iniciar sesión</button>';
+                    }
+                ?>
             </div>
         </main>
     </div>

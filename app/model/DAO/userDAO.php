@@ -43,25 +43,29 @@
 
 
         public function login(tUser $user){
+
             $conn = $this->db->getConnection();
+
             $nickUser = $user->getUser();
-            $pass = $user->getPassword();
+            $password = $user->getPassword();
 
-
-            $query = "SELECT * FROM usuario WHERE usuario = '$nickUser'";
-
+            $query = "SELECT * FROM usuario WHERE user = '$nickUser'";
+            
             $resultado = $conn->query($query);
+            
             if($resultado->num_rows === 1){
                 $fila = $resultado->fetch_assoc();
-                if(password_verify($pass, $fila['password'])){
+                if(password_verify($password, $fila['password'])){
+
                     $usuario = new tUser();
-                    $usuario->loginUser($nickUser, $fila[''], $pass, $fila[''], $fila['']);//TODO
+                    $usuario->loginUser($nickUser, $fila['mail'], $password, $fila['idFacultad'], $fila['points']);
+
                     return $usuario;
                 }else{
-                    //TODO
+                    return false;
                 }
             }else{
-
+                return false;
             }
         }
 

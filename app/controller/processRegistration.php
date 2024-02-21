@@ -28,9 +28,11 @@ if($password == $password2){
         $_SESSION['login'] = true;
         $_SESSION['usuario'] = $nickUser;
         $_SESSION['puntos'] = 0;
+        $_SESSION['facultad'] = $idFaculty;
         header('location: ../../index.php');
     }else{
-        echo'error processRegistro';
+        $_SESSION['login'] = false;
+        header('location: ../../index.php');
     }
 
 }else{

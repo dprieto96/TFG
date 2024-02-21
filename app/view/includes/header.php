@@ -13,7 +13,6 @@
             }
             else{
                 echo'<li><button id="login" onclick="openPerfilModal()">Mi perfil</button></li>';
-                echo'<a href=app/view/includes/logout.php>Logout</a>';
             }
             ?>
         </ul>

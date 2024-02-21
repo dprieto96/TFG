@@ -11,7 +11,7 @@
                 echo'<p>', $facultad, '</p>';
             ?>
             <button id="login" onclick="editProfile()">Editar Perfil</button>
-            <button id="login" onclick="logout()">Cerrar Sesión</button>
+            <a href=app/view/includes/logout.php>Logout</a>
     </div>
 </div>
 

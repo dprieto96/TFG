@@ -1,3 +1,14 @@
+body {
+    background-image: url('/TFG/public/img/ranking_background.jpg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen */
+    background-size: cover; /* Cubre toda la pantalla con la imagen */
+    background-position: center; /* Centra la imagen en la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+/*#header-main-ranking{
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 36%, rgba(231,238,221,1) 69%, rgba(212,230,187,1) 74%);
+}*/
 .container {
     display: flex;
 }
@@ -7,25 +18,26 @@
 }
 
 .left-column {
-    width: 70%;
+    width: 60vw;
+    height: 80vh;
     border: 2px solid #009879;
     border-radius: 20px;
-    background-color: #E9F7EF;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    overflow: auto;
 }
 
 .space-between {
-    width: 10%; /* Ajustar el tamaño del espacio entre columnas según sea necesario */
+    width: 8%; /* Ajustar el tamaño del espacio entre columnas según sea necesario */
 }
 
 .right-column {
-    width: 30%;
+    width: 25vw;
+    height: 35vh;
     border: 2px solid #009879;
     border-radius: 20px;
-    margin-top: 15%;
     margin-bottom: 15%;
-    background-color: #E9F7EF;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    overflow: auto;
 }
 
 .ranking-title {
@@ -41,21 +53,14 @@
     font-family: 'Arial Black';
 }
 
-.frame-image {
-    position: absolute;
-    top: 42.8%;
-    left: 73.7%;
-    width: 250px;
-    height: 250px;
-    margin: auto;
-}
-
 .frame-avatar {
     border-radius: 20px;
-    width: 25%;
-    height: 35%;
+    border: 2px solid black;
+    width: 100px;
+    height:100px;
     margin: auto;
-    padding-bottom: 2%;
+    margin-bottom: 10%;
+    margin-right: 20%;
 }
 
 * {
@@ -67,7 +72,7 @@
     border-collapse: collapse;
     margin: auto;
     margin-bottom: 3%;
-    margin-top: 2%;
+    margin-top: 3%;
     font-size: 0.9em;
     min-width: 400px;
     border-radius: 5px 5px 0 0;
@@ -108,26 +113,38 @@
 .form-container {
     width: 300px;
     margin: 0 auto;
+    margin-right: 25%;
     padding: 20px;
     border-radius: 5px;
 }
 
 .form-row {
-    margin-bottom: 2%;
-    margin-left: 25%;
+    margin-bottom: 5%;
 }
 
-label {
+.form-row-user {
+    display: flex;
+}
+
+.form-container label {
     text-align: left;
-    display: inline-block; /* Cambiar la visualización a bloque */
+    display: inline-block;
     width: 100px;
     font-weight: bold;
     color: #009879;
 }
 
-label + label {
+.form-container label + label {
     margin-left: 10px;
     font-weight: normal;
+}
+
+#user-name-text {
+    margin-top: 15%;
+    color: #009879;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
 }
 
 .medal-container {
@@ -138,9 +155,15 @@ label + label {
 .medal-container label {
     position: absolute;
     text-align: left;
-    width: 100%;
+    width: auto;
+    height: auto;
     color: black;
     font-weight: bold;
+}
+
+#medal-image {
+    width: 500px;
+    height: 250px;
 }
 
 #medal-name1 {
@@ -150,25 +173,61 @@ label + label {
 
 #medal-score1 {
     top: 66%;
-    left: 13%;
+    left: 15%;
 }
 
 #medal-name2 {
     top: 36%;
-    left: 45%;
+    left: 46%;
 }
 
 #medal-score2 {
     top: 66%;;
-    left: 45%;
+    left: 46%;
 }
 
 #medal-name3 {
     top: 36%;
-    left: 76%;
+    left: 77%;
 }
 
 #medal-score3 {
     top: 66%;
-    left: 76%;
+    left: 77%;
+}
+
+/*Responsive*/
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Cambia la dirección del flex container a columna */
+    }
+
+    .left-column {
+        width: 100%; /* Ancho completo en pantallas más pequeñas */
+        height: auto; /* Altura automática */
+    }
+
+    .right-column {
+        width: 100%; /* Ancho completo en pantallas más pequeñas */
+        height: auto; /* Altura automática */
+    }
+
+    .frame-avatar {
+        margin-right: 0; /* Elimina el margen derecho para que ocupe todo el ancho */
+    }
+
+    .form-container {
+        margin-right: 0; /* Elimina el margen derecho */
+        margin-left: 0; /* Elimina el margen izquierdo */
+    }
+
+    .form-row {
+        margin-bottom: 20px; /* Aumenta el espacio entre filas */
+    }
+
+    #user-name-text {
+        position: static; /* Elimina la posición absoluta */
+        text-align: center; /* Centra el texto */
+        margin-bottom: 20px; /* Aumenta el espacio entre el avatar y el nombre de usuario */
+    }
 }

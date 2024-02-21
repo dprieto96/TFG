@@ -3,8 +3,8 @@
     <div id="logo"><a href='/TFG/index.php'>Innova</a></div>
     <nav>
         <ul>
-            <li><a href='app/view/ranking.php'>Ranking</a></li>
-            <li><a href='app/view/aboutUs.php'>About us</a></li>
+            <li><a href='/TFG/app/view/ranking.php'>Ranking</a></li>
+            <li><a href='/TFG/app/view/aboutUs.php'>About us</a></li>
             <li><a href="#Blog">Blog</a></li>
             <li id="loginBtn"><button id="login" onclick="openLoginModal()">Iniciar sesión</button></li> 
             <li><button id="login" onclick="openPerfilModal()">Mi perfil</button></li>

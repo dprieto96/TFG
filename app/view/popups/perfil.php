@@ -1,5 +1,10 @@
 <!-- Modal de perfil -->
-<?php session_start();?>
+<?php 
+    $status = session_status();
+    if($status == PHP_SESSION_NONE){
+        session_start();
+    }
+?>
 <div id="perfil" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closePerfilModal()">&times;</span>

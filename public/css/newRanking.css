@@ -1,0 +1,209 @@
+*,
+*::before,
+*::after {
+  /*Esto hace que el navegador incluya el padding y el borde en el ancho y alto del elemento, en lugar de agregarlos al tamaño del contenido.
+  Esto significa que si especificas un ancho o alto para un elemento el padding y el borde se agregarán a esos valores, lo que facilita el diseño.
+  Por eso se aplica a todos lo elementos*/
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    /*Para meter espacio al final*/
+    padding-block-end: 5rem;
+
+    background-image: url('/TFG/public/img/ranking_background.jpg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen */
+    background-size: cover; /* Cubre toda la pantalla con la imagen */
+    background-position: center; /* Centra la imagen en la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+main {
+    margin-top: -3%;
+    margin-bottom: 10%;
+}
+
+.wrapper {
+    /*border: 2px solid black;*/
+    /*Mete un poco de margen a los lados para que los elementos no toquen los lados de la pantalla*/
+    padding-inline: 1rem;
+    /*Para marcar el tamaño máximo que puede tener independientemente de cuanto se agrande la pantalla*/
+    max-width: 1280px;
+    /*Para dejar un espacio igual a ambos lados del div*/
+    margin-inline: auto;
+}
+
+@media screen and (max-width: 800px) {
+    .wrapper {
+        margin-top: 20vh;
+    }
+}
+
+.layout-grid {
+    /*Para poner los elementos en columna*/
+    display: grid;
+    gap: 5%;
+    align-items: flex-start;
+}
+
+/*La idea es que como en una pantalla normal hay más de 800px se verá con esta forma, y si hacemos la pantalla más pequeña que 800px se pondrá como un grid normal*/
+@media (min-width: 800px) {
+    .layout-grid {
+        /*Para indicar que quieres que el grid tenga 3 columnas cada una con una unidad fraccional (es decir que las tres columnas tengan el mismo tamaño)*/
+        grid-template-columns: 30% 60%;
+        gap: 10%;
+    }
+}
+  
+/*El > * es para que lo de dentro de las llaves se aplique a todos los hijos directos de .layout-grid*/
+.layout-grid > * {
+    /*Esto sirve para que las cajas del flexbox se extiendan a toda la página (lo que sirve para asegurar que tienen el mismo tamaño)*/
+    flex: 1;
+}
+
+.col {
+    align-content: center;
+    display: grid;
+}
+
+.card {
+    --br: 20px;
+    padding: 2rem;
+    border: 2px solid #009879;
+    border-radius: var(--br);
+    box-shadow: 0 1rem 1.5rem -0.5rem rgb(0 0 100 / 0.1);
+}
+
+.sombra2 {
+    text-shadow: 2px 4px 3px #009879;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Arial Black';
+}
+
+.medal-container {
+    position: relative;
+    display: inline-block;
+}
+
+.medal-container label {
+    position: absolute;
+    text-align: left;
+    width: auto;
+    height: auto;
+    color: rgba(255, 255, 255, 0.916);
+    font-weight: bold;
+}
+
+#medal-image {
+    width: 500px;
+    height: 250px;
+}
+
+#medal-name1 {
+    top: 36%;
+    left: 15%;
+}
+
+#medal-score1 {
+    top: 66%;
+    left: 15%;
+}
+
+#medal-name2 {
+    top: 36%;
+    left: 45%;
+}
+
+#medal-score2 {
+    top: 66%;;
+    left: 46%;
+}
+
+#medal-name3 {
+    top: 36%;
+    left: 77%;
+}
+
+#medal-score3 {
+    top: 66%;
+    left: 77%;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.form-container {
+    display: grid;
+    text-align: left;
+    font-weight: bolder;
+    color: #009879;
+}
+
+.form-container-main {
+    display: flex;
+    margin-bottom: 10%;
+    margin-top: 7%;
+}
+
+.form-container-main label {
+    margin-top: 10%;
+    margin-left: 10%;
+    font-size:x-large;
+}
+
+.form-container-data {
+    display: grid;
+}
+
+.form-container-data label {
+    margin-bottom: 7%;
+}
+
+#perfil_img {
+    border-radius: 20px;
+    border: 2px solid black;
+    width: 35%;
+    height:80%;
+    margin: auto;
+    margin-bottom: 5%;
+}

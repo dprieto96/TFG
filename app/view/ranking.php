@@ -1,10 +1,19 @@
 <?php
-    session_start();
+    $status = session_status();
+    if($status == PHP_SESSION_NONE){
+        session_start();
+    }
 
     if($_SESSION['login'] !== true){
     header('Location: logout.php'); 
     exit;
     }
+
+    require_once("../controller/rankingController.php");
+
+    $rankingController = new RankingController();
+
+    $ranking = $rankingController->getRanking();
 
 ?>
 
@@ -16,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../../public/css/styles.css">
-    <link rel="stylesheet" href="../../public/css/styleRanking.css">
+    <link rel="stylesheet" href="../../public/css/newRanking.css">
 </head>
 
 <body>
@@ -54,7 +63,7 @@
 
                 <div class="col">
                     <div id="card_izq" class="card">
-                        <h2 class="sombra2">Ranking de Puntuaciones</h2>
+                        <h2 class="sombra2">Ranking de puntuaciones</h2>
 
                         <div class="medal-container">
                             <div class="medal-names">
@@ -82,42 +91,21 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                // Datos para probar funcionamiento
-                                $puntuaciones = array(
-                                    array("usuario" => "Álvaro", "facultad" => "Informática", "puntuacion" => 1000, "active" => 1),
-                                    array("usuario" => "María", "facultad" => "Filosofía", "puntuacion" => 1600, "active" => 0),
-                                    array("usuario" => "Pedro", "facultad" => "Biología", "puntuacion" => 1250, "active" => 0),
-                                    array("usuario" => "Laura", "facultad" => "Ciencias de la información", "puntuacion" => 1220, "active" => 0),
-                                    array("usuario" => "Carlos", "facultad" => "Química", "puntuacion" => 1190, "active" => 0),
-                                    array("usuario" => "Antonio", "facultad" => "Biología", "puntuacion" => 800, "active" => 0),
-                                    array("usuario" => "Celia", "facultad" => "Telecomunicaciones", "puntuacion" => 1620, "active" => 0),
-                                    array("usuario" => "Sergio", "facultad" => "Bellas Artes", "puntuacion" => 730, "active" => 0),
-                                    array("usuario" => "Alejandro", "facultad" => "Medicina", "puntuacion" => 1560, "active" => 0),
-                                    array("usuario" => "Ainhoa", "facultad" => "Psicología", "puntuacion" => 970, "active" => 0)
-                                );
 
-                                usort($puntuaciones, function($a, $b) {
-                                    return $b['puntuacion'] - $a['puntuacion'];
+                                usort($ranking, function($a, $b) {
+                                    return $b['points'] - $a['points'];
                                 });
 
                                 $posicion = 1;
-                                foreach ($puntuaciones as $puntuacion) {
-                                    if ($puntuacion["active"] == 0){
-                                        echo "<tr>";
-                                            echo "<td>" . $posicion . "</td>";
-                                            echo "<td>" . $puntuacion["usuario"] . "</td>";
-                                            echo "<td>" . $puntuacion["facultad"] . "</td>";
-                                            echo "<td>" . $puntuacion["puntuacion"] . "</td>";
-                                        echo "</tr>";
-                                    }
-                                    else{
-                                        echo "<tr class='active-row'>";
-                                            echo "<td>" . $posicion . "</td>";
-                                            echo "<td>" . $puntuacion["usuario"] . "</td>";
-                                            echo "<td>" . $puntuacion["facultad"] . "</td>";
-                                            echo "<td>" . $puntuacion["puntuacion"] . "</td>";
-                                        echo "</tr>";
-                                    }
+                                foreach ($ranking as $puntuacion) {
+                                    echo "<tr>";
+                                        echo "<td>" . $posicion . "</td>";
+                                        echo "<td>" . $puntuacion["user"] . "</td>";
+                                        echo "<td>" . str_replace("_", " ", $puntuacion["idFacultad"]) . "</td>";
+                                        echo "<td>" . $puntuacion["points"] . "</td>";
+                                    echo "</tr>";
+                                    //TODO
+                                    //Falta añadir el código para que se marque más el usuario logueado
                                     $posicion++;
                                 }
                                 ?>

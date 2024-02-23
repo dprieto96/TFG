@@ -1,5 +1,10 @@
 <!-- Modal de header -->
-<?php session_start(); ?>
+<?php
+    $status = session_status();
+    if($status == PHP_SESSION_NONE){
+        session_start();
+    }
+?>
 <header>
     <div id="logo"><a href='/TFG/index.php'>Innova</a></div>
     <nav>

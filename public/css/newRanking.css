@@ -9,6 +9,7 @@
 
 body {
     margin: 0;
+    font-family: Arial, sans-serif;
     /*Para meter espacio al final*/
     padding-block-end: 5rem;
 
@@ -23,6 +24,13 @@ main {
     margin-bottom: 10%;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
 .wrapper {
     /*border: 2px solid black;*/
     /*Mete un poco de margen a los lados para que los elementos no toquen los lados de la pantalla*/
@@ -31,6 +39,7 @@ main {
     max-width: 1280px;
     /*Para dejar un espacio igual a ambos lados del div*/
     margin-inline: auto;
+    padding-bottom: 300px;
 }
 
 @media screen and (max-width: 800px) {
@@ -49,9 +58,7 @@ main {
 /*La idea es que como en una pantalla normal hay más de 800px se verá con esta forma, y si hacemos la pantalla más pequeña que 800px se pondrá como un grid normal*/
 @media (min-width: 800px) {
     .layout-grid {
-        /*Para indicar que quieres que el grid tenga 3 columnas cada una con una unidad fraccional (es decir que las tres columnas tengan el mismo tamaño)*/
-        grid-template-columns: 30% 60%;
-        gap: 10%;
+        gap: 5%;
     }
 }
   
@@ -59,11 +66,6 @@ main {
 .layout-grid > * {
     /*Esto sirve para que las cajas del flexbox se extiendan a toda la página (lo que sirve para asegurar que tienen el mismo tamaño)*/
     flex: 1;
-}
-
-.col {
-    align-content: center;
-    display: grid;
 }
 
 .card {
@@ -79,55 +81,7 @@ main {
     font-size: 30px;
     font-weight: bold;
     font-family: 'Arial Black';
-}
-
-.medal-container {
-    position: relative;
-    display: inline-block;
-}
-
-.medal-container label {
-    position: absolute;
-    text-align: left;
-    width: auto;
-    height: auto;
-    color: rgba(255, 255, 255, 0.916);
-    font-weight: bold;
-}
-
-#medal-image {
-    width: 500px;
-    height: 250px;
-}
-
-#medal-name1 {
-    top: 36%;
-    left: 15%;
-}
-
-#medal-score1 {
-    top: 66%;
-    left: 15%;
-}
-
-#medal-name2 {
-    top: 36%;
-    left: 45%;
-}
-
-#medal-score2 {
-    top: 66%;;
-    left: 46%;
-}
-
-#medal-name3 {
-    top: 36%;
-    left: 77%;
-}
-
-#medal-score3 {
-    top: 66%;
-    left: 77%;
+    margin-bottom: 5%;
 }
 
 .content-table {
@@ -146,7 +100,7 @@ main {
 .content-table thead tr {
     background-color: #009879;
     color: #ffffff;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
 }
 
@@ -173,8 +127,9 @@ main {
 }
 
 .form-container {
-    display: grid;
+    display: flex;
     text-align: left;
+    justify-content: space-around;
     font-weight: bolder;
     color: #009879;
 }
@@ -186,7 +141,6 @@ main {
 }
 
 .form-container-main label {
-    margin-top: 10%;
     margin-left: 10%;
     font-size:x-large;
 }
@@ -195,15 +149,163 @@ main {
     display: grid;
 }
 
-.form-container-data label {
-    margin-bottom: 7%;
-}
-
 #perfil_img {
     border-radius: 20px;
     border: 2px solid black;
-    width: 35%;
-    height:80%;
-    margin: auto;
-    margin-bottom: 5%;
+    width: 150px;
+    height:150px;
+    margin-right: 20%;
+}
+
+.personal_main {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: space-around;
+    font-weight: bolder;
+    color: black;
+}
+
+.col_personal {
+    display: grid;
+    text-align: left;
+}
+
+.col_personal h3 {
+    font-size: 125%;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.personal_foto {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: wrap;
+    margin-right: 10%;
+}
+
+.personal_foto_labels {
+    font-size: 20px;
+    display: grid;
+    margin-top: 3%;
+    gap: 5%;
+}
+
+.personal_puntuaciones {
+    display: flex;
+}
+
+.linea-vertical {
+    width: 2px;
+    background-color: #009879;
+    margin: 0 150px;
+    margin-bottom: 2%;;
+}
+
+@media screen and (max-width: 768px) {
+
+    .personal_main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .personal_foto {
+        padding-bottom: 10%;
+    }
+
+    .linea-vertical {
+        margin: 0 0px;
+        margin-right: 10%;
+    }
+}
+
+
+
+
+
+
+
+
+.medal-container {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: left;
+    position: relative;
+}
+
+.medal-container > div {
+    margin-right: 12%;
+}
+
+.medal-container label {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.medal {
+    display: flex;
+    justify-content: space-around;
+}
+
+.medal-creation {
+    display: grid;
+}
+
+#medal-position1 {
+    font-size: 30px;
+    top: 35%;
+    left: 10%;
+}
+
+#medal-position2 {
+    font-size: 30px;
+    top: 35%;
+    left: 41%;
+}
+
+#medal-position3 {
+    font-size: 30px;
+    top: 35%;
+    left: 72%;
+}
+
+#medal-score1 {
+    font-size: 25px;
+    top: 68%;
+    left: 8.6%;
+}
+
+#medal-score2 {
+    font-size: 25px;
+    top: 68%;
+    left: 39.6%;
+}
+
+#medal-score3 {
+    font-size: 25px;
+    top: 68%;
+    left: 70.5%;
+}
+
+.medal-name label {
+    width: 15%;
+}
+
+#medal-name1 {
+    top: 50%;
+    left: 16%;
+}
+
+#medal-name2 {
+    top: 50%;
+    left: 44%;
+}
+
+#medal-name3 {
+    top: 50%;
+    left: 78%;
 }

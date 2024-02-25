@@ -13,7 +13,8 @@
 
     $rankingController = new RankingController();
 
-    $ranking = $rankingController->getRanking();
+    $userRanking = $rankingController->getUserRanking();
+    $facultyRanking = $rankingController->getFacultyRanking();
 
 ?>
 
@@ -37,9 +38,13 @@
     <?php
         $facultad = str_replace("_", " ", $_SESSION['facultad']);
 
-        //Ordenamiento tabla ranking
-        usort($ranking, function($a, $b) {
+        //Ordenamiento de las tablas de ranking
+        usort($userRanking, function($a, $b) {
             return $b['points'] - $a['points'];
+        });
+
+        usort($facultyRanking, function($a, $b) {
+            return $b['puntos'] - $a['puntos'];
         });
     ?>
 
@@ -68,7 +73,7 @@
                     </div>
                 </div>-->
 
-                <div class="card">
+                <div id="card1" class="card">
                     <h2 class="sombra2">Mi puntuación</h2>
 
                     <div class="personal_main">
@@ -82,83 +87,196 @@
                         <div class="personal_puntuaciones">
                             <div class="col_personal personal_puntos">
                                 <h3>Personal:</h3>
-                                <label>Posición: </label>
+                                <?php
+                                    $posicionUsuario = array_search($_SESSION['usuario'], array_column($userRanking, 'user'));
+                                    // Se comprueba que se ha encontrado en la tabla
+                                    if ($posicionUsuario !== false) {
+                                        $posicionUsuario += 1;
+                                        echo "<label>Posición: $posicionUsuario</label>";
+                                    } else {
+                                        echo "<label>Posición: No disponible</label>";
+                                    }
+                                ?>
                                 <label>Puntuación: <?php echo $_SESSION['puntos']; ?></label>
                             </div>
                             <div class="linea-vertical"></div>
                             <div class="col_personal personal_facultad">
                                 <h3>Facultad:</h3>
-                                <label>Posición: </label>
+                                <?php
+                                    $posicionFacultad = array_search($_SESSION['facultad'], array_column($facultyRanking, 'idFacultad'));
+                                    // Se comprueba que se ha encontrado en la tabla
+                                    if ($posicionFacultad !== false) {
+                                        $posicionFacultad += 1;
+                                        echo "<label>Posición: $posicionFacultad</label>";
+                                    } else {
+                                        echo "<label>Posición: No disponible</label>";
+                                    }
+                                ?>
                                 <label>Puntuación: <?php echo $_SESSION['puntos']; ?></label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="medal-container">
-                        <div class="medal">
-                            <div class="medal-creation">
-                                <label id="medal-position1">1º</label>
-                                <label id="medal-score1"><?php echo $ranking[0]["points"]?></label>
-                                <img src="/TFG/public/img/frame_ranking1.png" alt="">
+                <div class="general-tab-container">
+
+                    <div class="button-container tab">
+                        <button id="btnPersonal" class="active tablinks">Ver Puntuación Personal</button>
+                        <button id="btnGlobal" class="tablinks">Ver Ranking Global</button>
+                    </div>
+                    
+
+                    <div id ="card2" class="card">
+                        <h2 class="sombra2">Ranking global</h2>
+
+                        <div class="medal-container">
+                            <div class="medal">
+                                <div class="medal-creation">
+                                    <label id="medal-position1">1º</label>
+                                    <label id="medal-score1"><?php echo $userRanking[0]["points"]?></label>
+                                    <img id="medal-image1" src="/TFG/public/img/frame_ranking1.png" alt="">
+                                </div>
+                                <div class="medal-name">
+                                    <label id="medal-name1"><?php echo $userRanking[0]["user"]?></label>
+                                </div>
                             </div>
-                            <div class="medal-name">
-                                <label id="medal-name1"><?php echo $ranking[0]["user"]?></label>
+                            <div class="medal">
+                                <div class="medal-creation">
+                                    <label id="medal-position2">2º</label>
+                                    <label id="medal-score2"><?php echo $userRanking[1]["points"]?></label>
+                                    <img id="medal-image2" src="/TFG/public/img/frame_ranking2.png" alt="">
+                                </div>
+                                <div class="medal-name">
+                                    <label id="medal-name2"><?php echo $userRanking[1]["user"]?></label>
+                                </div>
+                            </div>
+                            <div class="medal">
+                                <div class="medal-creation">
+                                    <label id="medal-position3">3º</label>
+                                    <label id="medal-score3"><?php echo $userRanking[2]["points"]?></label>
+                                    <img id="medal-image3" src="/TFG/public/img/frame_ranking3.png" alt="">
+                                </div>
+                                <div class="medal-name">
+                                    <label id="medal-name3"><?php echo $userRanking[2]["user"]?></label>
+                                </div>
                             </div>
                         </div>
-                        <div class="medal">
-                            <div class="medal-creation">
-                                <label id="medal-position2">2º</label>
-                                <label id="medal-score2"><?php echo $ranking[1]["points"]?></label>
-                                <img src="/TFG/public/img/frame_ranking2.png" alt="">
-                            </div>
-                            <div class="medal-name">
-                                <label id="medal-name2"><?php echo $ranking[1]["user"]?></label>
-                            </div>
-                        </div>
-                        <div class="medal">
-                            <div class="medal-creation">
-                                <label id="medal-position3">3º</label>
-                                <label id="medal-score3"><?php echo $ranking[2]["points"]?></label>
-                                <img src="/TFG/public/img/frame_ranking3.png" alt="">
-                            </div>
-                            <div class="medal-name">
-                                <label id="medal-name3"><?php echo $ranking[2]["user"]?></label>
-                            </div>
+
+                        <div class="table-container">
+                            <table class="content-table">
+                                <thead>
+                                <tr>
+                                    <th>Posición</th>
+                                    <th>Usuario</th>
+                                    <th>Facultad</th>
+                                    <th>Puntuación</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+
+                                $posicion = 1;
+                                foreach ($userRanking as $puntuacion) {
+                                    if ($puntuacion["user"] == $_SESSION["usuario"]){
+                                        echo "<tr class='active-row'>";
+                                            echo "<td>" . $posicion . "</td>";
+                                            echo "<td>" . $puntuacion["user"] . "</td>";
+                                            echo "<td>" . str_replace("_", " ", $puntuacion["idFacultad"]) . "</td>";
+                                            echo "<td>" . $puntuacion["points"] . "</td>";
+                                        echo "</tr>";
+                                    }else{
+                                        echo "<tr>";
+                                            echo "<td>" . $posicion . "</td>";
+                                            echo "<td>" . $puntuacion["user"] . "</td>";
+                                            echo "<td>" . str_replace("_", " ", $puntuacion["idFacultad"]) . "</td>";
+                                            echo "<td>" . $puntuacion["points"] . "</td>";
+                                        echo "</tr>";
+                                    }
+                                    $posicion++;
+                                }
+                                ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <div class="table-container">
-                        <table class="content-table">
-                            <thead>
-                            <tr>
-                                <th>Posición</th>
-                                <th>Usuario</th>
-                                <th>Facultad</th>
-                                <th>Puntuación</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
 
-                            $posicion = 1;
-                            foreach ($ranking as $puntuacion) {
-                                echo "<tr>";
-                                    echo "<td>" . $posicion . "</td>";
-                                    echo "<td>" . $puntuacion["user"] . "</td>";
-                                    echo "<td>" . str_replace("_", " ", $puntuacion["idFacultad"]) . "</td>";
-                                    echo "<td>" . $puntuacion["points"] . "</td>";
-                                echo "</tr>";
-                                //TODO
-                                //Falta añadir el código para que se marque más el usuario logueado
-                                $posicion++;
-                            }
-                            ?>
-                            </tbody>
-                        </table>
+                    <div id ="card3" class="card">
+                        <h2 class="sombra2">Ranking global</h2>
+
+                        <div class="medal-container">
+                            <div class="medal">
+                                <div class="medal-creation">
+                                    <label id="medal-position1">1º</label>
+                                    <label id="medal-score1"><?php echo $facultyRanking[0]["puntos"]?></label>
+                                    <img id="medal-image1" src="/TFG/public/img/frame_ranking1.png" alt="">
+                                </div>
+                                <div class="medal-name">
+                                    <label id="medal-name1"><?php echo $facultyRanking[0]["nombre"]?></label>
+                                </div>
+                            </div>
+                            <div class="medal">
+                                <div class="medal-creation">
+                                    <label id="medal-position2">2º</label>
+                                    <label id="medal-score2"><?php echo $facultyRanking[1]["puntos"]?></label>
+                                    <img id="medal-image2" src="/TFG/public/img/frame_ranking2.png" alt="">
+                                </div>
+                                <div class="medal-name">
+                                    <label id="medal-name2"><?php echo $facultyRanking[1]["nombre"]?></label>
+                                </div>
+                            </div>
+                            <div class="medal">
+                                <div class="medal-creation">
+                                    <label id="medal-position3">3º</label>
+                                    <label id="medal-score3"><?php echo $facultyRanking[2]["puntos"]?></label>
+                                    <img id="medal-image3" src="/TFG/public/img/frame_ranking3.png" alt="">
+                                </div>
+                                <div class="medal-name">
+                                    <label id="medal-name3"><?php echo $facultyRanking[2]["nombre"]?></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="content-table">
+                                <thead>
+                                <tr>
+                                    <th>Posición</th>
+                                    <th>Facultad</th>
+                                    <th>Puntuación</th>
+                                    <th>Número de estudiantes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+
+                                $posicion = 1;
+                                foreach ($facultyRanking as $puntuacion) {
+                                    if ($puntuacion["idFacultad"] == $_SESSION["facultad"]){
+                                        echo "<tr class='active-row'>";
+                                            echo "<td>" . $posicion . "</td>";
+                                            echo "<td>" . str_replace("_", " ", $puntuacion["nombre"]) . "</td>";
+                                            echo "<td>" . $puntuacion["puntos"] . "</td>";
+                                            echo "<td>" . $puntuacion["numEstudiantes"] . "</td>";
+                                        echo "</tr>";
+                                    }
+                                    else{
+                                        echo "<tr>";
+                                            echo "<td>" . $posicion . "</td>";
+                                            echo "<td>" . str_replace("_", " ", $puntuacion["nombre"]) . "</td>";
+                                            echo "<td>" . $puntuacion["puntos"] . "</td>";
+                                            echo "<td>" . $puntuacion["numEstudiantes"] . "</td>";
+                                        echo "</tr>";
+                                    }
+                                    $posicion++;
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
@@ -173,6 +291,45 @@
 
 
     <script src="../../public/js/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnPersonal = document.getElementById("btnPersonal");
+            const btnGlobal = document.getElementById("btnGlobal");
+            const card2 = document.getElementById("card2");
+            const card3 = document.getElementById("card3");
+            
+            //Estado inicial de las tablas
+            card2.style.display = "block";
+            card3.style.display = "none";
+
+             // Al cargar la página, verificar qué botón está marcado como activo y mostrar la tarjeta correspondiente
+            if (btnPersonal.classList.contains("active")) {
+                card2.style.display = "block";
+                card3.style.display = "none";
+            } else if (btnGlobal.classList.contains("active")) {
+                card2.style.display = "none";
+                card3.style.display = "block";
+            }
+
+            btnPersonal.addEventListener("click", function() {
+                card2.style.display = "block";
+                card3.style.display = "none";
+                btnPersonal.classList.add("active");
+                btnGlobal.classList.remove("active");
+            });
+
+            btnGlobal.addEventListener("click", function() {
+                card2.style.display = "none";
+                card3.style.display = "block";
+                btnPersonal.classList.remove("active");
+                btnGlobal.classList.add("active");
+            });
+        });
+    </script>
+
+
+
 
 </body>
 </html>

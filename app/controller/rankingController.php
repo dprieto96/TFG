@@ -11,8 +11,12 @@ class RankingController{
         $this->rankingSA = new rankingSA();
     }
 
-    public function getRanking(){
-        return $this->rankingSA->getRanking();
+    public function getUserRanking(){
+        return $this->rankingSA->getUserRanking();
+    }
+
+    public function getFacultyRanking(){
+        return $this->rankingSA->getFacultyRanking();
     }
 
 }

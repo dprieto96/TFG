@@ -11,8 +11,12 @@ class rankingSA{
         $this->dao = new RankingDAO();
     }
 
-    public function getRanking(){
-        return $this->dao->getRanking();
+    public function getUserRanking(){
+        return $this->dao->getUserRanking();
+    }
+
+    public function getFacultyRanking(){
+        return $this->dao->getFacultyRanking();
     }
 
 }

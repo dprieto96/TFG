@@ -98,7 +98,7 @@ footer {
 }
 
 .content-table thead tr {
-    background-color: #009879;
+    background-color: #345a18;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
@@ -219,12 +219,6 @@ footer {
 }
 
 
-
-
-
-
-
-
 .medal-container {
     display: flex;
     flex-direction: wrap;
@@ -292,20 +286,41 @@ footer {
 }
 
 .medal-name label {
-    width: 15%;
+    text-align: left;
+    width: 10%;
 }
 
 #medal-name1 {
     top: 50%;
-    left: 16%;
+    left: 19%;
 }
-
+    
 #medal-name2 {
     top: 50%;
-    left: 44%;
+    left: 50%;
 }
 
 #medal-name3 {
     top: 50%;
-    left: 78%;
+    left: 81%;
 }
+
+/* Estilo base para los botones */
+.tab button {
+    background-color: #345a18;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  /* Estilo para los botones activos */
+  .tab button.active {
+    background-color: #009879;
+  }
+  

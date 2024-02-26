@@ -52,26 +52,6 @@
     <main>
         <div class="wrapper">
             <div class="layout-grid">
-                
-                <!--<div id="card_der" class="card">
-                    <h2 class="sombra2">Puntuación personal</h2>
-
-                    <div class="form-container">
-                        <div class="form-container-main">
-                            <img id="perfil_img" src="/TFG/public/img/chico.jpg" alt="foto de perfil">
-                            <label id="user-name-text" for="usernameValue"><?php echo $_SESSION['usuario']; ?></label>
-                        </div>
-                        <div class="form-container-data">
-                            <label>Posición: </label>
-                            <label>Puntuación: ?php echo $_SESSION['puntos']; ?></label>
-                        </div>
-                        <div class="form-container-data">
-                            <label>Posición: </label>
-                            <label>Facultad: ?php echo $facultad; ?></label>
-                            <label>Puntuación: ?php echo $_SESSION['puntos']; ?></label>
-                        </div>
-                    </div>
-                </div>-->
 
                 <div id="card1" class="card">
                     <h2 class="sombra2">Mi puntuación</h2>

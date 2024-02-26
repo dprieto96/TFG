@@ -13,10 +13,11 @@ body {
     /*Para meter espacio al final*/
     padding-block-end: 5rem;
 
-    background-image: url('/TFG/public/img/ranking_background.jpg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen */
+    background-image: url('/TFG/public/img/ranking_background.jpg');
     background-size: cover; /* Cubre toda la pantalla con la imagen */
     background-position: center; /* Centra la imagen en la pantalla */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed;
 }
 
 main {
@@ -32,7 +33,7 @@ footer {
 }
 
 .wrapper {
-    /*border: 2px solid black;*/
+    border: 2px solid black;
     /*Mete un poco de margen a los lados para que los elementos no toquen los lados de la pantalla*/
     padding-inline: 1rem;
     /*Para marcar el tamaño máximo que puede tener independientemente de cuanto se agrande la pantalla*/
@@ -55,7 +56,7 @@ footer {
     align-items: flex-start;
 }
 
-/*La idea es que como en una pantalla normal hay más de 800px se verá con esta forma, y si hacemos la pantalla más pequeña que 800px se pondrá como un grid normal*/
+
 @media (min-width: 800px) {
     .layout-grid {
         gap: 5%;

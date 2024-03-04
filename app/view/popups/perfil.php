@@ -20,3 +20,5 @@
         document.getElementById('perfil').style.display = 'none';
     }
 </script>
+
+<script src="../../public/js/script.js"></script>

@@ -31,6 +31,10 @@ class UserSA{
         return $this->dao->editUser($newUser, $oldUser);
     }
 
+    public function editPassword($usuario, $oldPassword, $newPassword){
+        return $this->dao->editPassword($usuario, $oldPassword, $newPassword);
+    }
+
 }
 
 ?>

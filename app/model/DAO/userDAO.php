@@ -81,11 +81,35 @@
             //Nobody have this user
             if($resultado->num_rows === 0){
                 $query = "UPDATE usuario SET user = '$newUser' WHERE user = '$oldUser'";
+
                 $resultado = $conn->query($query);
                 
                 return $resultado;
             }
             else{
+                return false;
+            }
+        }
+
+        public function editPassword($usuario, $oldPassword, $newPassword){
+            $conn = $this->db->getConnection();
+
+            $query = "SELECT * FROM usuario WHERE user = '$usuario'";
+            
+            $resultado = $conn->query($query);
+            
+            if($resultado->num_rows === 1){
+                $fila = $resultado->fetch_assoc();
+                if(password_verify($oldPassword, $fila['password'])){
+                    $query = "UPDATE usuario SET password = '$newPassword' WHERE password = '$oldPassword'";
+
+                    $resultado = $conn->query($query);
+                    
+                    return $resultado;
+                }else{
+                    return false;
+                }
+            }else{
                 return false;
             }
         }

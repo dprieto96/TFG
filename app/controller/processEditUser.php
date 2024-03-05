@@ -12,3 +12,10 @@ $userSA = new UserSA();
 
 
 $user = $userSA->editUser($newNickUser, $oldNick);
+
+if($user != false){
+    $_SESSION['usuario'] = $newNickUser;
+    header('location: ../../index.php');
+}else{
+    header('location: ../../index.php');
+}

@@ -101,7 +101,8 @@
             if($resultado->num_rows === 1){
                 $fila = $resultado->fetch_assoc();
                 if(password_verify($oldPassword, $fila['password'])){
-                    $query = "UPDATE usuario SET password = '$newPassword' WHERE password = '$oldPassword'";
+                    $hashPassword = password_hash($oldPassword, PASSWORD_BCRYPT);
+                    $query = "UPDATE usuario SET password = '$hashPassword' WHERE user = '$usuario'";
 
                     $resultado = $conn->query($query);
                     

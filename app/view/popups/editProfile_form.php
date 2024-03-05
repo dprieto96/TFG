@@ -19,7 +19,7 @@
 
         <div id="changePassword" class="tabcontent" style="display: none;">
             <h2>Cambiar Contraseña</h2>
-            <form action="app/controller/processEditPasword.php" id="editPasswordForm" method="post" >
+            <form action="app/controller/processEditPassword.php" id="editPasswordForm" method="post" >
                 <input type="password" id="oldPassword" name="oldPassword" placeholder="Contraseña Actual" required>
                 <input type="password" id="newPassword" name="newPassword" placeholder="Nueva Contraseña" required>
                 <input type="password" id="newPasswordRepeat" name="newPasswordRepeat" placeholder="Nueva Contraseña" required>

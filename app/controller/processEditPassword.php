@@ -12,17 +12,10 @@ $userSA = new UserSA();
 
 $usuario = $_SESSION['usuario'];
 
-if($newPassword == $oldPassword){
-    $user = $userSA->editPassword($usuario, $oldPassword, $newPassword);
-}
-else{
-    $user = false;
-}
-
-
+$user = $userSA->editPassword($usuario, $password, $newPassword);
 
 if($user != false){
     header('location: ../../index.php');
 }else{
-    header('location: ../../index.php');
+    
 }

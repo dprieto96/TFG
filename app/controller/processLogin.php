@@ -19,7 +19,7 @@ if ($user != false) {
     header('location: ../../index.php');
 }else{
     $_SESSION['login'] = false;
-    
+    header('location: ../../index.php');
 }
 
 

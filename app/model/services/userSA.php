@@ -27,6 +27,10 @@ class UserSA{
         return $this->dao->registration($objUser);
     }
 
+    public function editUser($newUser, $oldUser){
+        return $this->dao->editUser($newUser, $oldUser);
+    }
+
 }
 
 ?>

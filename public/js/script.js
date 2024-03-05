@@ -17,17 +17,6 @@ function closeRegisterModal() {
     document.getElementById('myRegisterModal').style.display = 'none';
 }
 
-function closeEditProfileModal() {
-    document.getElementById('editProfileModal').style.display = 'none';
-}
-
-function openEditProfileModal() {
-    document.getElementById('editProfileModal').style.display = 'block';
-}
-
-
-
-
 
   // Cierra la ventana emergente si se hace clic fuera de ella
   window.onclick = function(event) {

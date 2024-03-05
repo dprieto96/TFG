@@ -29,7 +29,8 @@
             $q = "SELECT * FROM usuario WHERE user = '$user'";
             $com = $conn->query($q);
 
-            if($com->num_rows === 0){
+            //TODO
+            if($com->num_rows === 0){ //ver tambien el que el correo no este repetido 
                 //If the user does not exist, we insert it
                 $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0)";
                 $resultado = $conn->query($q);
@@ -69,6 +70,25 @@
             }
         }
 
+
+        public function editUser($newUser, $oldUser){
+            $conn = $this->db->getConnection();
+
+            $query = "SELECT * FROM usuario WHERE user = '$newUser'";
+
+            $resultado = $conn->query($query);
+            
+            //Nobody have this user
+            if($resultado->num_rows === 0){
+                $query = "UPDATE usuario SET user = '$newUser' WHERE user = '$oldUser'";
+                $resultado = $conn->query($query);
+                
+                return $resultado;
+            }
+            else{
+                return false;
+            }
+        }
 
 
     }

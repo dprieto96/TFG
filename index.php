@@ -37,9 +37,10 @@
     <?php include('app/view/popups/login_form.php'); ?>
     <?php include('app/view/popups/register_form.php'); ?>
     <?php include('app/view/popups/perfil.php'); ?>
+    <?php include('app/view/popups/editProfile_form.php'); ?>
 
-
-    <script src="public/js/script.js"></script>
+    
+    <script src="/TFG/public/js/script.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <!-- Modal de perfil -->
 <?php 
+
     $status = session_status();
     if($status == PHP_SESSION_NONE){
         session_start();
@@ -15,7 +16,7 @@
                 echo'<p>', $_SESSION['puntos'], ' puntos</p>';
                 echo'<p>', $facultad, '</p>';
             ?>
-            <button id="login" onclick="editProfile()">Editar Perfil</button>
+            <button id="login" onclick="openEditProfileModal()">Editar Perfil</button>
             <a href=app/view/includes/logout.php>Logout</a>
     </div>
 </div>
@@ -24,6 +25,11 @@
     function closePerfilModal() {
         document.getElementById('perfil').style.display = 'none';
     }
+
+    function openEditProfileModal() {
+        closePerfilModal();
+        document.getElementById('editProfileModal').style.display = 'block';
+    }
+
 </script>
 
-<script src="../../public/js/script.js"></script>

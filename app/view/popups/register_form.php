@@ -39,6 +39,32 @@
             </select>
             <input type="submit" value="Registrarse">
         </form>
+        <p id="passwordError" style="color: red; display: none;">Las contraseñas no coinciden.</p>
         <p>¿Ya tienes una cuenta? <a href="#myModal" onclick="closeRegisterModal(), openLoginModal()">Inicia sesión</a></p>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var passwordInput = document.getElementById("reg-password");
+        var confirmPasswordInput = document.getElementById("reg-confirm-password");
+        var passwordError = document.getElementById("passwordError");
+        var form = document.getElementById("form");
+
+        function validatePassword() {
+            var password = passwordInput.value;
+            var confirmPassword = confirmPasswordInput.value;
+
+            if (password !== confirmPassword) {
+                passwordError.style.display = "block";
+                confirmPasswordInput.setCustomValidity("Las contraseñas no coinciden");
+            } else {
+                passwordError.style.display = "none";
+                confirmPasswordInput.setCustomValidity('');
+            }
+        }
+
+        passwordInput.addEventListener("input", validatePassword);
+        confirmPasswordInput.addEventListener("input", validatePassword);
+    });
+</script>

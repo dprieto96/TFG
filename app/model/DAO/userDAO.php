@@ -29,13 +29,20 @@
             $q = "SELECT * FROM usuario WHERE user = '$user'";
             $com = $conn->query($q);
 
-            //TODO
-            if($com->num_rows === 0){ //ver tambien el que el correo no este repetido 
-                //If the user does not exist, we insert it
-                $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0)";
-                $resultado = $conn->query($q);
-                
-                return $resultado;
+            $que = "SELECT * FROM usuario WHERE mail = '$mail'";
+            $com2 = $conn->query($que);
+            
+            if($com->num_rows === 0){
+                if($com2->num_rows === 0){
+                    //If the user does not exist, we insert it
+                    $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0)";
+                    $resultado = $conn->query($q);
+                    
+                    return $resultado;
+                }
+                else{
+                    return false;
+                }
             }
             else{//if user exist
                 return false;

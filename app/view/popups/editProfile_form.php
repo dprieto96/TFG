@@ -19,22 +19,59 @@
 
         <div id="changePassword" class="tabcontent" style="display: none;">
             <h2>Cambiar Contraseña</h2>
-            <form action="app/controller/processEditPassword.php" id="editPasswordForm" method="post" >
+            <form action="app/controller/processEditPassword.php" id="editPasswordForm" method="post">
                 <input type="password" id="oldPassword" name="oldPassword" placeholder="Contraseña Actual" required>
                 <input type="password" id="newPassword" name="newPassword" placeholder="Nueva Contraseña" required>
-                <input type="password" id="newPasswordRepeat" name="newPasswordRepeat" placeholder="Nueva Contraseña" required>
+                <input type="password" id="newPasswordRepeat" name="newPasswordRepeat" placeholder="Repetir Nueva Contraseña" required>
                 <input type="submit" value="Guardar cambios">
             </form>
-            <p id="passwordError" style="color: red; display: none;">Las contraseñas no coinciden.</p>
+            <p id="passwordError2" style="color: red; display: none;"></p>
         </div>
     </div>
 </div>
 
 <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    var passwordInput = document.getElementById("newPassword");
+    var confirmPasswordInput = document.getElementById("newPasswordRepeat");
+    var passwordError2 = document.getElementById("passwordError2");
+    var form = document.getElementById("editPasswordForm");
+
+    function validatePassword() {
+        var password = passwordInput.value;
+        var confirmPassword = confirmPasswordInput.value;
+        var hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
+        var hasUpperCase = /[A-Z]+/.test(password);
+
+        if (password !== confirmPassword) {
+            passwordError2.textContent = "Las contraseñas no coinciden.";
+            passwordError2.style.display = "block";
+            confirmPasswordInput.setCustomValidity("Las contraseñas no coinciden");
+        } else if (!hasSpecialCharacter) {
+            passwordError2.textContent = "La contraseña debe contener al menos un carácter especial.";
+            passwordError2.style.display = "block";
+            confirmPasswordInput.setCustomValidity("La contraseña debe contener al menos un carácter especial.");
+        } else if (!hasUpperCase) {
+            passwordError2.textContent = "La contraseña debe contener al menos una letra mayúscula.";
+            passwordError2.style.display = "block";
+            confirmPasswordInput.setCustomValidity("La contraseña debe contener al menos una letra mayúscula.");
+        } else {
+            passwordError2.style.display = "none";
+            confirmPasswordInput.setCustomValidity('');
+        }
+    }
+
+        passwordInput.addEventListener("input", validatePassword);
+        confirmPasswordInput.addEventListener("input", validatePassword);
+    });
+
+    // Función para cerrar el modal de edición de perfil
     function closeEditProfileModal() {
         document.getElementById('editProfileModal').style.display = 'none';
     }
 
+    // Función para cambiar entre pestañas
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -49,25 +86,4 @@
         evt.currentTarget.className += " active";
     }
 
-    // Abrir la pestaña de cambiar usuario por defecto al cargar el modal
-    document.addEventListener("DOMContentLoaded", function () {
-        var newPasswordInput = document.getElementById("newPassword");
-        var newPasswordRepeatInput = document.getElementById("newPasswordRepeat");
-        var passwordError = document.getElementById("passwordError");
-
-        function validatePassword() {
-            var newPassword = newPasswordInput.value;
-            var newPasswordRepeat = newPasswordRepeatInput.value;
-
-            if (newPassword !== newPasswordRepeat) {
-                passwordError.style.display = "block";
-            } else {
-                passwordError.style.display = "none";
-            }
-        }
-
-        newPasswordInput.addEventListener("input", validatePassword);
-        newPasswordRepeatInput.addEventListener("input", validatePassword);
-        document.getElementById("changeUsername").style.display = "block";
-    });
 </script>

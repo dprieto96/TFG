@@ -5,8 +5,8 @@
     }
 
     if($_SESSION['login'] !== true){
-    header('Location: logout.php'); 
-    exit;
+        header("Location: /TFG/index.php");
+        exit;
     }
 
     require_once("../controller/rankingController.php");

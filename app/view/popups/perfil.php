@@ -21,15 +21,3 @@
     </div>
 </div>
 
-<script>
-    function closePerfilModal() {
-        document.getElementById('perfil').style.display = 'none';
-    }
-
-    function openEditProfileModal() {
-        closePerfilModal();
-        document.getElementById('editProfileModal').style.display = 'block';
-    }
-
-</script>
-

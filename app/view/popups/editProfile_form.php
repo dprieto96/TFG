@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var confirmPassword = confirmPasswordInput.value;
         var hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
         var hasUpperCase = /[A-Z]+/.test(password);
+        var passwordLength = password.length;
 
         if (password !== confirmPassword) {
             passwordError2.textContent = "Las contraseñas no coinciden.";
@@ -56,6 +57,10 @@ document.addEventListener("DOMContentLoaded", function () {
             passwordError2.textContent = "La contraseña debe contener al menos una letra mayúscula.";
             passwordError2.style.display = "block";
             confirmPasswordInput.setCustomValidity("La contraseña debe contener al menos una letra mayúscula.");
+        } else if (passwordLength < 5 || passwordLength > 30) {
+                passwordError2.textContent = "La contraseña debe tener entre 5 y 30 caracteres.";
+                passwordError2.style.display = "block";
+                confirmPasswordInput.setCustomValidity("La contraseña debe tener entre 5 y 30 caracteres.");
         } else {
             passwordError2.style.display = "none";
             confirmPasswordInput.setCustomValidity('');
@@ -65,11 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
         passwordInput.addEventListener("input", validatePassword);
         confirmPasswordInput.addEventListener("input", validatePassword);
     });
-
-    // Función para cerrar el modal de edición de perfil
-    function closeEditProfileModal() {
-        document.getElementById('editProfileModal').style.display = 'none';
-    }
 
     // Función para cambiar entre pestañas
     function openTab(evt, tabName) {

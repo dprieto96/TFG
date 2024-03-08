@@ -16,6 +16,9 @@ $user = $userSA->editPassword($usuario, $password, $newPassword);
 
 if($user != false){
     header('location: ../../index.php');
-}else{
-    
+}else if($user === -1){
+    header('location: ../../index.php?error=error_edit_failPass');
+}
+else{
+    header('location: ../../index.php?error=error_edit_password');
 }

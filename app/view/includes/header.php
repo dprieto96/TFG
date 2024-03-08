@@ -24,10 +24,3 @@
     </nav>
 </header>
 
-<script>
-    
-    function openPerfilModal() {
-    document.getElementById('perfil').style.display = 'block';
-    }
-
-</script>

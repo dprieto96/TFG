@@ -40,12 +40,12 @@
                     
                     return $resultado;
                 }
-                else{
-                    return false;
+                else{//if mail exist
+                    return -1;
                 }
             }
             else{//if user exist
-                return false;
+                return -2;
             }
         }
 
@@ -70,10 +70,10 @@
 
                     return $usuario;
                 }else{
-                    return false;
+                    return -1;
                 }
             }else{
-                return false;
+                return -2;
             }
         }
 
@@ -93,8 +93,8 @@
                 
                 return $resultado;
             }
-            else{
-                return false;
+            else{//if the name_user exist
+                return -1;
             }
         }
 
@@ -115,7 +115,7 @@
                     
                     return $resultado;
                 }else{
-                    return false;
+                    return -1;
                 }
             }else{
                 return false;

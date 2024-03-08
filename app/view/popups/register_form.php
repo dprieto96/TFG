@@ -57,6 +57,7 @@
             var confirmPassword = confirmPasswordInput.value;
             var hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
             var hasUpperCase = /[A-Z]+/.test(password);
+            var passwordLength = password.length;
 
             if (password !== confirmPassword) {
                 passwordError.textContent = "Las contraseñas no coinciden.";
@@ -70,6 +71,10 @@
                 passwordError.textContent = "La contraseña debe contener al menos una letra mayúscula.";
                 passwordError.style.display = "block";
                 confirmPasswordInput.setCustomValidity("La contraseña debe contener al menos una letra mayúscula.");
+            } else if (passwordLength < 5 || passwordLength > 30) {
+                passwordError.textContent = "La contraseña debe tener entre 5 y 30 caracteres.";
+                passwordError.style.display = "block";
+                confirmPasswordInput.setCustomValidity("La contraseña debe tener entre 5 y 30 caracteres.");
             } else {
                 passwordError.style.display = "none";
                 confirmPasswordInput.setCustomValidity('');

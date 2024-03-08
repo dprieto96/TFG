@@ -20,24 +20,26 @@ $password = htmlspecialchars(trim(strip_tags($_POST["reg-password"])));
 $password2 = htmlspecialchars(trim(strip_tags($_POST["reg-confirm-password"])));
 $idFaculty = htmlspecialchars(trim(strip_tags($_POST["idFacultad"])));
 
-if($password == $password2){
-    
-    $correct = regUserControler($nickUser, $mailUser, $password, $idFaculty);
-    
-    if($correct){
-        $_SESSION['login'] = true;
-        $_SESSION['usuario'] = $nickUser;
-        $_SESSION['puntos'] = 0;
-        $_SESSION['facultad'] = $idFaculty;
-        header('location: ../../index.php');
-    }else{
-        $_SESSION['login'] = false;
-        header('location: ../../index.php');
-    }
 
-}else{
-  echo'LAS CONTRASEÑAS NO COINCIDEN';
+$correct = regUserControler($nickUser, $mailUser, $password, $idFaculty);
 
+if($correct === true){
+    $_SESSION['login'] = true;
+    $_SESSION['usuario'] = $nickUser;
+    $_SESSION['puntos'] = 0;
+    $_SESSION['facultad'] = $idFaculty;
+    header('location: ../../index.php');
+    exit();
+} else if ($correct === -1) {
+    // El correo electrónico ya está registrado
+    header('location: ../../index.php?error=email_exists');
+    exit();
+} else if ($correct === -2) {
+    // El nombre de usuario ya está en uso
+    header('location: ../../index.php?error=username_exists');
+    exit();
+} else {
+    $_SESSION['login'] = false;
+    header('location: ../../index.php?error=false');
+    exit();
 }
-
-?>

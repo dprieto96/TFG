@@ -13,6 +13,7 @@ class UserSA{
 
     public function loginUser($user, $password) {
         $objUser = new tUser();
+
         $objUser->initUser($user, $password);
 
         return $this->dao->login($objUser);
@@ -24,6 +25,14 @@ class UserSA{
         $objUser->regNewUser($user, $mail, $password, $idFaculty);
 
         return $this->dao->registration($objUser);
+    }
+
+    public function editUser($newUser, $oldUser){
+        return $this->dao->editUser($newUser, $oldUser);
+    }
+
+    public function editPassword($usuario, $oldPassword, $newPassword){
+        return $this->dao->editPassword($usuario, $oldPassword, $newPassword);
     }
 
 }

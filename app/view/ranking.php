@@ -58,7 +58,7 @@
 
                     <div class="personal_main">
                         <div class="col_personal personal_foto">
-                            <img id="perfil_img" src="/TFG/public/img/avatar/chico2.webp" alt="foto de perfil">
+                            <img id="perfil_img" src="/TFG/public/img/avatar/<?php echo $_SESSION['avatar']; ?>" alt="foto de perfil">
                             <div class="personal_foto_labels">
                                 <label><?php echo $_SESSION['usuario']; ?></label>
                                 <label><?php echo $facultad; ?></label>

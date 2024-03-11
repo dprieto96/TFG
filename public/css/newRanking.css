@@ -10,8 +10,6 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    /*Para meter espacio al final*/
-    padding-block-end: 5rem;
 
     background-image: url('/TFG/public/img/ranking_background.jpg');
     background-size: cover; /* Cubre toda la pantalla con la imagen */
@@ -22,25 +20,18 @@ body {
 
 main {
     margin-top: -3%;
-    margin-bottom: 10%;
-}
 
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    height: fit-content;
 }
 
 .wrapper {
-    border: 2px solid black;
     /*Mete un poco de margen a los lados para que los elementos no toquen los lados de la pantalla*/
     padding-inline: 1rem;
     /*Para marcar el tamaño máximo que puede tener independientemente de cuanto se agrande la pantalla*/
     max-width: 1280px;
     /*Para dejar un espacio igual a ambos lados del div*/
     margin-inline: auto;
-    padding-bottom: 300px;
+    padding-bottom: 100px;
 }
 
 @media screen and (max-width: 800px) {

@@ -25,6 +25,11 @@
                     if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
                         echo '<button id="login" onclick="openLoginModal()">Iniciar sesión</button>';
                     }
+                    else{
+                       echo '<button id="login" onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Acceder al reto</button>';
+
+
+                    }
                 ?>
             </div>
         </main>
@@ -38,6 +43,8 @@
     <?php include('app/view/popups/register_form.php'); ?>
     <?php include('app/view/popups/perfil.php'); ?>
     <?php include('app/view/popups/editProfile_form.php'); ?>
+    <?php include('app/wordle/index.html'); ?>
+
 
     
     <script src="/TFG/public/js/script.js"></script>

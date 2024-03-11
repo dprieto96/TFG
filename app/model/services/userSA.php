@@ -35,6 +35,10 @@ class UserSA{
         return $this->dao->editPassword($usuario, $oldPassword, $newPassword);
     }
 
+    public function editAvatar($usuario, $avatarURL){
+        return $this->dao->editAvatar($usuario, $avatarURL);
+    }
+
 }
 
 ?>

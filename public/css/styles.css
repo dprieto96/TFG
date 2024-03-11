@@ -185,6 +185,9 @@ input[type="submit"]:hover {
         padding: 5%;
         height: auto;
     }
+    .modal-content {
+        width: 90%; /* Ancho del contenido del modal en pantallas pequeñas */
+    }
 }
 
 

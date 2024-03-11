@@ -5,11 +5,12 @@
     if($status == PHP_SESSION_NONE){
         session_start();
     }
+
 ?>
 <div id="perfil" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closePerfilModal()">&times;</span>
-            <img class="avatar" src="/TFG/public/img/chico.jpg">
+        <img class="avatar" src="/TFG/public/img/avatar/<?php echo $_SESSION['avatar']; ?>" />
             <?php 
                 $facultad = str_replace("_", " ", $_SESSION['facultad']);
                 echo'<h2>', $_SESSION['usuario'], '</h2>';

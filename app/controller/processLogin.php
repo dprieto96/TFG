@@ -25,6 +25,7 @@ else if ($user != false) {
     $_SESSION['usuario'] = $user->getUser();
     $_SESSION['puntos'] = $user->getPoints();
     $_SESSION['facultad'] = $user->getIdFaculty();
+    $_SESSION['avatar'] = $user->getAvatar();
     header('location: ../../index.php');
 }else{
     $_SESSION['login'] = false;

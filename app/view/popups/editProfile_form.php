@@ -6,6 +6,7 @@
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'changeUsername')">Cambiar Usuario</button>
             <button class="tablinks" onclick="openTab(event, 'changePassword')">Cambiar Contraseña</button>
+            <button class="tablinks" onclick="openTab(event, 'changeAvatar')">Cambiar Avatar</button>
         </div>
 
         <!-- Contenido de las pestañas -->
@@ -26,6 +27,28 @@
                 <input type="submit" value="Guardar cambios">
             </form>
             <p id="passwordError2" style="color: red; display: none;"></p>
+        </div>
+
+        <div id="changeAvatar" class="tabcontent" style="display: none;">
+            <h2>Cambiar Avatar</h2>
+            <div class="avatar-options">
+                <h3>Avatares Masculinos</h3>
+                <img src="/TFG/public/img/avatar/chico1.webp" alt="Avatar 1" onclick="selectAvatar('chico1.webp')" style="max-width: 100px;">
+                <img src="/TFG/public/img/avatar/chico2.webp" alt="Avatar 2" onclick="selectAvatar('chico2.webp')" style="max-width: 100px;">
+                <img src="/TFG/public/img/avatar/chico3.webp" alt="Avatar 3" onclick="selectAvatar('chico3.webp')" style="max-width: 100px;">
+                <img src="/TFG/public/img/avatar/chico4.webp" alt="Avatar 4" onclick="selectAvatar('chico4.webp')" style="max-width: 100px;">
+                <img src="/TFG/public/img/avatar/chico5.webp" alt="Avatar 5" onclick="selectAvatar('chico5.webp')" style="max-width: 100px;">
+                <h3>Avatares Femeninos</h3>
+                <img src="/TFG/public/img/avatar/chica1.webp" alt="Avatar 1" onclick="selectAvatar('chica1.webp')" style="max-width: 100px;">
+                <img src="/TFG/public/img/avatar/chica2.webp" alt="Avatar 2" onclick="selectAvatar('chica2.webp')" style="max-width: 100px;">
+                <img src="/TFG/public/img/avatar/chica3.webp" alt="Avatar 3" onclick="selectAvatar('chica3.webp')" style="max-width: 100px;">
+                <img src="/TFG/public/img/avatar/chica4.webp" alt="Avatar 4" onclick="selectAvatar('chica4.webp')" style="max-width: 100px;">
+                <img src="/TFG/public/img/avatar/chica5.webp" alt="Avatar 5" onclick="selectAvatar('chica5.webp')" style="max-width: 100px;">
+            </div>
+            <form action="app/controller/processEditAvatar.php" id="editAvatarForm" method="post">
+                <input type="hidden" id="avatarInput" name="avatarInput" value="">
+                <input type="submit" value="Guardar Avatar">
+            </form>
         </div>
     </div>
 </div>
@@ -69,7 +92,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         passwordInput.addEventListener("input", validatePassword);
         confirmPasswordInput.addEventListener("input", validatePassword);
-    });
+});
+
+    var selectedAvatar = ""; // Variable para almacenar el avatar seleccionado
+
+    function selectAvatar(avatar) {
+        // Quita la clase 'selected' de todos los avatares
+        var avatars = document.querySelectorAll('.avatar-options img');
+        avatars.forEach(function (img) {
+            img.classList.remove('selected');
+        });
+
+        // Añade la clase 'selected' al avatar seleccionado
+        var selectedImg = document.querySelector('img[src="/TFG/public/img/avatar/' + avatar + '"]');
+        selectedImg.classList.add('selected');
+
+        selectedAvatar = avatar;
+
+        document.getElementById('avatarInput').value = selectedAvatar;
+    }
 
     // Función para cambiar entre pestañas
     function openTab(evt, tabName) {
@@ -87,3 +128,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 </script>
+
+
+<style>
+    .avatar-options {
+    max-height: 50vh; /* Ajusta esta altura según sea necesario */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    }
+    .avatar-options img.selected {
+        border: 2px solid blue; /* Cambia el borde para resaltar el avatar seleccionado */
+    }
+</style>

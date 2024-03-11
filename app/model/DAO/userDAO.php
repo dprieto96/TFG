@@ -20,8 +20,6 @@
             $mail = $tUser->getMail();
             $password = $tUser->getPassword();
             $idFaculty = $tUser->getIdFaculty();
-            $points = (int) $tUser->getPoints();
-            //$avatar = $tUser->getAvatar();
 
             $hashPassword = password_hash($password, PASSWORD_BCRYPT);
 
@@ -35,7 +33,7 @@
             if($com->num_rows === 0){
                 if($com2->num_rows === 0){
                     //If the user does not exist, we insert it
-                    $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0)";
+                    $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`, `avatar`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0, 'chico1.webp')";
                     $resultado = $conn->query($q);
                     
                     return $resultado;
@@ -66,7 +64,7 @@
                 if(password_verify($password, $fila['password'])){
 
                     $usuario = new tUser();
-                    $usuario->loginUser($nickUser, $fila['mail'], $password, $fila['idFacultad'], $fila['points']);
+                    $usuario->loginUser($nickUser, $fila['mail'], $password, $fila['idFacultad'], $fila['points'], $fila['avatar']);
 
                     return $usuario;
                 }else{
@@ -120,6 +118,16 @@
             }else{
                 return false;
             }
+        }
+
+        public function editAvatar($usuario, $avatarURL){
+            $conn = $this->db->getConnection();
+
+            $query = "UPDATE usuario SET avatar = '$avatarURL' WHERE user = '$usuario'";
+
+            $resultado = $conn->query($query);
+
+            return $resultado;
         }
 
 

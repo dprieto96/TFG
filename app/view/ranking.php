@@ -44,7 +44,7 @@
         });
 
         usort($facultyRanking, function($a, $b) {
-            return $b['puntos'] - $a['puntos'];
+            return $b['totalPoints'] - $a['totalPoints'];
         });
     ?>
 
@@ -113,31 +113,31 @@
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position1">1º</label>
-                                    <label id="medal-score1"><?php echo $userRanking[0]["points"]?></label>
+                                    <label id="medal-score1"><?php if (isset($userRanking[0]["points"])) {echo $userRanking[0]["points"];}else {echo "0";}?></label>
                                     <img id="medal-image1" src="/TFG/public/img/frame_ranking1.png" alt="">
                                 </div>
                                 <div class="medal-name">
-                                    <label id="medal-name1"><?php echo $userRanking[0]["user"]?></label>
+                                    <label id="medal-name1"><?php if (isset($userRanking[0]["user"])) {echo $userRanking[0]["user"];}else {echo "[Vacío]";}?></label>
                                 </div>
                             </div>
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position2">2º</label>
-                                    <label id="medal-score2"><?php echo $userRanking[1]["points"]?></label>
+                                    <label id="medal-score2"><?php if (isset($userRanking[1]["points"])) {echo $userRanking[1]["points"];}else {echo "0";}?></label>
                                     <img id="medal-image2" src="/TFG/public/img/frame_ranking2.png" alt="">
                                 </div>
                                 <div class="medal-name">
-                                    <label id="medal-name2"><?php echo $userRanking[1]["user"]?></label>
+                                    <label id="medal-name2"><?php if (isset($userRanking[1]["user"])) {echo $userRanking[1]["user"];}else {echo "[Vacío]";}?></label>
                                 </div>
                             </div>
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position3">3º</label>
-                                    <label id="medal-score3"><?php echo $userRanking[2]["points"]?></label>
+                                    <label id="medal-score3"><?php if (isset($userRanking[2]["points"])) {echo $userRanking[2]["points"];}else {echo "0";}?></label>
                                     <img id="medal-image3" src="/TFG/public/img/frame_ranking3.png" alt="">
                                 </div>
                                 <div class="medal-name">
-                                    <label id="medal-name3"><?php echo $userRanking[2]["user"]?></label>
+                                    <label id="medal-name3"><?php if (isset($userRanking[2]["user"])) {echo $userRanking[2]["user"];}else {echo "[Vacío]";}?></label>
                                 </div>
                             </div>
                         </div>
@@ -188,31 +188,31 @@
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position1">1º</label>
-                                    <label id="medal-score1"><?php echo $facultyRanking[0]["puntos"]?></label>
+                                    <label id="medal-score1"><?php echo $facultyRanking[0]["totalPoints"]?></label>
                                     <img id="medal-image1" src="/TFG/public/img/frame_ranking1.png" alt="">
                                 </div>
                                 <div class="medal-name">
-                                    <label id="medal-name1"><?php echo $facultyRanking[0]["nombre"]?></label>
+                                    <label id="medal-name1"><?php echo str_replace("_", " ", $facultyRanking[0]["idFacultad"])?></label>
                                 </div>
                             </div>
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position2">2º</label>
-                                    <label id="medal-score2"><?php echo $facultyRanking[1]["puntos"]?></label>
+                                    <label id="medal-score2"><?php echo $facultyRanking[1]["totalPoints"]?></label>
                                     <img id="medal-image2" src="/TFG/public/img/frame_ranking2.png" alt="">
                                 </div>
                                 <div class="medal-name">
-                                    <label id="medal-name2"><?php echo $facultyRanking[1]["nombre"]?></label>
+                                    <label id="medal-name2"><?php echo str_replace("_", " ", $facultyRanking[1]["idFacultad"])?></label>
                                 </div>
                             </div>
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position3">3º</label>
-                                    <label id="medal-score3"><?php echo $facultyRanking[2]["puntos"]?></label>
+                                    <label id="medal-score3"><?php echo $facultyRanking[2]["totalPoints"]?></label>
                                     <img id="medal-image3" src="/TFG/public/img/frame_ranking3.png" alt="">
                                 </div>
                                 <div class="medal-name">
-                                    <label id="medal-name3"><?php echo $facultyRanking[2]["nombre"]?></label>
+                                    <label id="medal-name3"><?php echo str_replace("_", " ", $facultyRanking[2]["idFacultad"])?></label>
                                 </div>
                             </div>
                         </div>
@@ -235,16 +235,16 @@
                                     if ($puntuacion["idFacultad"] == $_SESSION["facultad"]){
                                         echo "<tr class='active-row'>";
                                             echo "<td>" . $posicion . "</td>";
-                                            echo "<td>" . str_replace("_", " ", $puntuacion["nombre"]) . "</td>";
-                                            echo "<td>" . $puntuacion["puntos"] . "</td>";
+                                            echo "<td>" . str_replace("_", " ", $puntuacion["idFacultad"]) . "</td>";
+                                            echo "<td>" . $puntuacion["totalPoints"] . "</td>";
                                             echo "<td>" . $puntuacion["numEstudiantes"] . "</td>";
                                         echo "</tr>";
                                     }
                                     else{
                                         echo "<tr>";
                                             echo "<td>" . $posicion . "</td>";
-                                            echo "<td>" . str_replace("_", " ", $puntuacion["nombre"]) . "</td>";
-                                            echo "<td>" . $puntuacion["puntos"] . "</td>";
+                                            echo "<td>" . str_replace("_", " ", $puntuacion["idFacultad"]) . "</td>";
+                                            echo "<td>" . $puntuacion["totalPoints"] . "</td>";
                                             echo "<td>" . $puntuacion["numEstudiantes"] . "</td>";
                                         echo "</tr>";
                                     }

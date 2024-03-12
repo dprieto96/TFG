@@ -268,6 +268,7 @@
     <?php include('popups/login_form.php'); ?>
     <?php include('popups/register_form.php'); ?>
     <?php include('popups/perfil.php'); ?>
+    <?php include('popups/editProfile_form.php'); ?>
 
 
     <script src="../../public/js/script.js"></script>

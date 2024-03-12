@@ -11,7 +11,7 @@
 </head>
 
 <body>
-
+    <script src="/TFG/public/js/script.js"></script>
     <div id="header-main">
 
         <?php
@@ -43,7 +43,7 @@
     <?php include('app/view/popups/editProfile_form.php'); ?>
 
 
-    <script src="/TFG/public/js/script.js"></script>
+    
 </body>
 
 </html>

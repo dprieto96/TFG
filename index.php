@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innova</title>
     <link rel="stylesheet" href="public/css/styles.css">
-
+    
 </head>
 
 <body>
-
+   
     <div id="header-main">
 
         <?php
@@ -21,7 +21,7 @@
         <main>
             <div class="main-container">
                 <h1>Juntos, potenciamos un futuro sostenible</h1>
-                <?php
+                <?php 
                     if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
                         echo '<button id="login" onclick="openLoginModal()">Iniciar sesión</button>';
                     }
@@ -42,7 +42,7 @@
     <?php include('app/view/popups/perfil.php'); ?>
     <?php include('app/view/popups/editProfile_form.php'); ?>
 
-
+    
     <script src="/TFG/public/js/script.js"></script>
 </body>
 

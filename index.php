@@ -26,7 +26,7 @@
                         echo '<button id="login" onclick="openLoginModal()">Iniciar sesión</button>';
                     }
                     else{
-                       echo '<button id="login" onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Acceder al reto</button>';
+                       echo '<button id="login" onclick="window.location.href=\'/TFG/wordle/Index.html\'">Acceder al reto</button>';
 
 
                     }

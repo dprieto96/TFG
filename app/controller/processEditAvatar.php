@@ -6,18 +6,21 @@ require_once("../model/domains/tUser.php");
 
 $avatarURL = $_POST['avatarInput'];
 
+if($avatarURL !== ""){
+    $userSA = new UserSA();
 
-$userSA = new UserSA();
+    $usuario = $_SESSION['usuario'];
 
-$usuario = $_SESSION['usuario'];
+    $user = $userSA->editAvatar($usuario, $avatarURL);
 
-$user = $userSA->editAvatar($usuario, $avatarURL);
-
-if($user === true){
-    $_SESSION['avatar'] = $avatarURL;
-    header('location: /TFG/index.php');
+    if($user === true){
+        $_SESSION['avatar'] = $avatarURL;
+        header('location: /TFG/index.php');
+    }
+    else{
+        header('location: /TFG/index.php?error=false');
+        exit();
+    }
 }
-else{
-    header('location: /TFG/index.php?error=false');
-    exit();
-}
+
+header('location: /TFG/index.php?error=false');

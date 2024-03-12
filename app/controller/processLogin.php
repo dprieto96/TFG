@@ -13,11 +13,11 @@ $user = $userSA->loginUser($nickUser, $password);
 
 if($user === -2){
     $_SESSION['login'] = false;
-    header('Location: ../../index.php?error=login_error_us');
+    header('Location:  /TFG/index.php?error=login_error_us');
     exit();
 }else if($user === -1){
     $_SESSION['login'] = false;
-    header('Location: ../../index.php?error=login_error_pass');
+    header('Location:  /TFG/index.php?error=login_error_pass');
     exit();
 }
 else if ($user != false) {
@@ -26,10 +26,10 @@ else if ($user != false) {
     $_SESSION['puntos'] = $user->getPoints();
     $_SESSION['facultad'] = $user->getIdFaculty();
     $_SESSION['avatar'] = $user->getAvatar();
-    header('location: ../../index.php');
+    header('location:  /TFG/index.php');
 }else{
     $_SESSION['login'] = false;
-    header('Location: ../../index.php?error=false');
+    header('Location:  /TFG/index.php?error=false');
     exit();
 }
 

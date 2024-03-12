@@ -29,18 +29,18 @@ if($correct === true){
     $_SESSION['puntos'] = 0;
     $_SESSION['facultad'] = $idFaculty;
     $_SESSION['avatar'] = 'chico1.webp';
-    header('location: ../../index.php');
+    header('location:  /TFG/index.php');
     exit();
 } else if ($correct === -1) {
     // El correo electrónico ya está registrado
-    header('location: ../../index.php?error=email_exists');
+    header('location:  /TFG/index.php?error=email_exists');
     exit();
 } else if ($correct === -2) {
     // El nombre de usuario ya está en uso
-    header('location: ../../index.php?error=username_exists');
+    header('location:  /TFG/index.php?error=username_exists');
     exit();
 } else {
     $_SESSION['login'] = false;
-    header('location: ../../index.php?error=false');
+    header('location:  /TFG/index.php?error=false');
     exit();
 }

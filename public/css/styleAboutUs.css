@@ -223,3 +223,73 @@ footer a {
     border: 2px solid #009879;
     color:#009879
 }
+
+
+
+
+/* Añadir reglas específicas para dispositivos móviles */
+@media (max-width: 768px) {
+    main {
+        margin-top: 20vh;
+    }
+
+    /* Ajustar el tamaño del texto para dispositivos móviles */
+    .card h1, .card h3, .card p {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Ajustar el tamaño de la imagen para dispositivos móviles */
+    .card img {
+        width: 75%;
+    }
+
+    /* Cambiar la disposición de los elementos en dispositivos móviles */
+    .card {
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    /* Ajustar el padding de card4 en dispositivos móviles */
+    #card4 {
+        padding-bottom: 5%;
+    }
+
+    /* Añadir márgenes inferiores a los párrafos */
+    .text p {
+        margin-bottom: 15px;
+    }
+
+    /* Ajustar el tamaño del botón en dispositivos móviles */
+    #card4 a {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    /* Ajustar el tamaño del footer en dispositivos móviles */
+    footer {
+        padding: 20px 0;
+    }
+
+    /* Ajustar el tamaño del texto de derechos de autor en dispositivos móviles */
+    .copyright p {
+        font-size: 14px;
+    }
+
+    /* Cambiar el orden de los elementos dentro de card2 en dispositivos móviles */
+    #card2 {
+        display: flex;
+        flex-direction: column-reverse; /* Cambia el orden de los elementos */
+    }
+
+    /* Ajustar el estilo del texto en dispositivos móviles */
+    #card2 .text {
+        margin-bottom: -10px; /* Espacio entre el texto y la imagen */
+        margin-top: 40px;
+    }
+
+    /* Ajustar el estilo de la imagen en dispositivos móviles */
+    #card2 .img {
+        margin-top: 20px; /* Espacio entre la imagen y el texto */
+    }
+}

@@ -1,4 +1,5 @@
 <!-- Modal de footer -->
+<link rel="stylesheet" href="/TFG/public/css/footer.css">
 <script src="https://kit.fontawesome.com/1f0a6f415d.js" crossorigin="anonymous"></script>
 <footer class="site-footer">
     <div class="container">

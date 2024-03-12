@@ -5,6 +5,7 @@
         session_start();
     }
 ?>
+<link rel="stylesheet" href="/TFG/public/css/header.css">
 <header>
     <div id="logo"><a href='/TFG/index.php'>Innova</a></div>
     <nav>

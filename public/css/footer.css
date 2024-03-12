@@ -1,0 +1,82 @@
+/*-------------------------------------------------- Estilos del footer -------------------------------------------*/
+.site-footer {
+    background-color: #50623A; /* Color de fondo del footer */
+    color: #DBE7C9; /* Color del texto del footer */
+    font-size: 16px; /* Tamaño de fuente del texto del footer */
+    padding-top: 30px; /* Espaciado superior del footer */
+    padding-left: 30px; /* Espaciado izquierdo del footer */
+    padding-right: 30px; /* Espaciado derecho del footer */
+    padding-bottom: 10px; /* Espaciado inferior del footer */
+}
+
+/* Contenedor de las columnas del footer */
+.footer-columns {
+    display: flex; /* Mostrar las columnas del footer en una fila */
+    justify-content: space-around; /* Distribuir el espacio entre las columnas */
+    flex-wrap: wrap; /* Permitir que las columnas se envuelvan en dispositivos más pequeños */
+}
+
+/* Estilos de las columnas del footer */
+.footer-column {
+    flex: 1; /* Hace que las columnas tengan el mismo ancho */
+    padding: 0 20px; /* Ajusta el espaciado interno de las columnas según sea necesario */
+}
+
+/* Asegurarse de que el texto en las columnas del footer no se desborde */
+.footer-column h4,
+.footer-column div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilos de las redes sociales y enlaces de las páginas */
+.social-links,
+.site-pages {
+    display: flex; /* Utilizar flexbox para colocar elementos en línea */
+    justify-content: left;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en dispositivos más pequeños */
+}
+
+.social-links i,
+.site-pages a {
+    text-decoration: none;
+    margin: 0 10px; /* Espaciado entre elementos */
+    color: #DBE7C9;
+    
+}
+
+.social-links i{
+    font-size: 25px;
+}
+
+/* Estilos del texto de copyright */
+.copyright {
+    text-align: center; /* Alinea el texto al centro */
+    margin-top: 20px; /* Espaciado superior */
+    font-size: 14px; /* Tamaño de fuente del texto de copyright */
+}
+
+.copyright a{
+    text-decoration: none;
+    color: #DBE7C9;
+}
+
+/* Para cambiar a disposición de columna en dispositivos más pequeños */
+@media (max-width: 768px) {
+    .footer-columns {
+        flex-direction: column; /* Cambiar a disposición de columna */
+        align-items: center; /* Centrar los elementos en la columna */
+    }
+
+    .footer-column {
+        width: 100%; /* Hacer que las columnas ocupen todo el ancho */
+        padding: 10px 0; /* Ajustar el espaciado interno de las columnas */
+    }
+
+    .social-links i,
+    .site-pages a {
+        margin: 15px 5px; /* Añadir espacio entre elementos en la columna */
+        
+    }
+}

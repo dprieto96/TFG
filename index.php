@@ -6,7 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innova</title>
+    
     <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="/TFG/public/css/popUps.css">
+    <link rel="stylesheet" href="/TFG/public/css/boton.css">
+    
 
 </head>
 

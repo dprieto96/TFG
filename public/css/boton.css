@@ -1,0 +1,32 @@
+/* ------------------------------ Estilos del botón id=login ------------------------- */
+#login {
+    background-color: #345a18;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#login:hover {
+    background-color: #789461;
+}
+
+/* Estilo base para los botones */
+.tab button {
+    background-color: #345a18;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    color: white;
+    border-radius: 10px;
+}
+
+/* Estilo para los botones activos */
+.tab button.active {
+    background-color: #789461;
+}

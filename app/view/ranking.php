@@ -27,6 +27,8 @@
     
     <link rel="stylesheet" type="text/css" href="../../public/css/styles.css">
     <link rel="stylesheet" href="../../public/css/newRanking.css">
+    <link rel="stylesheet" href="/TFG/public/css/popUps.css">
+    <link rel="stylesheet" href="/TFG/public/css/boton.css">
 </head>
 
 <body>

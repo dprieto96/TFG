@@ -45,7 +45,7 @@
                 <img src="/TFG/public/img/avatar/chica4.webp" alt="Avatar 4" onclick="selectAvatar('chica4.webp')" style="max-width: 100px;">
                 <img src="/TFG/public/img/avatar/chica5.webp" alt="Avatar 5" onclick="selectAvatar('chica5.webp')" style="max-width: 100px;">
             </div>
-            <form action="app/controller/processEditAvatar.php" id="editAvatarForm" method="post">
+            <form action="/TFG/app/controller/processEditAvatar.php" id="editAvatarForm" method="post">
                 <input type="hidden" id="avatarInput" name="avatarInput" value="">
                 <input type="submit" value="Guardar Avatar">
             </form>

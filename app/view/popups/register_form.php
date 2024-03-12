@@ -4,7 +4,7 @@
         <span class="close" onclick="closeRegisterModal()">&times;</span>
         <h2>Únete</h2>
 
-        <form action="/TFG/app/controller/rocessRegistration.php" id ="form" method="POST">
+        <form action="/TFG/app/controller/processRegistration.php" id ="form" method="POST">
             <input type="text" id="reg-username" name="reg-username" placeholder="Nombre de Usuario" required>
             <input type="email" id="reg-email" name="reg-email" placeholder="Correo Electrónico" required>
             <input type="password" id="reg-password" name="reg-password" placeholder="Contraseña" required>

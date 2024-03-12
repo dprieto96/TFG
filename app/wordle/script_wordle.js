@@ -107,7 +107,7 @@ function popup_ganador(tiempo_tardado){
     const popup_incompleto = new Popup({
         id: "ganador",
         title: "ENHORABUENA",
-        content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos}`,
+        content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos`,
     });
     while (popup_incompleto.show());
 }

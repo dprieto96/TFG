@@ -28,6 +28,7 @@ if($correct === true){
     $_SESSION['usuario'] = $nickUser;
     $_SESSION['puntos'] = 0;
     $_SESSION['facultad'] = $idFaculty;
+    $_SESSION['avatar'] = 'chico1.webp';
     header('location: ../../index.php');
     exit();
 } else if ($correct === -1) {

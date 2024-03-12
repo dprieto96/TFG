@@ -18,7 +18,7 @@
                 echo'<p>', $facultad, '</p>';
             ?>
             <button id="login" onclick="openEditProfileModal()">Editar Perfil</button>
-            <a href=app/view/includes/logout.php>Logout</a>
+            <a href=/TFG/app/view/includes/logout.php>Logout</a>
     </div>
 </div>
 

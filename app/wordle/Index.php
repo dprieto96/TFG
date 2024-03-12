@@ -71,6 +71,7 @@
 <?php include('../view/popups/login_form.php'); ?>
 <?php include('../view/popups/register_form.php'); ?>
 <?php include('../view/popups/perfil.php'); ?>
+<?php include('../view/popups/editProfile_form.php'); ?>
 
 <script src="../../public/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.2/popup.min.js"></script>

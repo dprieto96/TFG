@@ -1,49 +1,15 @@
-// Función para abrir la ventana emergente de Login
-function openLoginModal() {
-    document.getElementById('myModal').style.display = 'block';
-  }
-  
-  // Función para cerrar la ventana emergente de Login
-  function closeLoginModal() {
-    document.getElementById('myModal').style.display = 'none';
-  }
+//Funciones genericas para abrir y cerrar modales
 
-  function openRegisterModal() {
-    closeLoginModal();
-    document.getElementById('myRegisterModal').style.display = 'block';
+
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = 'block';
 }
 
-function closeRegisterModal() {
-    document.getElementById('myRegisterModal').style.display = 'none';
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
 }
 
-function openPerfilModal() {
-  document.getElementById('perfil').style.display = 'block';
-  }
-
-function closePerfilModal() {
-  document.getElementById('perfil').style.display = 'none';
-}
-
-function openEditProfileModal() {
-  closePerfilModal();
-  document.getElementById('editProfileModal').style.display = 'block';
-}
-
-function closeEditProfileModal() {
-  document.getElementById('editProfileModal').style.display = 'none';
-}
-
-function openDeleteUserModal() {
-  closePerfilModal();
-  document.getElementById('deleteUserModal').style.display = 'block';
-}
-
-function closeDeleteUserModal() {
-  document.getElementById('deleteUserModal').style.display = 'none';
-}
-
-
+//----------------------------------------------------------------------------------
 
   // Cierra la ventana emergente si se hace clic fuera de ella
   window.onclick = function(event) {

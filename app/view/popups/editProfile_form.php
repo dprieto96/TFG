@@ -1,7 +1,10 @@
 <!-- Modal de edición de perfil -->
 <div id="editProfileModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeEditProfileModal()">&times;</span>
+        <span class="close" onclick="closeModal('editProfileModal')">&times;</span>
+        <!-- Botón de regresar -->
+        <span class="back-button" onclick="closeModal('editProfileModal'), openModal('perfil')">&larr;</span>
+
         <!-- Pestañas -->
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'changeUsername')">Cambiar Usuario</button>

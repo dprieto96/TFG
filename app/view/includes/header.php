@@ -15,10 +15,10 @@
             <li><a href="#Blog">Blog</a></li>
             <?php
             if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
-                echo '<li id="loginBtn"><button id="login" onclick="openLoginModal()">Iniciar sesión</button></li>';
+                echo '<li id="loginBtn"><button id="login" onclick="openModal(\'myModal\')">Iniciar sesión</button></li>';
             }
             else{
-                echo'<li><button id="login" onclick="openPerfilModal()">Mi perfil</button></li>';
+                echo'<li><button id="login" onclick="openModal(\'perfil\')">Mi perfil</button></li>';
             }
             ?>
         </ul>

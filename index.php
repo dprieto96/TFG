@@ -27,11 +27,11 @@
                 <h1>Juntos, potenciamos un futuro sostenible</h1>
                 <?php
                     if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
-                        echo '<button id="login" onclick="openLoginModal()">Iniciar sesión</button>';
+                        echo '<button id="login" onclick="openModal(\'myModal\')">Iniciar sesión</button>';
                     }
                     else{
                     echo '<button id="login" onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Acceder al reto</button>';
-                   }
+                    }
                 ?>
             </div>
         </main>

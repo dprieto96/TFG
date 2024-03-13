@@ -72,3 +72,17 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #789461; /* Color de fondo al pasar el mouse */
 }
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #345a18;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}

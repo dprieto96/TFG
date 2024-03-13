@@ -1,7 +1,7 @@
 <!-- Modal de registro de usuario -->
 <div id="myRegisterModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeRegisterModal()">&times;</span>
+        <span class="close" onclick="closeModal('myRegisterModal')">&times;</span>
         <h2>Únete</h2>
 
         <form action="/TFG/app/controller/processRegistration.php" id ="form" method="POST">
@@ -40,7 +40,7 @@
             <input type="submit" value="Registrarse">
         </form>
         <p id="passwordError" style="color: red; display: none;"></p>
-        <p>¿Ya tienes una cuenta? <a href="#myModal" onclick="closeRegisterModal(), openLoginModal()">Inicia sesión</a></p>
+        <p>¿Ya tienes una cuenta? <a href="#myModal" onclick="closeModal('myRegisterModal'), openModal('myModal')">Inicia sesión</a></p>
     </div>
 </div>
 

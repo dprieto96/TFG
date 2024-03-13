@@ -104,7 +104,7 @@ function closeDeleteUserModal() {
     }
     //Error mysql
     else if(error === false){
-      alert('Error al ejecutar la acción');
+      alert('Error al ejecutar la acción intentelo mas tarde');
     }
 
   };  

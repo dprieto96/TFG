@@ -19,7 +19,13 @@ if($user === -2){
     exit();
 }
 else if ($user != false) {
-    header('location:  /TFG/index.php');
+    if(session_start()){
+		session_destroy();
+		session_unset();
+		header("Location: /TFG/index.php");
+	}
+	
+	header("Location: /TFG/index.php");
 }else{
     header('Location:  /TFG/index.php?error=false');
     exit();

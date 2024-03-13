@@ -75,6 +75,7 @@
     <?php include('popups/register_form.php'); ?>
     <?php include('popups/perfil.php'); ?>
     <?php include('popups/editProfile_form.php'); ?>
+    <?php include('popups/deleteUser_form.php'); ?>
 
 
     <script src="../../public/js/script.js"></script>

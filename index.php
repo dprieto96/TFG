@@ -43,8 +43,10 @@
 
     <?php include('app/view/popups/login_form.php'); ?>
     <?php include('app/view/popups/register_form.php'); ?>
+    <?php include('app/view/popups/deleteUser_form.php'); ?>
     <?php include('app/view/popups/perfil.php'); ?>
     <?php include('app/view/popups/editProfile_form.php'); ?>
+    
 
 
     

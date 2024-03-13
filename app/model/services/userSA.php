@@ -39,6 +39,10 @@ class UserSA{
         return $this->dao->editAvatar($usuario, $avatarURL);
     }
 
+    public function deleteUser($nickUser, $password){
+        return $this->dao->deleteUser($nickUser, $password);
+    }
+
 }
 
 ?>

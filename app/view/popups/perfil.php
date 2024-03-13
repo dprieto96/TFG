@@ -18,6 +18,7 @@
                 echo'<p>', $facultad, '</p>';
             ?>
             <button id="login" onclick="openEditProfileModal()">Editar Perfil</button>
+            <button id="login" onclick="openDeleteUserModal()">Eliminar Cuenta</button>
             <a href=/TFG/app/view/includes/logout.php>Logout</a>
     </div>
 </div>

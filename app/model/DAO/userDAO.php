@@ -130,6 +130,35 @@
             return $resultado;
         }
 
+        public function deleteUser($nickUser, $password){
+            $conn = $this->db->getConnection();
+
+            $query = "SELECT * FROM usuario WHERE user = '$nickUser'";
+
+            $resultado = $conn->query($query);
+
+            if($resultado->num_rows === 1){
+
+                $fila = $resultado->fetch_assoc();
+
+                if(password_verify($password, $fila['password'])){
+
+                    $q = "DELETE FROM usuario WHERE user = '$nickUser'";
+
+                    $resultado = $conn->query($q);
+
+                    return $resultado;
+                }
+                else{//incorrect password
+                    return -1;
+                }
+            }
+            else{//user does not exist
+                return -2;
+            }
+
+        }
+
 
     }
 

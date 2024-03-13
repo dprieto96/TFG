@@ -34,6 +34,16 @@ function closeEditProfileModal() {
   document.getElementById('editProfileModal').style.display = 'none';
 }
 
+function openDeleteUserModal() {
+  closePerfilModal();
+  document.getElementById('deleteUserModal').style.display = 'block';
+}
+
+function closeDeleteUserModal() {
+  document.getElementById('deleteUserModal').style.display = 'none';
+}
+
+
 
   // Cierra la ventana emergente si se hace clic fuera de ella
   window.onclick = function(event) {

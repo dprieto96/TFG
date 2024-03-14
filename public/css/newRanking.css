@@ -314,3 +314,78 @@ main {
 .tab button.active {
     background-color: #009879;
 }
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    
+    .card, #perfil_img, .medal {
+        transform: scale(0.6);
+        transform-origin: center;
+    }
+
+    .content-table, .form-container-main label {
+        transform: scale(1);
+        transform-origin: center;
+        font-size: 18px;
+    }
+
+    .sombra2 {
+        padding-bottom: 5%;
+    }
+
+    .card {
+        margin-left: 3%;
+        margin-right: 12%;
+    }
+
+    #card1 * {
+        transform: scale(1.1);
+        transform-origin: center;
+    }
+
+    .sombra2 {
+        transform: scale(1.1);
+        transform-origin: center;
+    }
+
+    .personal_puntuaciones {
+        padding-bottom: 10%;
+    }
+
+    .col_personal {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    main {
+        margin-top: -10vh;
+        margin-left: -20vh;
+    }
+
+    .medal-container > div {
+        margin-right: -5%;
+    }
+
+    .medal-container > * {
+        transform: scale(0.75);
+        transform-origin: center;
+    }
+
+    .button-container {
+        transform: scale(0.75);
+        transform-origin: center;
+        padding-right: 10%;
+    }
+
+    .button-container, #card2 {
+        margin-bottom: -150px;
+    }
+
+}

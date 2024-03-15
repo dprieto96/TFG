@@ -103,8 +103,8 @@
                 <div class="general-tab-container">
 
                     <div class="button-container tab">
-                        <button id="btnPersonal" class="active tablinks">Ver Puntuación Personal</button>
-                        <button id="btnGlobal" class="tablinks">Ver Ranking Global</button>
+                        <button id="btnPersonal" class="active tablinks">Ranking Participantes</button>
+                        <button id="btnGlobal" class="tablinks">Ranking Facultades</button>
                     </div>
                     
 

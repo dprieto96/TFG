@@ -73,7 +73,6 @@ main {
     font-size: 30px;
     font-weight: bold;
     font-family: 'Arial Black';
-    margin-bottom: 5%;
 }
 
 .content-table {
@@ -242,39 +241,44 @@ main {
 }
 
 #medal-position1 {
+    position: relative;
     font-size: 30px;
-    top: 35%;
+    top: 180px;
     left: 10%;
 }
 
 #medal-position2 {
+    position: relative;
     font-size: 30px;
-    top: 35%;
-    left: 41%;
+    top: 180px;
+    left: 10px;
 }
 
 #medal-position3 {
+    position: relative;
     font-size: 30px;
-    top: 35%;
-    left: 72%;
+    top: 180px;
+    left: -5px;
 }
 
 #medal-score1 {
+    position: relative;
     font-size: 25px;
-    top: 68%;
-    left: 8.6%;
+    top: 270px;
+    left: 15px;
 }
 
 #medal-score2 {
+    position: relative;
     font-size: 25px;
-    top: 68%;
-    left: 39.6%;
+    top: 270px;
 }
 
 #medal-score3 {
+    position: relative;
     font-size: 25px;
-    top: 68%;
-    left: 70.5%;
+    top: 270px;
+    left: -15px;
 }
 
 .medal-name label {
@@ -283,18 +287,25 @@ main {
 }
 
 #medal-name1 {
-    top: 50%;
-    left: 19%;
+    position: relative;
+    top: 200px;
+    left: -20px;
 }
     
 #medal-name2 {
-    top: 50%;
-    left: 50%;
+    position: relative;
+    top: 200px;
+    left: -20px;
 }
 
 #medal-name3 {
-    top: 50%;
-    left: 81%;
+    position: relative;
+    top: 200px;
+    left: -30px;
+}
+
+.medal-container > div {
+    margin: 3%;
 }
 
 /* Estilo base para los botones */
@@ -336,10 +347,6 @@ main {
         font-size: 18px;
     }
 
-    .sombra2 {
-        padding-bottom: 5%;
-    }
-
     .card {
         margin-left: 3%;
         margin-right: 12%;
@@ -370,7 +377,7 @@ main {
     }
 
     .medal-container > div {
-        margin-right: -5%;
+        margin: -4%;
     }
 
     .medal-container > * {

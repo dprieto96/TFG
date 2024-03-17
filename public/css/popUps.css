@@ -6,24 +6,37 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    /* background-color: rgba(0, 0, 0, 0.7); */
 }
 
 .modal-content {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 10%;
+    right: 3%;
     background-color: #EAECCC;
     padding: 20px;
     border-radius: 5%;
+}
+
+@media screen and (min-width: 768px) {
+    .modal-content::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        right: 20px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 30px solid #EAECCC;
+    }
 }
 
 .close {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
 }
 
@@ -85,4 +98,16 @@ input[type="submit"]:hover {
 
 .back-button:hover {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #EAECCC;
+        padding: 20px;
+        border-radius: 5%;
+    }
 }

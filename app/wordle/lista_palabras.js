@@ -60,5 +60,5 @@ export const PALABRAS = [
     "desarrollo rural",
     "petroleo",
     "combustible",
-    "producción",
+    "produccion",
 ];

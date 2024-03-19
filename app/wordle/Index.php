@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../public/css/styleAboutUs.css">
     <link rel="stylesheet" href="/TFG/public/css/popUps.css">
     <link rel="stylesheet" href="/TFG/public/css/boton.css">
+    <link rel="stylesheet" href="/TFG/public/css/wordle.css">
    </head>
 
 <body>
@@ -23,46 +24,54 @@
 
 
 <main>
-<h1>Adivina la palabra</h1>
-<div id="game-board">
-</div>
-<div id="keyboard-cont">
-    <div class="first-row">
-        <button class="keyboard-button">q</button>
-        <button class="keyboard-button">w</button>
-        <button class="keyboard-button">e</button>
-        <button class="keyboard-button">r</button>
-        <button class="keyboard-button">t</button>
-        <button class="keyboard-button">y</button>
-        <button class="keyboard-button">u</button>
-        <button class="keyboard-button">i</button>
-        <button class="keyboard-button">o</button>
-        <button class="keyboard-button">p</button>
+<div class="image-container">
+    <div>
+        <h1>Adivina la palabra</h1>
+        <div id="game-board">
+        </div>
+        <div id="keyboard-cont">
+            <div class="first-row">
+                <button class="keyboard-button">q</button>
+                <button class="keyboard-button">w</button>
+                <button class="keyboard-button">e</button>
+                <button class="keyboard-button">r</button>
+                <button class="keyboard-button">t</button>
+                <button class="keyboard-button">y</button>
+                <button class="keyboard-button">u</button>
+                <button class="keyboard-button">i</button>
+                <button class="keyboard-button">o</button>
+                <button class="keyboard-button">p</button>
+            </div>
+            <div class="second-row">
+                <button class="keyboard-button">a</button>
+                <button class="keyboard-button">s</button>
+                <button class="keyboard-button">d</button>
+                <button class="keyboard-button">f</button>
+                <button class="keyboard-button">g</button>
+                <button class="keyboard-button">h</button>
+                <button class="keyboard-button">j</button>
+                <button class="keyboard-button">k</button>
+                <button class="keyboard-button">l</button>
+                <button class="keyboard-button">ñ</button>
+            </div>
+            <div class="third-row">
+                <button class="keyboard-button">Del</button>
+                <button class="keyboard-button">z</button>
+                <button class="keyboard-button">x</button>
+                <button class="keyboard-button">c</button>
+                <button class="keyboard-button">v</button>
+                <button class="keyboard-button">b</button>
+                <button class="keyboard-button">n</button>
+                <button class="keyboard-button">m</button>
+                <button class="keyboard-button">Enter</button>
+            </div>
+        </div>
     </div>
-    <div class="second-row">
-        <button class="keyboard-button">a</button>
-        <button class="keyboard-button">s</button>
-        <button class="keyboard-button">d</button>
-        <button class="keyboard-button">f</button>
-        <button class="keyboard-button">g</button>
-        <button class="keyboard-button">h</button>
-        <button class="keyboard-button">j</button>
-        <button class="keyboard-button">k</button>
-        <button class="keyboard-button">l</button>
-        <button class="keyboard-button">ñ</button>
+    <div>
+        <h2>Tema de la semana: Energía eólica</h2>
+        <img id="feedback-image" src="" alt="Feedback Image">
     </div>
-    <div class="third-row">
-        <button class="keyboard-button">Del</button>
-        <button class="keyboard-button">z</button>
-        <button class="keyboard-button">x</button>
-        <button class="keyboard-button">c</button>
-        <button class="keyboard-button">v</button>
-        <button class="keyboard-button">b</button>
-        <button class="keyboard-button">n</button>
-        <button class="keyboard-button">m</button>
-        <button class="keyboard-button">Enter</button>
-    </div>
-</div>
+<div>
 </main>
 </div>
 

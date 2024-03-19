@@ -1,0 +1,22 @@
+/* Estilos CSS para el layout */
+.image-container {
+    display: flex;
+    flex-direction: row; /* Alinea los elementos horizontalmente */
+    justify-content:space-between; /* Distribuye los elementos a lo largo del contenedor */
+}
+
+#feedback-image {
+    border: 2px solid black;
+    max-width: 75%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        flex-direction: column;
+    }
+
+    #feedback-image {
+        max-width: 100%;
+    }
+}

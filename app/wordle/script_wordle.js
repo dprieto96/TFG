@@ -22,7 +22,25 @@ let letra_actual=0;
 let GANAR=false;
 
 
+const feedbackImages = [
+    "/TFG/public/img/"+palabra_aleatoria+"/1.webp",
+    "/TFG/public/img/"+palabra_aleatoria+"/2.webp",
+    "/TFG/public/img/"+palabra_aleatoria+"/3.webp",
+    "/TFG/public/img/"+palabra_aleatoria+"/4.webp",
+    "/TFG/public/img/"+palabra_aleatoria+"/5.webp",
+    "/TFG/public/img/"+palabra_aleatoria+"/6.webp",
+    // Agrega aquí más imágenes según sea necesario
+];
+let currentFeedbackImageIndex = 0;
+
+
 main();
+
+function updateFeedbackImage() {
+    const feedbackImage = document.getElementById("feedback-image");
+    feedbackImage.src = feedbackImages[currentFeedbackImageIndex];
+    currentFeedbackImageIndex = (currentFeedbackImageIndex + 1) % feedbackImages.length;
+}
 
 function inicializar(){
     let tablero=document.getElementById("game-board");
@@ -184,11 +202,18 @@ function comprueba(){
         puntuacion_calculo(tiempo_tardado);
         popup_ganador(tiempo_tardado/1000);
 
+        //Para que al acertar se pueda ver la imagen sin pixelar
+        currentFeedbackImageIndex = feedbackImages.length-1;
+
     }
 
     if (intentos_restantes === 0 ) {
         popup_perdedor();
         return;
+    }
+    else{
+        //Actualizar imagen pixelada
+        updateFeedbackImage();
     }
 
 }
@@ -247,4 +272,5 @@ function main(){
     console.log("La palabra es: "+ palabra_aleatoria)
     inicio=Date.now();
     inicializar()
+    updateFeedbackImage();
 }

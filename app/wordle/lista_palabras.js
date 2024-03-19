@@ -1,5 +1,9 @@
 export const PALABRAS = [
-    //Energía solar
+    //Por ahora dejo una palabra para probar como funciona
+    "aerogenerador",
+    "paneles",
+
+    /*Energía solar
     "radiacion",
     "energia limpia",
     "termosolar",
@@ -61,4 +65,5 @@ export const PALABRAS = [
     "petroleo",
     "combustible",
     "produccion",
+    */
 ];

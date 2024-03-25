@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/TFG/public/css/popUps.css">
     <link rel="stylesheet" href="/TFG/public/css/boton.css">
     <link rel="stylesheet" href="/TFG/public/css/wordle.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
    </head>
 
 <body>
@@ -27,6 +29,8 @@
 <div class="image-container">
     <div>
         <h1>Adivina la palabra</h1>
+        <div id="temporizador"></div>
+        <button id="desbloquear-letra-btn">Desbloquear letra</button>
         <div id="game-board">
         </div>
         <div id="keyboard-cont">

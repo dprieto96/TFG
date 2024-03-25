@@ -5,6 +5,8 @@ let final=undefined;
 let tiempoObjetivo_minutos=3; //minutos
 let tiempoObjetivo= tiempoObjetivo_minutos*60;
 let puntuacion=0;
+var DateTime = luxon.DateTime;
+let temporizador;
 
 
 const indiceAleatorio = Math.floor(Math.random() * palabras.length);
@@ -35,6 +37,36 @@ let currentFeedbackImageIndex = 0;
 
 
 main();
+
+function iniciarTemporizador() {
+    inicio = DateTime.local();
+    actualizarTemporizador();
+    temporizador = setInterval(() => {
+        const tiempoTranscurrido = DateTime.local().diff(inicio, 'seconds').seconds;
+        if (tiempoTranscurrido >= tiempoObjetivo) {
+            detenerTemporizador();
+            final = DateTime.local();
+            const tiempoTardado = final.diff(inicio, 'milliseconds').milliseconds;
+            puntuacion_calculo(tiempoTardado);
+            popup_ganador(tiempoTardado / 1000);
+        } else {
+            actualizarTemporizador();
+        }
+    }, 1000);
+}
+
+function detenerTemporizador() {
+    clearInterval(temporizador);
+}
+
+function actualizarTemporizador() {
+    const tiempoTranscurrido = Math.floor(DateTime.local().diff(inicio, 'seconds').seconds); // Ignora los milisegundos
+    const segundosRestantes = tiempoObjetivo - tiempoTranscurrido;
+    const minutos = Math.floor(segundosRestantes / 60);
+    const segundos = segundosRestantes % 60;
+    const temporizadorElement = document.getElementById('temporizador');
+    temporizadorElement.textContent = `${minutos}:${segundos.toString().padStart(2, '0')}`; // Formatea los segundos con dos dígitos
+}
 
 function updateFeedbackImage() {
     const feedbackImage = document.getElementById("feedback-image");
@@ -197,7 +229,8 @@ function comprueba(){
     GANAR=partida_ganada(palabra_correcta);
 
     if(GANAR==true){
-        final=Date.now();
+        detenerTemporizador();
+        final=DateTime.local();
         let tiempo_tardado=final-inicio;
         puntuacion_calculo(tiempo_tardado);
         popup_ganador(tiempo_tardado/1000);
@@ -268,9 +301,60 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
     document.dispatchEvent(new KeyboardEvent("keyup", { key: key }));
 });
 
+
+function desbloquearLetraAleatoria() {
+    let palabra_correcta = Array.from(palabra_aleatoria);
+
+    // Obtener las posiciones de las letras que aún no han sido adivinadas
+    let posicionesNoAdivinadas = [];
+    for (let i = 0; i < palabra_correcta.length; i++) {
+        if (palabra_correcta[i] !== "&") {
+            posicionesNoAdivinadas.push(i);
+            console.log("Letra " + i);
+        }
+    }
+
+    // Verificar si hay letras que desbloquear
+    if (posicionesNoAdivinadas.length === 0) {
+        // No hay letras para desbloquear
+        return;
+    }
+
+    // Seleccionar aleatoriamente una posición no adivinada
+    let posicionAleatoria = posicionesNoAdivinadas[Math.floor(Math.random() * posicionesNoAdivinadas.length)];
+
+    // Desbloquear la letra en la interfaz
+    let fila_actual = document.getElementsByClassName("letter-row")[FILAS - intentos_restantes];
+    let caja = fila_actual.children[posicionAleatoria];
+    caja.style.backgroundColor = 'green';
+    caja.textContent = palabra_correcta[posicionAleatoria]; // Mostrar la letra correcta
+
+    // Marcar la letra como adivinada
+    palabra_correcta[posicionAleatoria] = '&';
+    letras_usadas.push(palabra_aleatoria[posicionAleatoria]);
+
+    // Restar 10 segundos del temporizador
+    const tiempoRestante = DateTime.local().diff(inicio, 'seconds').seconds;
+    if (tiempoRestante > 10) {
+        inicio = inicio.plus({ seconds: -10 });
+    } else {
+        inicio = inicio.set({ seconds: 0 });
+    }
+    actualizarTemporizador();
+}
+
+
+document.getElementById("desbloquear-letra-btn").addEventListener("click", () => {
+    desbloquearLetraAleatoria();
+});
+
+
+
+
 function main(){
     console.log("La palabra es: "+ palabra_aleatoria)
-    inicio=Date.now();
+    //inicio=Date.now();
+    iniciarTemporizador();
     inicializar()
     updateFeedbackImage();
 }

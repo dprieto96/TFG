@@ -30,7 +30,7 @@
     <div>
         <h1>Adivina la palabra</h1>
         <div id="temporizador"></div>
-        <button id="desbloquear-letra-btn">Desbloquear letra</button>
+        <button id="desbloquear-letra-btn">Desbloquear letra (-10segundos)</button>
         <div id="game-board">
         </div>
         <div id="keyboard-cont">

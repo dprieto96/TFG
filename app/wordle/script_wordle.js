@@ -19,9 +19,21 @@ const COLUMNAS=palabra_aleatoria.length;
 
 //---------------------------------------
 let intentos_restantes=FILAS;
-let letras_usadas=[]//Lista que contendrá las letras ya usadas
+//let letras_usadas=[]//Lista que contendrá las letras ya usadas
 let letra_actual=0;
 let GANAR=false;
+
+//Palabra que hay que adivinar
+let palabra_correcta=Array.from(palabra_aleatoria);
+
+//Letras acertadas al comprobar los intentos
+let letras_acertadas = new Array(palabra_aleatoria.length);
+
+//Letras desbloqueadas con el botón
+let letras_desbloqueadas = new Array(palabra_aleatoria.length);
+
+//Letras usadas en el intento actual
+let letras_usadas = new Array(palabra_aleatoria.length);
 
 
 const feedbackImages = [
@@ -31,7 +43,6 @@ const feedbackImages = [
     "/TFG/public/img/"+palabra_aleatoria+"/4.webp",
     "/TFG/public/img/"+palabra_aleatoria+"/5.webp",
     "/TFG/public/img/"+palabra_aleatoria+"/6.webp",
-    // Agrega aquí más imágenes según sea necesario
 ];
 let currentFeedbackImageIndex = 0;
 
@@ -48,7 +59,7 @@ function iniciarTemporizador() {
             final = DateTime.local();
             const tiempoTardado = final.diff(inicio, 'milliseconds').milliseconds;
             puntuacion_calculo(tiempoTardado);
-            popup_ganador(tiempoTardado / 1000);
+            popup_perdedor(tiempoTardado / 1000);
         } else {
             actualizarTemporizador();
         }
@@ -91,6 +102,19 @@ function inicializar(){
         tablero.appendChild(fila);
     }
 
+    //Inicializamos el array a 0 para después ir poniendo cada letra desbloqueada a 1
+    for (let i = 0; i < letras_desbloqueadas.length; ++i){
+        letras_desbloqueadas[i] = 0;
+    }
+
+    for (let i = 0; i < letras_acertadas.length; ++i){
+        letras_acertadas[i] = 0;
+    }
+
+    for (let i = 0; i < letras_usadas.length; ++i){
+        letras_usadas[i] = 0;
+    }
+
 }
 
 function colorFondo(letra,color){
@@ -118,7 +142,8 @@ function borrar() {
     let box = row.children[letra_actual - 1];
     box.textContent = "";
     box.classList.remove("filled-box");
-    letras_usadas.pop();
+    //letras_usadas.pop();
+    letras_usadas[letra_actual-1] = 0;
     letra_actual -= 1;
 }
 
@@ -128,7 +153,9 @@ function partida_ganada(palabra_correcta){
         if(palabra_correcta[i]!="&"){
             letra_actual = 0;
             intentos_restantes -= 1;
-            letras_usadas = [];
+            for (let i = 0; i < letras_usadas.length; ++i){
+                letras_usadas[i] = 0;
+            }
             return false;
         }
     }
@@ -145,10 +172,18 @@ function puntuacion_calculo(tiempo_tarrdado){
 }
 
 function popup_incompleto(){
+    //Calculo numero de letras son colocar
+    let sinColocar = 0;
+    for (let i = 0; i < letras_usadas.length; ++i){
+        if (letras_usadas[i] == 0){
+            sinColocar++;
+        }
+    }
+
     const popup_incompleto = new Popup({
         id: "incompleto",
         title: "Aviso",
-        content: `Aún no has terminado,te faltan ${COLUMNAS-letra_actual} letras a colocar.`,
+        content: `Aún no has terminado,te faltan ${sinColocar} letras a colocar.`,
     });
     while (popup_incompleto.show());
 }
@@ -175,16 +210,24 @@ function popup_perdedor(){
 function comprueba(){
     let fila_actual = document.getElementsByClassName("letter-row")[FILAS - intentos_restantes];
     let palabra_introducida="";
-    let palabra_correcta=Array.from(palabra_aleatoria);
+    //let palabra_correcta=Array.from(palabra_aleatoria);
 
 
     for (const val of letras_usadas) {
         palabra_introducida += val;
     }
     console.log("PALABRA: "+ palabra_introducida.length);
-    if (palabra_introducida.length !== COLUMNAS) {
+
+    let completa = 1;
+    for (let i = 0; i < letras_usadas.length; ++i){
+        if (letras_usadas[i] == 0){
+            completa = 0;
+        }
+    }
+
+    if (completa == 0){
         popup_incompleto();
-        return ;
+        return;
     }
 
 
@@ -202,6 +245,7 @@ function comprueba(){
         if (palabra_correcta[i] == letras_usadas[i]) {
             color_letra[i] = "green";
             palabra_correcta[i] = "&";
+            letras_acertadas[i] = 1;
         }
     }
     
@@ -213,7 +257,7 @@ function comprueba(){
         for (let j = 0; j < COLUMNAS; j++) {
             if (palabra_correcta[j] == letras_usadas[i]) {
                 color_letra[i] = "yellow";
-                palabra_correcta[j] = "&";
+                //palabra_correcta[j] = "&";
             }
         }
     }
@@ -249,6 +293,12 @@ function comprueba(){
         updateFeedbackImage();
     }
 
+    palabra_correcta=Array.from(palabra_aleatoria);
+
+    for (let i = 0; i < letras_desbloqueadas.length; ++i){
+        letras_desbloqueadas[i] = 0;
+    }
+
 }
 
 function añade_letra(tecla){
@@ -257,9 +307,42 @@ function añade_letra(tecla){
     let caja = fila.children[letra_actual];
     caja.textContent=tecla;
     caja.classList.add("filled-box");
-    letras_usadas.push(tecla);
+    //letras_usadas.push(tecla);
+    letras_usadas[letra_actual] = tecla;
     letra_actual += 1;
-    if (letra_actual===COLUMNAS) comprueba()
+    
+    let completa = 1;
+    for (let i = 0; i < letras_usadas.length; ++i){
+        if (letras_usadas[i] == 0){
+            completa = 0;
+        }
+    }
+
+    if (completa == 1){
+        comprueba();
+    }
+}
+
+function añade_letra_desbloqueada(tecla, posicion){
+    tecla = tecla.toLowerCase();
+    let fila = document.getElementsByClassName("letter-row")[FILAS - intentos_restantes];
+    let caja = fila.children[posicion];
+    caja.textContent=tecla;
+    caja.classList.add("filled-box");
+    //letras_usadas.push(tecla);
+    letras_usadas[posicion] = tecla;
+    //letra_actual += 1;
+    
+    let completa = 1;
+    for (let i = 0; i < letras_usadas.length; ++i){
+        if (letras_usadas[i] == 0){
+            completa = 0;
+        }
+    }
+
+    if (completa == 1){
+        comprueba();
+    }
 }
 
 document.addEventListener("keyup", (e) => {
@@ -276,7 +359,15 @@ document.addEventListener("keyup", (e) => {
     if (!found || found.length > 1) {
         return;
     } else {
-        añade_letra(pressedKey);
+        if (letras_desbloqueadas[letra_actual] == 1){
+            while (letras_desbloqueadas[letra_actual] == 1){
+                letra_actual++;
+            }
+            añade_letra(pressedKey);
+        }
+        else{
+            añade_letra(pressedKey);
+        }
     }
 });
 
@@ -303,14 +394,13 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
 
 
 function desbloquearLetraAleatoria() {
-    let palabra_correcta = Array.from(palabra_aleatoria);
+    //let palabra_correcta = Array.from(palabra_aleatoria);
 
     // Obtener las posiciones de las letras que aún no han sido adivinadas
     let posicionesNoAdivinadas = [];
-    for (let i = 0; i < palabra_correcta.length; i++) {
-        if (palabra_correcta[i] !== "&") {
+    for (let i = 0; i < letras_acertadas.length; i++) {
+        if (letras_acertadas[i] == 0 && letras_desbloqueadas[i] == 0 && letra_actual <= i) {
             posicionesNoAdivinadas.push(i);
-            console.log("Letra " + i);
         }
     }
 
@@ -323,15 +413,16 @@ function desbloquearLetraAleatoria() {
     // Seleccionar aleatoriamente una posición no adivinada
     let posicionAleatoria = posicionesNoAdivinadas[Math.floor(Math.random() * posicionesNoAdivinadas.length)];
 
-    // Desbloquear la letra en la interfaz
+    //Añadir la letra
+    añade_letra_desbloqueada(palabra_correcta[posicionAleatoria], posicionAleatoria);
+
+    //Poner el fondo de la caja verde
     let fila_actual = document.getElementsByClassName("letter-row")[FILAS - intentos_restantes];
     let caja = fila_actual.children[posicionAleatoria];
     caja.style.backgroundColor = 'green';
-    caja.textContent = palabra_correcta[posicionAleatoria]; // Mostrar la letra correcta
 
     // Marcar la letra como adivinada
-    palabra_correcta[posicionAleatoria] = '&';
-    letras_usadas.push(palabra_aleatoria[posicionAleatoria]);
+    letras_desbloqueadas[posicionAleatoria] = 1;
 
     // Restar 10 segundos del temporizador
     const tiempoRestante = DateTime.local().diff(inicio, 'seconds').seconds;

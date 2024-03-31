@@ -23,15 +23,14 @@ let intentos_restantes=FILAS;
 let letra_actual=0;
 let GANAR=false;
 
+//Segundos que se restan al pulsar el botón de desbloqueo de letra
+const TIEMPO_DESBLOQUEO_LETRA = 10;
 //Palabra que hay que adivinar
 let palabra_correcta=Array.from(palabra_aleatoria);
-
 //Letras acertadas al comprobar los intentos
 let letras_acertadas = new Array(palabra_aleatoria.length);
-
 //Letras desbloqueadas con el botón
 let letras_desbloqueadas = new Array(palabra_aleatoria.length);
-
 //Letras usadas en el intento actual
 let letras_usadas = new Array(palabra_aleatoria.length);
 
@@ -75,8 +74,15 @@ function actualizarTemporizador() {
     const segundosRestantes = tiempoObjetivo - tiempoTranscurrido;
     const minutos = Math.floor(segundosRestantes / 60);
     const segundos = segundosRestantes % 60;
-    const temporizadorElement = document.getElementById('temporizador');
+    const temporizadorElement = document.getElementById('timer');
     temporizadorElement.textContent = `${minutos}:${segundos.toString().padStart(2, '0')}`; // Formatea los segundos con dos dígitos
+
+    //Si no queda suficiente tiempo para usar el botón de desbloqueo de palabra, lo bloqueamos
+    if (segundosRestantes < TIEMPO_DESBLOQUEO_LETRA) {
+        const botonDesbloqueo = document.getElementById('desbloquear-letra-btn');
+        botonDesbloqueo.disabled = true;
+        botonDesbloqueo.classList.add('bloqueado');
+    }
 }
 
 function updateFeedbackImage() {
@@ -398,8 +404,10 @@ function desbloquearLetraAleatoria() {
 
     // Obtener las posiciones de las letras que aún no han sido adivinadas
     let posicionesNoAdivinadas = [];
+    const tiempoTranscurrido = DateTime.local().diff(inicio, 'seconds').seconds;
     for (let i = 0; i < letras_acertadas.length; i++) {
-        if (letras_acertadas[i] == 0 && letras_desbloqueadas[i] == 0 && letra_actual <= i) {
+        //Se comprueba que haya letras sin adivinar posteriores a la posición actual y que quede el tiempo necesario para restarlo
+        if (letras_acertadas[i] == 0 && letras_desbloqueadas[i] == 0 && letra_actual <= i && tiempoTranscurrido < (tiempoObjetivo - TIEMPO_DESBLOQUEO_LETRA)) {
             posicionesNoAdivinadas.push(i);
         }
     }
@@ -424,10 +432,10 @@ function desbloquearLetraAleatoria() {
     // Marcar la letra como adivinada
     letras_desbloqueadas[posicionAleatoria] = 1;
 
-    // Restar 10 segundos del temporizador
+    // Restar TIEMPO_DESBLOQUEO_LETRA segundos del temporizador
     const tiempoRestante = DateTime.local().diff(inicio, 'seconds').seconds;
-    if (tiempoRestante > 10) {
-        inicio = inicio.plus({ seconds: -10 });
+    if (tiempoRestante > TIEMPO_DESBLOQUEO_LETRA) {
+        inicio = inicio.plus({ seconds: -TIEMPO_DESBLOQUEO_LETRA });
     } else {
         inicio = inicio.set({ seconds: 0 });
     }

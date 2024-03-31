@@ -29,8 +29,10 @@
 <div class="image-container">
     <div>
         <h1>Adivina la palabra</h1>
-        <div id="temporizador"></div>
-        <button id="desbloquear-letra-btn">Desbloquear letra (-10segundos)</button>
+        <div class="option-container">
+            <div id="timer" class="timer"></div>
+            <button id="desbloquear-letra-btn" class="unlock-letter-btn">Desbloquear letra</button>
+        </div>
         <div id="game-board">
         </div>
         <div id="keyboard-cont">

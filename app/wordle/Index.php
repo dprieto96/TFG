@@ -31,7 +31,8 @@
         <h1>Adivina la palabra</h1>
         <div class="option-container">
             <div id="timer" class="timer"></div>
-            <button id="desbloquear-letra-btn" class="unlock-letter-btn">Desbloquear letra</button>
+            <button id="unlock-letter-btn" class="option-btn">Desbloquear letra</button>
+            <button id="discard-letter-btn" class="option-btn">Descartar letra</button>
         </div>
         <div id="game-board">
         </div>

@@ -23,8 +23,9 @@ let intentos_restantes=FILAS;
 let letra_actual=0;
 let GANAR=false;
 
-//Segundos que se restan al pulsar el botón de desbloqueo de letra
+//Segundos que se restan al pulsar los botones de desbloqueo y descarte de letra
 const TIEMPO_DESBLOQUEO_LETRA = 10;
+const TIEMPO_DESCARTE_LETRA = 5;
 //Palabra que hay que adivinar
 let palabra_correcta=Array.from(palabra_aleatoria);
 //Letras acertadas al comprobar los intentos
@@ -33,6 +34,8 @@ let letras_acertadas = new Array(palabra_aleatoria.length);
 let letras_desbloqueadas = new Array(palabra_aleatoria.length);
 //Letras usadas en el intento actual
 let letras_usadas = new Array(palabra_aleatoria.length);
+//Todas las letras que se han usado en todos los intentos
+let registro_letras = new Array();
 
 
 const feedbackImages = [
@@ -79,9 +82,15 @@ function actualizarTemporizador() {
 
     //Si no queda suficiente tiempo para usar el botón de desbloqueo de palabra, lo bloqueamos
     if (segundosRestantes < TIEMPO_DESBLOQUEO_LETRA) {
-        const botonDesbloqueo = document.getElementById('desbloquear-letra-btn');
+        const botonDesbloqueo = document.getElementById('unlock-letter-btn');
         botonDesbloqueo.disabled = true;
         botonDesbloqueo.classList.add('bloqueado');
+    }
+    
+    if (segundosRestantes < TIEMPO_DESCARTE_LETRA) {
+        const botonDescarte = document.getElementById('discard-letter-btn');
+        botonDescarte.disabled = true;
+        botonDescarte.classList.add('bloqueado');
     }
 }
 
@@ -315,6 +324,8 @@ function añade_letra(tecla){
     caja.classList.add("filled-box");
     //letras_usadas.push(tecla);
     letras_usadas[letra_actual] = tecla;
+    //Se mete la letra en el registro de letras usadas
+    registro_letras.push(tecla);
     letra_actual += 1;
     
     let completa = 1;
@@ -337,6 +348,8 @@ function añade_letra_desbloqueada(tecla, posicion){
     caja.classList.add("filled-box");
     //letras_usadas.push(tecla);
     letras_usadas[posicion] = tecla;
+    //Se mete la letra en el registro de letras usadas
+    registro_letras.push(tecla);
     //letra_actual += 1;
     
     let completa = 1;
@@ -424,10 +437,11 @@ function desbloquearLetraAleatoria() {
     //Añadir la letra
     añade_letra_desbloqueada(palabra_correcta[posicionAleatoria], posicionAleatoria);
 
-    //Poner el fondo de la caja verde
+    //Poner el fondo de la caja y del teclado verde
     let fila_actual = document.getElementsByClassName("letter-row")[FILAS - intentos_restantes];
     let caja = fila_actual.children[posicionAleatoria];
     caja.style.backgroundColor = 'green';
+    colorFondo(palabra_correcta[posicionAleatoria], "green");
 
     // Marcar la letra como adivinada
     letras_desbloqueadas[posicionAleatoria] = 1;
@@ -443,8 +457,72 @@ function desbloquearLetraAleatoria() {
 }
 
 
-document.getElementById("desbloquear-letra-btn").addEventListener("click", () => {
+document.getElementById("unlock-letter-btn").addEventListener("click", () => {
     desbloquearLetraAleatoria();
+});
+
+
+function generarLetraAleatoria(letrasDisponibles) {
+    let letraAleatoria;
+
+    //Se itera hasta encontrar una letra que no esté en la palabra a adivinar ni en las letras usadas
+    do {
+        letraAleatoria = letrasDisponibles[Math.floor(Math.random() * letrasDisponibles.length)];
+    } while (palabra_aleatoria.includes(letraAleatoria));
+
+    console.log("Letra aleatoria: " + letraAleatoria);
+
+    return letraAleatoria;
+}
+
+function descartarLetraAleatoria() {
+    const letrasDisponibles = 'abcdefghijklmnopqrstuvwxyzñ'.split('');
+
+    //Se eliminan las letras que están en la palabra a adivinar
+    for (const letra of palabra_correcta) {
+        const index = letrasDisponibles.indexOf(letra);
+        if (index !== -1) {
+            letrasDisponibles.splice(index, 1);
+        }
+    }
+
+    //Se eliminan las letras que están en el registro de letras usadas
+    for (const letra of registro_letras) {
+        const index = letrasDisponibles.indexOf(letra);
+        if (index !== -1) {
+            letrasDisponibles.splice(index, 1);
+        }
+    }
+    console.log("letrasDisponibles: " + letrasDisponibles);
+
+    //Se genera la letra aleatoria de las disponibles que quedan
+    let letraDescartada = generarLetraAleatoria(letrasDisponibles);
+
+    if (letraDescartada === undefined){
+        const botonDesbloqueo = document.getElementById('discard-letter-btn');
+        botonDesbloqueo.disabled = true;
+        botonDesbloqueo.classList.add('bloqueado');
+    }
+    else{
+        //Se agrega la letra descartada al teclado con color gris
+        colorFondo(letraDescartada, "gray");
+
+        //Se añade la letra al registro de letras usadas
+        registro_letras.push(letraDescartada);
+
+        //Se resta TIEMPO_DESCARTE_LETRA segundos del temporizador
+        const tiempoRestante = DateTime.local().diff(inicio, 'seconds').seconds;
+        if (tiempoRestante > TIEMPO_DESCARTE_LETRA) {
+            inicio = inicio.plus({ seconds: -TIEMPO_DESCARTE_LETRA });
+        } else {
+            inicio = inicio.set({ seconds: 0 });
+        }
+        actualizarTemporizador();
+    }
+}
+
+document.getElementById("discard-letter-btn").addEventListener("click", () => {
+    descartarLetraAleatoria();
 });
 
 

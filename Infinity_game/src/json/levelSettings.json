@@ -1,0 +1,59 @@
+{
+  "nivelVertical00": {
+    "levelLength": 999999,
+    "rockMinSpeedX": 10,
+    "rockMaxSpeedX": 30,
+    "rockMinSpeedY": 20,
+    "rockMaxSpeedY": 100,
+    "density": 20,
+    "planet": "MOON",
+    "destination": "MARS",
+    "decorations": {
+      "planets": [
+        {
+          "sprite": "earth",
+          "x": 250,
+          "y": 200,
+          "z": 50,
+          "speedX": 0,
+          "speedY": 0
+        },
+        {
+          "sprite": "comet",
+          "x": 400,
+          "y": -20,
+          "z": 100,
+          "speedX": -10,
+          "speedY": 9,
+          "frames": 4
+        }
+      ],
+      "particles": [
+        {
+          "sprite": "particles",
+          "minSpeedY": 3,
+          "maxSpeedY": 7,
+          "density": 2
+        },
+        {
+          "sprite": "particles",
+          "minSpeedY": 4,
+          "maxSpeedY": 8,
+          "density": 2
+        },
+        {
+          "sprite": "particles",
+          "minSpeedY": 2,
+          "maxSpeedY": 6,
+          "density": 2
+        },
+        {
+          "sprite": "particles",
+          "minSpeedY": 3,
+          "maxSpeedY": 9,
+          "density": 2
+        }
+      ]
+    }
+  }
+}

@@ -30,7 +30,9 @@
                         echo '<button id="login" onclick="openModal(\'myModal\')">Iniciar sesión</button>';
                     }
                     else{
-                    echo '<button id="login" onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Acceder al reto</button>';
+                    echo '<button class="button" onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Acceder al reto</button>';
+                    echo '<button class="button" onclick="window.location.href=\'/TFG/Infinity_game/Infinity_game.php\'">¡Consigue más puntos!</button>';
+
                     }
                 ?>
             </div>

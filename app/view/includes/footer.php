@@ -27,6 +27,7 @@
         <div class="copyright">
             <p>&copy; 2023 - 2024 Innova. Todos los derechos reservados.</p>
             <p><a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a></p>
+            <p id="attribution">Imágenes diseñadas por <a href="https://www.freepik.com/">Freepik</a></p>
         </div>
     </div>
 </footer>

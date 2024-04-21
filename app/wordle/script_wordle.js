@@ -38,16 +38,14 @@ let letras_usadas = new Array(palabra_aleatoria.length);
 let registro_letras = new Array();
 
 
-const feedbackImages = [
-    "/TFG/public/img/"+palabra_aleatoria+"/1.webp",
-    "/TFG/public/img/"+palabra_aleatoria+"/2.webp",
-    "/TFG/public/img/"+palabra_aleatoria+"/3.webp",
-    "/TFG/public/img/"+palabra_aleatoria+"/4.webp",
-    "/TFG/public/img/"+palabra_aleatoria+"/5.webp",
-    "/TFG/public/img/"+palabra_aleatoria+"/6.webp",
-];
-let currentFeedbackImageIndex = 0;
+let currentPixelRate = 0;
 
+ //Inicialización foto
+ let pixelRate = [0.95, 0.9, 0.85, 0.8, 0.7, 0.5, 0];
+ var image = document.getElementById('feedback-image');
+ image.src = "/TFG/public/img/fotos_reto/"+palabra_aleatoria+".webp";
+
+ var pixelate = new Pixelate(image, {amount: pixelRate[currentPixelRate]});
 
 main();
 
@@ -95,10 +93,11 @@ function actualizarTemporizador() {
 }
 
 function updateFeedbackImage() {
-    const feedbackImage = document.getElementById("feedback-image");
-    feedbackImage.src = feedbackImages[currentFeedbackImageIndex];
-    currentFeedbackImageIndex = (currentFeedbackImageIndex + 1) % feedbackImages.length;
+
+    pixelate.setAmount(pixelRate[currentPixelRate]).render();
+    currentPixelRate++;
 }
+
 
 function inicializar(){
     let tablero=document.getElementById("game-board");
@@ -295,12 +294,13 @@ function comprueba(){
         popup_ganador(tiempo_tardado/1000);
 
         //Para que al acertar se pueda ver la imagen sin pixelar
-        currentFeedbackImageIndex = feedbackImages.length-1;
+        pixelate.setAmount(0).render();
 
     }
 
     if (intentos_restantes === 0 ) {
         popup_perdedor();
+        pixelate.setAmount(0).render();
         return;
     }
     else{

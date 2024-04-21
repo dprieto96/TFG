@@ -2,6 +2,7 @@ export const PALABRAS = [
     //Por ahora dejo una palabra para probar como funciona
     "aerogenerador",
     "paneles",
+    "radiacion",
 
     /*Energía solar
     "radiacion",

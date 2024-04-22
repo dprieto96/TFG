@@ -1,6 +1,6 @@
 export const PALABRAS = [
     //Por ahora dejo una palabra para probar como funciona
-    "corriente",
+    "binario",
 
     /*Energía solar
     "radiacion",
@@ -33,7 +33,7 @@ export const PALABRAS = [
     "disponibilidad",
     "residuos",
     "extincion",
-    "ciclo binario",
+    "binario",
     "yacimientos",
     "calefaccion",
     "refrigeracion",

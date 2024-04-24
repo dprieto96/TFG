@@ -116,3 +116,21 @@ canvas {
     max-width: 85%;
     height: auto;
 }
+
+/* Estilo base para los botones */
+.popup-ganador {
+    background-color: #345a18;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    color: white;
+    border-radius: 10px;
+}
+
+/* Estilo para los botones activos */
+.popup-ganador.active {
+    background-color: #009879;
+}

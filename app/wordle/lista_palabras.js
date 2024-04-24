@@ -1,6 +1,6 @@
 export const PALABRAS = [
     //Por ahora dejo una palabra para probar como funciona
-    "binario",
+    "refinado",
 
     /*Energía solar
     "radiacion",

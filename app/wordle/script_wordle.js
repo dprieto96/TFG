@@ -203,11 +203,31 @@ function popup_incompleto(){
 }
 
 function popup_ganador(tiempo_tardado){
+
     const popup_incompleto = new Popup({
         id: "ganador",
         title: "ENHORABUENA",
-        content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos`,
+        content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos.
+        {btn-popup-ganador}[                   Ver información de la palabra del día                    ]`,
+        css: `
+        .popup.ganador button {
+            background-color: #345a18;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup.ganador button:hover{
+            background-color: #789461;
+        }`,
+        loadCallback: () => {
+            document.querySelector(".popup.ganador button").addEventListener("click", () => {
+                window.location.href = "daily_info.php";
+            });
+        },
     });
+
     while (popup_incompleto.show());
 }
 

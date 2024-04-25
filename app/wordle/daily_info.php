@@ -19,6 +19,38 @@
         require('../view/includes/header.php');
         ?>
 
+        <?php
+            //Se obtiene el array de palabras para saber cuál es la palabra del día
+
+            $ruta_archivo = 'lista_palabras.js';
+            // Leer el contenido del archivo JavaScript
+            $contenido = file_get_contents($ruta_archivo);
+
+            // Buscar la cadena que contiene las palabras
+            $inicio = strpos($contenido, '[') + 1;
+            $fin = strrpos($contenido, ']');
+            $contenido_palabras = substr($contenido, $inicio, $fin - $inicio);
+
+            // Dividir las palabras en un array
+            $palabras_array = explode(',', $contenido_palabras);
+
+            // Limpiar las palabras (eliminar comillas y espacios)
+            foreach ($palabras_array as &$palabra) {
+                $palabra = trim($palabra, " \t\n\r\0\x0B\"");
+            }
+
+
+            //Se obtiene el índice de la lista que toca en función a la cantidad de días que lleva el juego en funcionamiento
+
+            $fechaInicio = strtotime($palabras_array[0]);
+            $fechaActual = time();
+            
+            $diferenciaSegundos = $fechaActual - $fechaInicio;
+            $diferenciaDias = floor($diferenciaSegundos / (60 * 60 * 24));
+
+        ?>
+
+
         <main>
             
         <div class="main-container">
@@ -26,18 +58,18 @@
                 <div id="card5" class="card">
                     <div class="text">
                         <h3 class="title-mini">PALABRA DEL DÍA (Boceto página)</h3>
-                        <h1 class="title">BINARIO</h1>
+                        <h1 class="title"><?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h1>
                     </div>
                 </div>
                 
                 <div id="card1" class="card">
                     <div class="text">
-                        <h3 class="title-mini">BINARIO</h3>
+                        <h3 class="title-mini"><?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h3>
                         <h1 class="title">Qué significa?</h1>
                         <p class="paragraph-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eius totam accusamus voluptatum enim saepe perferendis pariatur quae eligendi iusto, architecto repellat in facilis ducimus dolor temporibus! Incidunt, rerum commodi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magni vero eaque provident debitis non iste ratione error maxime, dolore perferendis nisi, accusantium animi similique sunt maiores, vitae impedit a?</p>
                     </div>
                     <div class="img">
-                        <img src="../../public/img/fotos_reto/binario.webp" alt="">
+                        <img src="../../public/img/fotos_reto/<?php echo $palabras_array[$diferenciaDias] ?>.webp" alt="">
                     </div>
                 </div>
 
@@ -47,7 +79,7 @@
                         <img src="../../public/img/interrogation.webp" alt="">
                     </div>
                     <div class="text">
-                        <h3 class="title-mini">BINARIO</h3>
+                        <h3 class="title-mini"><?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h3>
                         <h1 class="title">¿Qué necesito saber sobre este término?</h1>
                         <p class="paragraph-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur corrupti quae reiciendis expedita veniam, architecto similique corporis eveniet ipsam dolore. Animi nisi, nulla voluptates cupiditate aspernatur deserunt excepturi nam nemo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque iure voluptatibus tempore aperiam cupiditate deleniti. Blanditiis, id omnis iusto quod, libero hic reprehenderit qui eligendi, facere earum in. Id, consectetur.</p>
                     </div>
@@ -68,7 +100,7 @@
 
                 <div id="card6" class="card">
                     <div class="text">
-                        <h3 class="title-mini">BINARIO</h3>
+                        <h3 class="title-mini"><?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h3>
                         <h1 class="title">¿Cómo puedo aplicarlo en mi día a día?</h1>
                         <p class="paragraph-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eius totam accusamus voluptatum enim saepe perferendis pariatur quae eligendi iusto, architecto repellat in facilis ducimus dolor temporibus! Incidunt, rerum commodi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magni vero eaque provident debitis non iste ratione error maxime, dolore perferendis nisi, accusantium animi similique sunt maiores, vitae impedit a?</p>
                     </div>

@@ -9,8 +9,13 @@ var DateTime = luxon.DateTime;
 let temporizador;
 
 
-const indiceAleatorio = Math.floor(Math.random() * palabras.length);
-const palabra_aleatoria=palabras[indiceAleatorio];
+//const indiceAleatorio = Math.floor(Math.random() * palabras.length);
+//const palabra_aleatoria=palabras[indiceAleatorio];
+
+
+
+const palabra_aleatoria = palabras[calcular_palabra()];
+
 const modal = true;
 //---------GENERAL CONTROL PANEL---------
 
@@ -48,6 +53,19 @@ let currentPixelRate = 0;
  var pixelate = new Pixelate(image, {amount: pixelRate[currentPixelRate]});
 
 main();
+
+function calcular_palabra() {
+    var fechaInicio = new Date(palabras[0]);
+    var fechaActual = new Date();
+    
+    //Se calcula el numero de dias desde la fecha de inicio hasta la actual
+    var unDiaEnMilisegundos = 1000 * 60 * 60 * 24;
+    var diferenciaDias = Math.floor((fechaActual - fechaInicio) / unDiaEnMilisegundos);
+
+    console.log("Han pasado", diferenciaDias, "días desde la fecha de inicio hasta hoy.");
+
+    return diferenciaDias;
+}
 
 function iniciarTemporizador() {
     inicio = DateTime.local();

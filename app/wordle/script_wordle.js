@@ -222,6 +222,42 @@ function popup_incompleto(){
 
 function popup_ganador(tiempo_tardado){
 
+
+    // Crear un objeto FormData para contener los datos
+    var formData = new FormData();
+
+    // Agregar los datos que deseas enviar al servidor
+    formData.append('variableSesion', '1');
+
+    // Crear un objeto XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Definir la función de respuesta
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(xhr.responseText);
+            } else {
+                // Manejar errores de la solicitud AJAX
+                console.error('Error al realizar la solicitud AJAX: ' + xhr.status);
+            }
+        }
+    };
+
+    // Abrir una solicitud POST al archivo PHP
+    xhr.open('POST', 'actualizar_session.php', true);
+
+    // No es necesario establecer el encabezado Content-Type para FormData
+
+    // Enviar la solicitud con los datos
+    xhr.send(formData);
+
+
+
+
+
+
     const popup_incompleto = new Popup({
         id: "ganador",
         title: "ENHORABUENA",

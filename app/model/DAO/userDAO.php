@@ -33,7 +33,7 @@
             if($com->num_rows === 0){
                 if($com2->num_rows === 0){
                     //If the user does not exist, we insert it
-                    $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`, `avatar`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0, 'chico1.webp')";
+                    $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`, `avatar`, `pointsExtra`, `winner`, `lastWin`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0, 'chico1.webp', 0, 0, null)";
                     $resultado = $conn->query($q);
                     
                     return $resultado;
@@ -64,7 +64,7 @@
                 if(password_verify($password, $fila['password'])){
 
                     $usuario = new tUser();
-                    $usuario->loginUser($nickUser, $fila['mail'], $password, $fila['idFacultad'], $fila['points'], $fila['avatar']);
+                    $usuario->loginUser($nickUser, $fila['mail'], $password, $fila['idFacultad'], $fila['points'], $fila['avatar'], $fila['pointsExtra'], $fila['winner'], $fila['lastWin']);
 
                     return $usuario;
                 }else{
@@ -157,6 +157,34 @@
                 return -2;
             }
 
+        }
+
+        public function winner($nickUser){
+            $conn = $this->db->getConnection();
+
+            $query = "SELECT * FROM usuario WHERE user = '$nickUser'";
+
+            $resultado = $conn->query($query);
+            
+            $query = "UPDATE usuario SET winner = '1', lastWin = CURDATE() WHERE user = '$nickUser'";
+
+            $resultado = $conn->query($query);
+                
+            return $resultado;
+        }
+
+        public function resetWinner($nickUser){
+            $conn = $this->db->getConnection();
+
+            $query = "SELECT * FROM usuario WHERE user = '$nickUser'";
+
+            $resultado = $conn->query($query);
+            
+            $query = "UPDATE usuario SET winner = '0' WHERE user = '$nickUser'";
+
+            $resultado = $conn->query($query);
+                
+            return $resultado;
         }
 
 

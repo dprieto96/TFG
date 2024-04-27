@@ -43,6 +43,14 @@ class UserSA{
         return $this->dao->deleteUser($nickUser, $password);
     }
 
+    public function winner($nickUser){
+        return $this->dao->winner($nickUser);
+    }
+
+    public function resetWinner($nickUser){
+        return $this->dao->resetWinner($nickUser);
+    }
+
 }
 
 ?>

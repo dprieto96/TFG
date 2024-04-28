@@ -255,7 +255,7 @@ function popup_incompleto(){
 
 function popup_ganador(tiempo_tardado){
 
-
+    //Se manda con AJAX un mensaje para indicar que hay que cambiar la bd y las variables de sesión
     // Crear un objeto FormData para contener los datos
     var formData = new FormData();
 
@@ -288,9 +288,33 @@ function popup_ganador(tiempo_tardado){
 
 
 
+    //Se manda con AJAX un mensaje para actualizar los puntos del usuario que ha ganado
+    var formData2 = new FormData();
+
+    console.log("puntuacion: " + puntuacion_calculo(tiempo_tardado));
+    formData2.append('score', puntuacion_calculo(tiempo_tardado));
+
+    var xhr2 = new XMLHttpRequest();
+
+    xhr2.onreadystatechange = function() {
+        if (xhr2.readyState === XMLHttpRequest.DONE) {
+            if (xhr2.status === 200) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(xhr2.responseText);
+            } else {
+                // Manejar errores de la solicitud AJAX
+                console.error('Error al realizar la solicitud AJAX: ' + xhr2.status);
+            }
+        }
+    };
+
+    xhr2.open('POST', 'controlPoints.php', true);
+    xhr2.send(formData2);
 
 
 
+
+    //Se muestra el popup
     const popup_incompleto = new Popup({
         id: "ganador",
         title: "ENHORABUENA",

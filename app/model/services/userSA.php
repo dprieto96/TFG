@@ -51,6 +51,10 @@ class UserSA{
         return $this->dao->loser($nickUser);
     }
 
+    public function addScore($nickUser, $score){
+        return $this->dao->addScore($nickUser, $score);
+    }
+
 }
 
 ?>

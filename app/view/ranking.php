@@ -94,7 +94,16 @@
                                         echo "<label>Posición: No disponible</label>";
                                     }
                                 ?>
-                                <label>Puntuación: <?php echo $_SESSION['puntos']; ?></label>
+                                <?php
+                                    $posicion = 1;
+                                    foreach ($facultyRanking as $puntuacion) {
+                                        if ($puntuacion["idFacultad"] == $_SESSION["facultad"]){
+                                            echo "<label>Posición: " . $puntuacion["totalPoints"] . "</label>";
+                                        }
+                                        $posicion++;
+                                    }
+                                ?>
+                                <!--<label>Puntuación: <?php echo $_SESSION['puntos']; ?></label>-->
                             </div>
                         </div>
                     </div>

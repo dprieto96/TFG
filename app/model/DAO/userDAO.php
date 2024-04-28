@@ -188,6 +188,20 @@
         }
 
 
+        public function addScore($nickUser, $score){
+            $conn = $this->db->getConnection();
+
+            $query = "SELECT * FROM usuario WHERE user = '$nickUser'";
+
+            $resultado = $conn->query($query);
+            
+            $query = "UPDATE usuario SET points = points + $score WHERE user = '$nickUser'";
+
+            $resultado = $conn->query($query);
+                
+            return $resultado;
+        }
+
     }
 
 ?>

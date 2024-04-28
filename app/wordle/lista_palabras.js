@@ -7,7 +7,7 @@
 //Bioetanol y biodiésel
 
 export const PALABRAS = [
-    "2024-04-19",
+    "2024-04-18",
     
     "radiacion",
     "energia limpia",

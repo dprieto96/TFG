@@ -11,11 +11,11 @@ class tUser{
 
     private $winner;
 
-    private $lastWin;
+    private $lastPlay;
 
     public function __construct(){}
 
-    public function loginUser($user, $mail, $password, $idFaculty, $points, $avatar, $pointsExtra, $winner, $lastWin){
+    public function loginUser($user, $mail, $password, $idFaculty, $points, $avatar, $pointsExtra, $winner, $lastPlay){
         $this->user = $user;
         $this->mail = $mail;
         $this->password = $password;
@@ -24,7 +24,7 @@ class tUser{
         $this->avatar = $avatar;
         $this->pointsExtra = $pointsExtra;
         $this->winner = $winner;
-        $this->lastWin = $lastWin;
+        $this->lastPlay = $lastPlay;
     }
 
     public function regNewUser($user, $mail, $password, $idFaculty){
@@ -36,7 +36,7 @@ class tUser{
         $this->avatar = 'chico1.webp';
         $this->pointsExtra = 0;
         $this->winner = 0;
-        $this->lastWin = null;
+        $this->lastPlay = null;
     }
 
     public function initUser($user, $password){
@@ -77,8 +77,8 @@ class tUser{
         return $this->winner;
     }
 
-    public function getLastWin(){
-        return $this->lastWin;
+    public function getLastPlay(){
+        return $this->lastPlay;
     }
 }
 

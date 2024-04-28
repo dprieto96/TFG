@@ -47,8 +47,8 @@ class UserSA{
         return $this->dao->winner($nickUser);
     }
 
-    public function resetWinner($nickUser){
-        return $this->dao->resetWinner($nickUser);
+    public function loser($nickUser){
+        return $this->dao->loser($nickUser);
     }
 
 }

@@ -11,15 +11,18 @@ class processWinner{
         $this->userSA = new userSA();
     }
 
+    //Al ganar el reto diario se marca en la bd y en la variable de sesión como ganado y se apunta en la bd y en la variable de sesión la fecha del reto realizado
     public function winner(){
         $_SESSION['ganador'] = 1;
-        $_SESSION['lastWin'] = date('Y-m-d');
+        $_SESSION['lastPlay'] = date('Y-m-d');
         return $this->userSA->winner($_SESSION['usuario']);
     }
 
-    public function resetWinner(){
+    //Al perder el reto se marca como perdido y se apunta la fecha (así si alguien se salta el reto un día todavía tendrá la fecha antigua y se podrá controlar el acceso al juego extra)
+    public function loser(){
         $_SESSION['ganador'] = 0;
-        return $this->userSA->resetWinner($_SESSION['usuario']);
+        $_SESSION['lastPlay'] = date('Y-m-d');
+        return $this->userSA->loser($_SESSION['usuario']);
     }
 
 }

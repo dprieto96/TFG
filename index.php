@@ -30,15 +30,16 @@
                         echo '<button id="login" onclick="openModal(\'myModal\')">Iniciar sesión</button>';
                     }
                     else{
-                    //echo "fechaDB: ". $_SESSION['lastWin']. " fechaActual: ". date('Y-m-d');
-                    if(isset($_SESSION['lastWin']) && $_SESSION['lastWin'] == date('Y-m-d')){
+                    //Si el último reto realizado es hoy se desactiva el botón para que no pueda repetir el reto
+                    if(isset($_SESSION['lastPlay']) && $_SESSION['lastPlay'] == date('Y-m-d')){
                         echo '<button class="button" disabled onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Reto diario realizado</button>';
                     }
                     else{
                         echo '<button class="button" onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Acceder al reto</button>';
                     }
 
-                    if(isset($_SESSION['ganador']) && $_SESSION['ganador'] == 1) {
+                    //Si el último reto realizado es hoy y es ganador, se le da acceso al juego extra
+                    if(isset($_SESSION['ganador']) && $_SESSION['ganador'] == 1 && isset($_SESSION['lastPlay']) && $_SESSION['lastPlay'] == date('Y-m-d')) {
                             echo '<button class="button" onclick="window.location.href=\'/TFG/Infinity_game/Infinity_game.php\'">¡Consigue más puntos!</button>';
                     } else {
                         echo '<button class="button" disabled onclick="window.location.href=\'/TFG/Infinity_game/Infinity_game.php\'">¡Necesitas superar el reto diario para acceder al juego extra!</button>';

@@ -31,7 +31,7 @@ if($correct === true){
     $_SESSION['avatar'] = 'chico1.webp';
     $_SESSION['puntosExtra'] = 0;
     $_SESSION['ganador'] = 0;
-    $_SESSION['lastWin'] = null;
+    $_SESSION['lastPlay'] = null;
     header('location:  /TFG/index.php');
     exit();
 } else if ($correct === -1) {

@@ -28,7 +28,7 @@ else if ($user != false) {
     $_SESSION['avatar'] = $user->getAvatar();
     $_SESSION['puntosExtra'] = $user->getPointsExtra();
     $_SESSION['ganador'] = $user->getWinner();
-    $_SESSION['lastWin'] = $user->getLastWin();
+    $_SESSION['lastPlay'] = $user->getLastPlay();
     header('location:  /TFG/index.php');
 }else{
     $_SESSION['login'] = false;

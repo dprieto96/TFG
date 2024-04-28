@@ -5,7 +5,7 @@
     }
 
     if($_SESSION['login'] !== true){
-        header("Location: /TFG/index.php");
+        header("Location: ../../index.php");
         exit;
     }
 
@@ -27,8 +27,8 @@
     
     <link rel="stylesheet" type="text/css" href="../../public/css/styles.css">
     <link rel="stylesheet" href="../../public/css/newRanking.css">
-    <link rel="stylesheet" href="/TFG/public/css/popUps.css">
-    <link rel="stylesheet" href="/TFG/public/css/boton.css">
+    <link rel="stylesheet" href="../../public/css/popUps.css">
+    <link rel="stylesheet" href="../../public/css/boton.css">
 </head>
 
 <body>
@@ -60,7 +60,7 @@
 
                     <div class="personal_main">
                         <div class="col_personal personal_foto">
-                            <img id="perfil_img" src="/TFG/public/img/avatar/<?php echo $_SESSION['avatar']; ?>" alt="foto de perfil">
+                            <img id="perfil_img" src="../../public/img/avatar/<?php echo $_SESSION['avatar']; ?>" alt="foto de perfil">
                             <div class="personal_foto_labels">
                                 <label><?php echo $_SESSION['usuario']; ?></label>
                                 <label><?php echo $facultad; ?></label>
@@ -94,16 +94,7 @@
                                         echo "<label>Posición: No disponible</label>";
                                     }
                                 ?>
-                                <?php
-                                    $posicion = 1;
-                                    foreach ($facultyRanking as $puntuacion) {
-                                        if ($puntuacion["idFacultad"] == $_SESSION["facultad"]){
-                                            echo "<label>Posición: " . $puntuacion["totalPoints"] . "</label>";
-                                        }
-                                        $posicion++;
-                                    }
-                                ?>
-                                <!--<label>Puntuación: <?php echo $_SESSION['puntos']; ?></label>-->
+                                <label>Puntuación: <?php echo $_SESSION['puntos']; ?></label>
                             </div>
                         </div>
                     </div>
@@ -125,7 +116,7 @@
                                 <div class="medal-creation">
                                     <label id="medal-position1">1º</label>
                                     <label id="medal-score1"><?php if (isset($userRanking[0]["points"])) {echo $userRanking[0]["points"];}else {echo "0";}?></label>
-                                    <img id="medal-image1" src="/TFG/public/img/frame_ranking1.png" alt="">
+                                    <img id="medal-image1" src="../../public/img/frame_ranking1.png" alt="">
                                 </div>
                                 <div class="medal-name">
                                     <label id="medal-name1"><?php if (isset($userRanking[0]["user"])) {echo $userRanking[0]["user"];}else {echo "[Vacío]";}?></label>
@@ -135,7 +126,7 @@
                                 <div class="medal-creation">
                                     <label id="medal-position2">2º</label>
                                     <label id="medal-score2"><?php if (isset($userRanking[1]["points"])) {echo $userRanking[1]["points"];}else {echo "0";}?></label>
-                                    <img id="medal-image2" src="/TFG/public/img/frame_ranking2.png" alt="">
+                                    <img id="medal-image2" src="../../public/img/frame_ranking2.png" alt="">
                                 </div>
                                 <div class="medal-name">
                                     <label id="medal-name2"><?php if (isset($userRanking[1]["user"])) {echo $userRanking[1]["user"];}else {echo "[Vacío]";}?></label>
@@ -145,7 +136,7 @@
                                 <div class="medal-creation">
                                     <label id="medal-position3">3º</label>
                                     <label id="medal-score3"><?php if (isset($userRanking[2]["points"])) {echo $userRanking[2]["points"];}else {echo "0";}?></label>
-                                    <img id="medal-image3" src="/TFG/public/img/frame_ranking3.png" alt="">
+                                    <img id="medal-image3" src="../../public/img/frame_ranking3.png" alt="">
                                 </div>
                                 <div class="medal-name">
                                     <label id="medal-name3"><?php if (isset($userRanking[2]["user"])) {echo $userRanking[2]["user"];}else {echo "[Vacío]";}?></label>

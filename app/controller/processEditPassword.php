@@ -15,10 +15,10 @@ $usuario = $_SESSION['usuario'];
 $user = $userSA->editPassword($usuario, $password, $newPassword);
 
 if($user != false){
-    header('location:  /TFG/index.php');
+    header('location:  ../../index.php');
 }else if($user === -1){
-    header('location:  /TFG/index.php?error=error_edit_failPass');
+    header('location:  ../../index.php?error=error_edit_failPass');
 }
 else{
-    header('location:  /TFG/index.php?error=error_edit_password');
+    header('location:  ../../index.php?error=error_edit_password');
 }

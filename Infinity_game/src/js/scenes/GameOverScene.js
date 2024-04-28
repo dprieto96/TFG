@@ -21,7 +21,6 @@ export default class GameOverScene extends Phaser.Scene{
 
     init(settings){
         this.escena=settings.clave;
-        this.finalTime = settings.finalTime;
     }
 
 
@@ -34,7 +33,11 @@ export default class GameOverScene extends Phaser.Scene{
 
     create(){
         this.game.sound.stopAll();
-
+        if(!Utils.isMute()){
+			this.musicOVER=this.sound.add('goverSound');
+            this.musicOVER.play();
+		}
+        
 
 
 
@@ -46,26 +49,12 @@ export default class GameOverScene extends Phaser.Scene{
 
         this.gameOver=this.add.image(SCREEN_MAX_WIDTH/2+80,SCREEN_MAX_HEIGHT/2+80,'gameover');
 
+        this.gameOver.setDepth(999);
         this.gameOver.setScale(0.8);
 
         this.textSTART=this.add.text(SCREEN_MAX_WIDTH/6,SCREEN_MAX_HEIGHT, "TOUCH SCREEN OR SPACEBAR TO RETRY ",{ fontStyle: 'strong',font: '30px Arial', fill: '#ffffff' });
         this.textSTART.setDepth(999);
-
-        //this.add.text(SCREEN_MAX_WIDTH/2, 10, `Tiempo Final: ${this.finalTime}`, { font: '24px Arial', fill: '#ffffff' });
-        this.timerText = this.add.text(this.cameras.main.centerX, 10, `¡Enhorabuena! has conseguido: ${this.finalTime} puntos`, {
-            font: '28px "Press Start 2P"', // Cambiar la fuente y el tamaño
-            fill: '#ffffff', // Cambiar el color del texto
-            stroke: '#000000', // Color del contorno
-            strokeThickness: 4, // Grosor del contorno
-            shadow: {
-                offsetX: 2, // Desplazamiento horizontal de la sombra
-                offsetY: 2, // Desplazamiento vertical de la sombra
-                color: '#000', // Color de la sombra
-                blur: 2, // Desenfoque de la sombra
-                stroke: true, // Sombra para el contorno
-                fill: true // Sombra para el relleno del texto
-            }
-        }).setOrigin(0.5, 0);
+        
         this.input.on('pointerdown',()=>
             this.reload()
 

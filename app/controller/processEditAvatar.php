@@ -18,9 +18,9 @@ if($avatarURL !== ""){
         header('location: /TFG/index.php');
     }
     else{
-        header('location: /TFG/index.php?error=false');
+        header('location: ../../index.php?error=false');
         exit();
     }
 }
 
-header('location: /TFG/index.php?error=false');
+header('location: ../../index.php?error=false');

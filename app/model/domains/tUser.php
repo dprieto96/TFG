@@ -1,5 +1,6 @@
 <?php
 class tUser{
+    
     private $user;
     private $mail;
     private $password;
@@ -7,36 +8,28 @@ class tUser{
     private $points;
     private $avatar;
 
-    private $pointsExtra;
+    public function __construct(){
+       
+    }
 
-    private $winner;
-
-    private $lastPlay;
-
-    public function __construct(){}
-
-    public function loginUser($user, $mail, $password, $idFaculty, $points, $avatar, $pointsExtra, $winner, $lastPlay){
+    public function loginUser($user, $mail, $password, $idFaculty, $points, $avatar){
         $this->user = $user;
         $this->mail = $mail;
         $this->password = $password;
         $this->idFaculty = $idFaculty;
         $this->points = $points;
         $this->avatar = $avatar;
-        $this->pointsExtra = $pointsExtra;
-        $this->winner = $winner;
-        $this->lastPlay = $lastPlay;
     }
 
     public function regNewUser($user, $mail, $password, $idFaculty){
+         
         $this->user = $user;
         $this->mail = $mail;
         $this->password = $password;
         $this->idFaculty = $idFaculty;
         $this->points = 0;
         $this->avatar = 'chico1.webp';
-        $this->pointsExtra = 0;
-        $this->winner = 0;
-        $this->lastPlay = null;
+        
     }
 
     public function initUser($user, $password){
@@ -68,17 +61,6 @@ class tUser{
     public function getAvatar() {
         return $this->avatar;
     }
-
-    public function getPointsExtra() {
-        return $this->pointsExtra;
-    }
-
-    public function getWinner(){
-        return $this->winner;
-    }
-
-    public function getLastPlay(){
-        return $this->lastPlay;
-    }
 }
 
+?>

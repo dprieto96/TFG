@@ -1,14 +1,9 @@
-//Energía solar
-//Energía eólica
-//Energía hidráulica
-//Energía geotérmica
-//Energía mareomotriz y undimotriz
-//Biomasa y biogas
-//Bioetanol y biodiésel
-
 export const PALABRAS = [
-    "2024-04-18",
-    
+    //Por ahora dejo una palabra para probar como funciona
+    "aerogenerador",
+    "paneles",
+
+    /*Energía solar
     "radiacion",
     "energia limpia",
     "termosolar",
@@ -17,6 +12,7 @@ export const PALABRAS = [
     "meteorologia",
     "centrales",
 
+    //Energía eólica
     "cinetica",
     "aerogenerador",
     "transformacion",
@@ -25,6 +21,7 @@ export const PALABRAS = [
     "parque eolico",
     "descarbonizacion",
 
+    //Energía hidráulica
     "corriente",
     "presa",
     "inagotable",
@@ -33,14 +30,16 @@ export const PALABRAS = [
     "regeneracion",
     "riego",
 
+    //Energía geotérmica
     "disponibilidad",
     "residuos",
     "extincion",
-    "binario",
+    "ciclo binario",
     "yacimientos",
     "calefaccion",
     "refrigeracion",
 
+    //Energía mareomotriz y undimotriz
     "marea",
     "predecible",
     "turbina",
@@ -49,6 +48,7 @@ export const PALABRAS = [
     "atenuador",
     "rendimiento",
 
+    //Biomasa y biogas
     "biodegradable",
     "biocombustible",
     "carbono",
@@ -57,6 +57,7 @@ export const PALABRAS = [
     "descomposicion",
     "fertilizante",
 
+    //Bioetanol y biodiésel
     "fermentacion",
     "emisiones",
     "refinado",
@@ -64,4 +65,5 @@ export const PALABRAS = [
     "petroleo",
     "combustible",
     "produccion",
+    */
 ];

@@ -16,5 +16,10 @@ class pointsController{
         return $this->userSA->addScore($_SESSION['usuario'], $score);
     }
 
+    public function addExtraScore($extraScore){
+        $_SESSION['puntosExtra'] = $extraScore;
+        return $this->userSA->addExtraScore($_SESSION['usuario'], $extraScore);
+    }
+
 }
 ?>

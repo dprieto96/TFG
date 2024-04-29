@@ -10,9 +10,9 @@ https://textcraft.net/style/snegos/pixel-art
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innova</title>
 
-    <link rel="stylesheet" href="/TFG/public/css/styles.css">
-    <link rel="stylesheet" href="/TFG/public/css/popUps.css">
-    <link rel="stylesheet" href="/TFG/public/css/boton.css">
+    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="stylesheet" href="../../public/css/popUps.css">
+    <link rel="stylesheet" href="../../public/css/boton.css">
 
     <!-- PARA EL JEUGO INFINITO -->
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -24,7 +24,7 @@ https://textcraft.net/style/snegos/pixel-art
         <div id="header-main">
 
             <?php
-            require('../app/view/includes/header.php');
+            require('../view/includes/header.php');
             ?>
 
     
@@ -37,14 +37,14 @@ https://textcraft.net/style/snegos/pixel-art
 </div>
 
     <?php
-    require('../app/view/includes/footer.php');
+    require('../view/includes/footer.php');
     ?>
 
-    <?php include('../app/view/popups/login_form.php'); ?>
-    <?php include('../app/view/popups/register_form.php'); ?>
-    <?php include('../app/view/popups/deleteUser_form.php'); ?>
-    <?php include('../app/view/popups/perfil.php'); ?>
-    <?php include('../app/view/popups/editProfile_form.php'); ?>
+    <?php include('../view/popups/login_form.php'); ?>
+    <?php include('../view/popups/register_form.php'); ?>
+    <?php include('../view/popups/deleteUser_form.php'); ?>
+    <?php include('../view/popups/perfil.php'); ?>
+    <?php include('../view/popups/editProfile_form.php'); ?>
 
 
 

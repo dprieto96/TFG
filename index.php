@@ -37,12 +37,12 @@
                     else{
                         echo '<button class="button" onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Acceder al reto</button>';
                     }
-
+                    
                     //Si el último reto realizado es hoy y es ganador, se le da acceso al juego extra
                     if(isset($_SESSION['ganador']) && $_SESSION['ganador'] == 1 && isset($_SESSION['lastPlay']) && $_SESSION['lastPlay'] == date('Y-m-d')) {
-                            echo '<button class="button" onclick="window.location.href=\'/TFG/Infinity_game/Infinity_game.php\'">¡Consigue más puntos!</button>';
+                            echo '<button class="button" onclick="window.location.href=\'app/Infinity_game/Infinity_game.php\'">¡Consigue más puntos!</button>';
                     } else {
-                        echo '<button class="button" disabled onclick="window.location.href=\'/TFG/Infinity_game/Infinity_game.php\'">¡Necesitas superar el reto diario para acceder al juego extra!</button>';
+                        echo '<button class="button" disabled onclick="window.location.href=\'app/Infinity_game/Infinity_game.php\'">¡Necesitas superar el reto diario para acceder al juego extra!</button>';
                     }
                     }
                 ?>

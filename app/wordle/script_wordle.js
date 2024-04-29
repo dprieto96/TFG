@@ -291,7 +291,6 @@ function popup_ganador(tiempo_tardado){
     //Se manda con AJAX un mensaje para actualizar los puntos del usuario que ha ganado
     var formData2 = new FormData();
 
-    console.log("puntuacion: " + puntuacion_calculo(tiempo_tardado));
     formData2.append('score', puntuacion_calculo(tiempo_tardado));
 
     var xhr2 = new XMLHttpRequest();

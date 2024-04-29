@@ -42,7 +42,7 @@
 
         //Ordenamiento de las tablas de ranking
         usort($userRanking, function($a, $b) {
-            return $b['points'] - $a['points'];
+            return ($b['points'] + $b['pointsExtra']) - ($a['points'] + $a['pointsExtra']);
         });
 
         usort($facultyRanking, function($a, $b) {
@@ -79,7 +79,8 @@
                                         echo "<label>Posición: No disponible</label>";
                                     }
                                 ?>
-                                <label>Puntuación: <?php echo $_SESSION['puntos']; ?></label>
+                                <label>Puntuación base: <?php echo $_SESSION['puntos']; ?></label>
+                                <label>Puntuación extra: <?php echo $_SESSION['puntosExtra']; ?></label>
                             </div>
                             <div class="linea-vertical"></div>
                             <div class="col_personal personal_facultad">
@@ -98,7 +99,7 @@
                                     $posicion = 1;
                                     foreach ($facultyRanking as $puntuacion) {
                                         if ($puntuacion["idFacultad"] == $_SESSION["facultad"]){
-                                            echo "<label>Posición: " . $puntuacion["totalPoints"] . "</label>";
+                                            echo "<label>Puntuación: " . $puntuacion["totalPoints"] . "</label>";
                                         }
                                         $posicion++;
                                     }
@@ -124,7 +125,7 @@
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position1">1º</label>
-                                    <label id="medal-score1"><?php if (isset($userRanking[0]["points"])) {echo $userRanking[0]["points"];}else {echo "0";}?></label>
+                                    <label id="medal-score1"><?php if (isset($userRanking[0]["points"]) && isset($userRanking[0]["pointsExtra"])) {echo $userRanking[0]["points"] + $userRanking[0]["pointsExtra"];}else {echo "0";}?></label>
                                     <img id="medal-image1" src="/TFG/public/img/frame_ranking1.png" alt="">
                                 </div>
                                 <div class="medal-name">
@@ -134,7 +135,7 @@
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position2">2º</label>
-                                    <label id="medal-score2"><?php if (isset($userRanking[1]["points"])) {echo $userRanking[1]["points"];}else {echo "0";}?></label>
+                                    <label id="medal-score2"><?php if (isset($userRanking[1]["points"]) && isset($userRanking[1]["pointsExtra"])) {echo $userRanking[1]["points"] + $userRanking[1]["pointsExtra"];}else {echo "0";}?></label>
                                     <img id="medal-image2" src="/TFG/public/img/frame_ranking2.png" alt="">
                                 </div>
                                 <div class="medal-name">
@@ -144,7 +145,7 @@
                             <div class="medal">
                                 <div class="medal-creation">
                                     <label id="medal-position3">3º</label>
-                                    <label id="medal-score3"><?php if (isset($userRanking[2]["points"])) {echo $userRanking[2]["points"];}else {echo "0";}?></label>
+                                    <label id="medal-score3"><?php if (isset($userRanking[2]["points"]) && isset($userRanking[2]["pointsExtra"])) {echo $userRanking[2]["points"] + $userRanking[2]["pointsExtra"];}else {echo "0";}?></label>
                                     <img id="medal-image3" src="/TFG/public/img/frame_ranking3.png" alt="">
                                 </div>
                                 <div class="medal-name">
@@ -173,14 +174,14 @@
                                             echo "<td>" . $posicion . "</td>";
                                             echo "<td>" . $puntuacion["user"] . "</td>";
                                             echo "<td>" . str_replace("_", " ", $puntuacion["idFacultad"]) . "</td>";
-                                            echo "<td>" . $puntuacion["points"] . "</td>";
+                                            echo "<td>" . $puntuacion["points"] + $puntuacion["pointsExtra"] . "</td>";
                                         echo "</tr>";
                                     }else{
                                         echo "<tr>";
                                             echo "<td>" . $posicion . "</td>";
                                             echo "<td>" . $puntuacion["user"] . "</td>";
                                             echo "<td>" . str_replace("_", " ", $puntuacion["idFacultad"]) . "</td>";
-                                            echo "<td>" . $puntuacion["points"] . "</td>";
+                                            echo "<td>" . $puntuacion["points"] + $puntuacion["pointsExtra"] . "</td>";
                                         echo "</tr>";
                                     }
                                     $posicion++;

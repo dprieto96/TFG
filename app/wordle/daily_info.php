@@ -118,7 +118,7 @@
                         <p class="paragraph-content">¡Felicidades! Has ganado el reto diario y ahora tienes acceso al juego extra para acumular más puntos y subir en el ranking. ¡No pierdas más tiempo y accede al juego pulsando el botón que hay justo debajo!</p>
                         <?php
                         if(isset($_SESSION['ganador']) && $_SESSION['ganador'] == 1) {
-                            echo '<a href="../../Infinity_game/Infinity_game.php">Accede al juego extra!</a>';
+                            echo '<a href="../Infinity_game/Infinity_game.php">Accede al juego extra!</a>';
                         } else {
                             echo '<p>No has ganado acceso al juego extra.</p>';
                         }

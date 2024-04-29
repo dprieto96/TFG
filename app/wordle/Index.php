@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="../../public/css/styles.css">
     <link rel="stylesheet" href="../../public/css/styleAboutUs.css">
-    <link rel="stylesheet" href="/TFG/public/css/popUps.css">
-    <link rel="stylesheet" href="/TFG/public/css/boton.css">
-    <link rel="stylesheet" href="/TFG/public/css/wordle.css">
+    <link rel="stylesheet" href="../../public/css/popUps.css">
+    <link rel="stylesheet" href="../../public/css/boton.css">
+    <link rel="stylesheet" href="../../public/css/wordle.css">
 
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
-    <script src="../../node_modules/pixelate/pixelate.js"></script>
    </head>
 
 <body>
@@ -75,11 +74,9 @@
             </div>
         </div>
     </div>
-    <div class="feedback-images-div">
+    <div>
         <h2>Tema de la semana: Energía eólica</h2>
-        <div class="image-container">
-            <img class="feedback-images" id="feedback-image" src="" alt="Feedback Image">
-        </div>
+        <img id="feedback-image" src="" alt="Feedback Image">
     </div>
 <div>
 </main>

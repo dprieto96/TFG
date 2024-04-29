@@ -1,5 +1,5 @@
 <!-- Modal de footer -->
-<link rel="stylesheet" href="/TFG/public/css/footer.css">
+<link rel="stylesheet" href="../../public/css/footer.css">
 <script src="https://kit.fontawesome.com/1f0a6f415d.js" crossorigin="anonymous"></script>
 <footer class="site-footer">
     <div class="container">
@@ -34,7 +34,6 @@
         <div class="copyright">
             <p>&copy; 2023 - 2024 Innova. Todos los derechos reservados.</p>
             <p><a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a></p>
-            <p id="attribution">Imágenes diseñadas por <a href="https://www.freepik.com/">Freepik</a></p>
         </div>
     </div>
 </footer>

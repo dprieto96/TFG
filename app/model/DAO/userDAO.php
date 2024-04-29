@@ -1,8 +1,10 @@
 
 <?php
-    
-    require_once("../model/DAO/conexion.php");
-    require_once("../model/domains/tUser.php");
+    echo("/DAO/");
+   require_once("../model/DAO/conexion.php");
+   require_once("../model/domains/tUser.php");
+
+
 
     class userDAO{
 
@@ -10,18 +12,28 @@
 
         public function __construct(){
             $this->db = DB::getInstance();
+            /*echo "LA BD es: ";
+            var_dump($this->db);*/
         }
 
 
         public function registration(tUser $tUser){
+            echo "GOOD";
+            
+
             $conn = $this->db->getConnection();
 
+            echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXConexión: ";
+            var_dump($conn);
+            
             $user = $tUser->getUser();
             $mail = $tUser->getMail();
             $password = $tUser->getPassword();
             $idFaculty = $tUser->getIdFaculty();
 
             $hashPassword = password_hash($password, PASSWORD_BCRYPT);
+
+           
 
             //check if the user exists
             $q = "SELECT * FROM usuario WHERE user = '$user'";
@@ -33,7 +45,7 @@
             if($com->num_rows === 0){
                 if($com2->num_rows === 0){
                     //If the user does not exist, we insert it
-                    $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`, `avatar`, `pointsExtra`, `winner`, `lastPlay`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0, 'chico1.webp', 0, 0, null)";
+                    $q = "INSERT INTO `usuario`(`user`, `mail`, `password`, `idFacultad`, `points`, `avatar`) VALUES ('$user', '$mail', '$hashPassword', '$idFaculty', 0, 'chico1.webp')";
                     $resultado = $conn->query($q);
                     
                     return $resultado;
@@ -64,7 +76,7 @@
                 if(password_verify($password, $fila['password'])){
 
                     $usuario = new tUser();
-                    $usuario->loginUser($nickUser, $fila['mail'], $password, $fila['idFacultad'], $fila['points'], $fila['avatar'], $fila['pointsExtra'], $fila['winner'], $fila['lastPlay']);
+                    $usuario->loginUser($nickUser, $fila['mail'], $password, $fila['idFacultad'], $fila['points'], $fila['avatar']);
 
                     return $usuario;
                 }else{
@@ -159,48 +171,6 @@
 
         }
 
-        public function winner($nickUser){
-            $conn = $this->db->getConnection();
-
-            $query = "SELECT * FROM usuario WHERE user = '$nickUser'";
-
-            $resultado = $conn->query($query);
-            
-            $query = "UPDATE usuario SET winner = '1', lastPlay = CURDATE() WHERE user = '$nickUser'";
-
-            $resultado = $conn->query($query);
-                
-            return $resultado;
-        }
-
-        public function loser($nickUser){
-            $conn = $this->db->getConnection();
-
-            $query = "SELECT * FROM usuario WHERE user = '$nickUser'";
-
-            $resultado = $conn->query($query);
-            
-            $query = "UPDATE usuario SET winner = '0', lastPlay = CURDATE() WHERE user = '$nickUser'";
-
-            $resultado = $conn->query($query);
-                
-            return $resultado;
-        }
-
-
-        public function addScore($nickUser, $score){
-            $conn = $this->db->getConnection();
-
-            $query = "SELECT * FROM usuario WHERE user = '$nickUser'";
-
-            $resultado = $conn->query($query);
-            
-            $query = "UPDATE usuario SET points = points + $score WHERE user = '$nickUser'";
-
-            $resultado = $conn->query($query);
-                
-            return $resultado;
-        }
 
         public function addExtraScore($nickUser, $extraScore){
             $conn = $this->db->getConnection();
@@ -217,5 +187,5 @@
         }
 
     }
-
+    
 ?>

@@ -44,8 +44,6 @@ export default class NivelVertical extends Nivel {
 		
 		this.extraBullets=0;
 		this.gameState='runnung';
-
-
 		
 	}
 	
@@ -125,33 +123,6 @@ export default class NivelVertical extends Nivel {
 		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
 		this.physics.add.collider(this.bulletsGroup, this.enemiesGroup, this.hitEnemies, null, this);
 		this.physics.add.collider(this.enemiesGroup, this.player, this.hitPlayer, null, this);
-
-		// Crear el texto del contador en el centro superior de la pantalla
-		//this.timerText = this.add.text(this.cameras.main.centerX, 10, 'Puntuación: 0', { font: '24px Arial', fill: '#ffffff' }).setOrigin(0.5, 0);
-		this.timerText = this.add.text(this.cameras.main.centerX, 10, 'Puntuación: 0', {
-			font: '28px "Press Start 2P"', // Cambiar la fuente y el tamaño
-			fill: '#ffffff', // Cambiar el color del texto
-			stroke: '#000000', // Color del contorno
-			strokeThickness: 4, // Grosor del contorno
-			shadow: {
-				offsetX: 2, // Desplazamiento horizontal de la sombra
-				offsetY: 2, // Desplazamiento vertical de la sombra
-				color: '#000', // Color de la sombra
-				blur: 2, // Desenfoque de la sombra
-				stroke: true, // Sombra para el contorno
-				fill: true // Sombra para el relleno del texto
-			}
-		}).setOrigin(0.5, 0);
-		// Iniciar el contador de tiempo
-		this.startTime = 0;
-
-		// Evento que se ejecuta cada segundo para actualizar el tiempo
-		this.time.addEvent({
-			delay: 1000, // 1000 milisegundos = 1 segundo
-			callback: this.updateTimer,
-			callbackScope: this,
-			loop: true
-		});
 	}
 
 	 
@@ -164,11 +135,6 @@ export default class NivelVertical extends Nivel {
 		this.player.speedX = Math.cos(this.angle) * this.player.speed;
 		this.player.speedY = Math.sin(this.angle) * this.player.speed;
 	  }
-
-	updateTimer() {
-		this.startTime++; // Incrementar el contador de tiempo
-		this.timerText.setText(`Puntuación: ${this.startTime}`); // Actualizar el texto del contador
-	}
 
 	generateEnemy() {
 		//generar una nueva roca:
@@ -248,10 +214,7 @@ export default class NivelVertical extends Nivel {
 
 		if(this.numLifes<0){
 
-			this.scene.launch('gameOverScene',{
-				clave:this.clave,
-				finalTime: this.startTime});
-
+			this.scene.launch('gameOverScene',{clave:this.clave});
 			this.scene.pause(this.key);
 			this.gameState = 'paused';
 		}

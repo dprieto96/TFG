@@ -5,12 +5,18 @@
         session_start();
     }
 ?>
-<link rel="stylesheet" href="/TFG/public/css/header.css">
+<link rel="stylesheet" href="../../public/css/header.css">
 <header>
-    <div id="logo"><a href='/TFG/index.php'>Innova</a></div>
+    <div id="logo"><a href='../../../index.php'>Innova</a></div>
     <nav>
         <ul>
+<<<<<<< HEAD
+            <li><a href='../../../app/view/ranking.php'>Ranking</a></li>
+            <li><a href='../../../app/view/aboutUs.php'>About us</a></li>
+            
+=======
             <li><a href='/TFG/app/view/aboutUs.php'>About us</a></li>
+>>>>>>> main
             <?php
             if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
                 echo '<li id="loginBtn"><button id="login" onclick="openModal(\'myModal\')">Iniciar sesión</button></li>';

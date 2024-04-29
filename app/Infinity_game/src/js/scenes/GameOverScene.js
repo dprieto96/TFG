@@ -21,7 +21,6 @@ export default class GameOverScene extends Phaser.Scene{
 
     init(settings){
         this.escena=settings.clave;
-        this.finalTime = settings.finalTime;
     }
 
 
@@ -34,7 +33,11 @@ export default class GameOverScene extends Phaser.Scene{
 
     create(){
         this.game.sound.stopAll();
-
+        if(!Utils.isMute()){
+			this.musicOVER=this.sound.add('goverSound');
+            this.musicOVER.play();
+		}
+        
 
 
 
@@ -46,10 +49,14 @@ export default class GameOverScene extends Phaser.Scene{
 
         this.gameOver=this.add.image(SCREEN_MAX_WIDTH/2+80,SCREEN_MAX_HEIGHT/2+80,'gameover');
 
+        this.gameOver.setDepth(999);
         this.gameOver.setScale(0.8);
 
         this.textSTART=this.add.text(SCREEN_MAX_WIDTH/6,SCREEN_MAX_HEIGHT, "TOUCH SCREEN OR SPACEBAR TO RETRY ",{ fontStyle: 'strong',font: '30px Arial', fill: '#ffffff' });
         this.textSTART.setDepth(999);
+<<<<<<< HEAD:Infinity_game/src/js/scenes/GameOverScene.js
+        
+=======
 
 
 
@@ -100,6 +107,7 @@ export default class GameOverScene extends Phaser.Scene{
                 fill: true // Sombra para el relleno del texto
             }
         }).setOrigin(0.5, 0);
+>>>>>>> main:app/Infinity_game/src/js/scenes/GameOverScene.js
         this.input.on('pointerdown',()=>
             this.reload()
 

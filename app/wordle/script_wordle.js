@@ -48,7 +48,7 @@ let currentPixelRate = 0;
  //Inicialización foto
  let pixelRate = [0.95, 0.9, 0.85, 0.8, 0.7, 0.5, 0];
  var image = document.getElementById('feedback-image');
- image.src = "/TFG/public/img/fotos_reto/"+palabra_aleatoria+".webp";
+ image.src = "../../public/img/fotos_reto/"+palabra_aleatoria+".webp";
 
  var pixelate = new Pixelate(image, {amount: pixelRate[currentPixelRate]});
 

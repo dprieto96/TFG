@@ -8,14 +8,14 @@
     <title>Innova</title>
     
     <link rel="stylesheet" href="public/css/styles.css">
-    <link rel="stylesheet" href="/TFG/public/css/popUps.css">
-    <link rel="stylesheet" href="/TFG/public/css/boton.css">
+    <link rel="stylesheet" href="public/css/popUps.css">
+    <link rel="stylesheet" href="public/css/boton.css">
     
 
 </head>
 
 <body>
-    <script src="/TFG/public/js/script.js"></script>
+    <script src="public/js/script.js"></script>
     <div id="header-main">
 
         <?php
@@ -32,10 +32,10 @@
                     else{
                     //Si el último reto realizado es hoy se desactiva el botón para que no pueda repetir el reto
                     if(isset($_SESSION['lastPlay']) && $_SESSION['lastPlay'] == date('Y-m-d')){
-                        echo '<button id="login" class="button" disabled onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Reto diario realizado</button>';
+                        echo '<button id="login" class="button" disabled onclick="window.location.href=\'app/wordle/Index.php\'">Reto diario realizado</button>';
                     }
                     else{
-                        echo '<button id="login" class="button" onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Acceder al reto</button>';
+                        echo '<button id="login" class="button" onclick="window.location.href=\'app/wordle/Index.php\'">Acceder al reto</button>';
                     }
                     
                     //Si el último reto realizado es hoy y es ganador, se le da acceso al juego extra

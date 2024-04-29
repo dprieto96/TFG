@@ -20,7 +20,7 @@ https://textcraft.net/style/snegos/pixel-art
     <script src="src/js/Settings.js"></script>
 </head>
 <body>
-    <script src="/TFG/public/js/script.js"></script>
+    <script src="../../public/js/script.js"></script>
         <div id="header-main">
 
             <?php

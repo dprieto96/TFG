@@ -10,7 +10,7 @@
 <div id="perfil" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('perfil')">&times;</span>
-        <img class="avatar" src="/TFG/public/img/avatar/<?php echo $_SESSION['avatar']; ?>" />
+        <img class="avatar" src="../../../public/img/avatar/<?php echo $_SESSION['avatar']; ?>" />
             <?php 
                 $facultad = str_replace("_", " ", $_SESSION['facultad']);
                 echo'<h2>', $_SESSION['usuario'], '</h2>';
@@ -19,7 +19,7 @@
             ?>
             <button id="login" onclick="closeModal('perfil'), openModal('editProfileModal')">Editar Perfil</button>
             <button id="login" onclick="closeModal('perfil'), openModal('deleteUserModal')">Eliminar Cuenta</button>
-            <a href=/TFG/app/view/includes/logout.php>Logout</a>
+            <a href=../../../app/view/includes/logout.php>Logout</a>
     </div>
 </div>
 

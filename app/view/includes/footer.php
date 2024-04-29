@@ -1,5 +1,5 @@
 <!-- Modal de footer -->
-<link rel="stylesheet" href="/TFG/public/css/footer.css">
+<link rel="stylesheet" href="../../public/css/footer.css">
 <script src="https://kit.fontawesome.com/1f0a6f415d.js" crossorigin="anonymous"></script>
 <footer class="site-footer">
     <div class="container">
@@ -19,13 +19,13 @@
                 <div class="site-pages">
                     <?php
                     if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
-                        echo '<a href=\'/TFG/index.php\'>Inicio</a>';
-                        echo '<a href=\'/TFG/app/view/aboutUs.php\'>About Us</a>';
+                        echo '<a href=\'../../index.php\'>Inicio</a>';
+                        echo '<a href=\'../../app/view/aboutUs.php\'>About Us</a>';
                     }
                     else{
-                        echo '<a href=\'/TFG/index.php\'>Inicio</a>';
-                        echo '<a href=\'/TFG/app/view/aboutUs.php\'>About Us</a>';
-                        echo '<a href=\'/TFG/app/view/ranking.php\'>Ranking</a>';
+                        echo '<a href=\'../../index.php\'>Inicio</a>';
+                        echo '<a href=\'../../app/view/aboutUs.php\'>About Us</a>';
+                        echo '<a href=\'../../app/view/ranking.php\'>Ranking</a>';
                     }
                     ?>
                 </div>

@@ -15,13 +15,13 @@ $user = $userSA->editUser($newNickUser, $oldNick);
 
 if($user === true){
     $_SESSION['usuario'] = $newNickUser;
-    header('location:  ../../index.php');
+    header('location:  /TFG/index.php');
 }else if($user === -1){
     // Este nombre de usuario ya esta registrado
-    header('location:  ../../index.php?error=error_edit_user');
+    header('location:  /TFG/index.php?error=error_edit_user');
     exit();
 }
 else{
-    header('location:  ../../index.php?error=false');
+    header('location:  /TFG/index.php?error=false');
     exit();
 }

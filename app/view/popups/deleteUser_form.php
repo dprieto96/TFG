@@ -6,7 +6,7 @@
          <span class="back-button" onclick="closeModal('deleteUserModal'), openModal('perfil')">&larr;</span>
 
         <h2>Eliminar Cuenta</h2>
-        <form action="../../../app/controller/processDeleteUser.php" id ="form" method="POST">
+        <form action="/TFG/app/controller/processDeleteUser.php" id ="form" method="POST">
             <input type="text" id="username" name="username" placeholder="Usuario" required>
             <input type="password" id="password" name="password" placeholder="Contraseña" required>
             <input type="submit" value="Eliminar Cuenta">

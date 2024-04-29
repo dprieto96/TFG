@@ -12,22 +12,22 @@ $userSA = new UserSA();
 $user = $userSA->deleteUser($nickUser, $password);
 
 if($user === -2){
-    header('Location:  ../../index.php?error=login_error_us');
+    header('Location:  /TFG/index.php?error=login_error_us');
     exit();
 }else if($user === -1){
-    header('Location:  ../../index.php?error=login_error_pass');
+    header('Location:  /TFG/index.php?error=login_error_pass');
     exit();
 }
 else if ($user != false) {
     if(session_start()){
 		session_destroy();
 		session_unset();
-		header("Location: ../../index.php");
+		header("Location: /TFG/index.php");
 	}
 	
-	header("Location: ../../index.php");
+	header("Location: /TFG/index.php");
 }else{
-    header('Location:  ../../index.php?error=false');
+    header('Location:  /TFG/index.php?error=false');
     exit();
 }
 

@@ -15,7 +15,7 @@
         <!-- Contenido de las pestañas -->
         <div id="changeUsername" class="tabcontent">
             <h2>Cambiar Usuario</h2>
-            <form action="../../../app/controller/processEditUser.php" id="editProfileForm" method="post">
+            <form action="/TFG/app/controller/processEditUser.php" id="editProfileForm" method="post">
                 <input type="text" id="username" name="username" value="<?php echo $_SESSION['usuario']; ?>" required>
                 <input type="submit" value="Guardar cambios">
             </form>
@@ -23,7 +23,7 @@
 
         <div id="changePassword" class="tabcontent" style="display: none;">
             <h2>Cambiar Contraseña</h2>
-            <form action="../../../app/controller/processEditPassword.php" id="editPasswordForm" method="post">
+            <form action="/TFG/app/controller/processEditPassword.php" id="editPasswordForm" method="post">
                 <input type="password" id="oldPassword" name="oldPassword" placeholder="Contraseña Actual" required>
                 <input type="password" id="newPassword" name="newPassword" placeholder="Nueva Contraseña" required>
                 <input type="password" id="newPasswordRepeat" name="newPasswordRepeat" placeholder="Repetir Nueva Contraseña" required>
@@ -36,23 +36,25 @@
             <h2>Cambiar Avatar</h2>
             <div class="avatar-options">
                 <h3>Avatares Masculinos</h3>
-                <img src="../../../public/img/avatar/chico1.webp" alt="Avatar 1" onclick="selectAvatar('chico1.webp')" style="max-width: 100px;">
-                <img src="../../../public/img/avatar/chico2.webp" alt="Avatar 2" onclick="selectAvatar('chico2.webp')" style="max-width: 100px;">
-                <img src="../../../public/img/avatar/chico3.webp" alt="Avatar 3" onclick="selectAvatar('chico3.webp')" style="max-width: 100px;">
-                <img src="../../../public/img/avatar/chico4.webp" alt="Avatar 4" onclick="selectAvatar('chico4.webp')" style="max-width: 100px;">
-                <img src="../../../public/img/avatar/chico5.webp" alt="Avatar 5" onclick="selectAvatar('chico5.webp')" style="max-width: 100px;">
+                <?php
+                $numAvatars = 5; // Número total de avatares
+                for ($i = 1; $i <= $numAvatars; $i++) {
+                    echo '<img src="/TFG/public/img/avatar/chico' . $i . '.webp" alt="Avatar ' . $i . '" onclick="selectAvatar(\'chico' . $i . '.webp\')" style="max-width: 100px; margin: 1px; border-radius: 50px;">';
+                }
+                ?>
                 <h3>Avatares Femeninos</h3>
-                <img src="../../../public/img/avatar/chica1.webp" alt="Avatar 1" onclick="selectAvatar('chica1.webp')" style="max-width: 100px;">
-                <img src="../../../public/img/avatar/chica2.webp" alt="Avatar 2" onclick="selectAvatar('chica2.webp')" style="max-width: 100px;">
-                <img src="../../../public/img/avatar/chica3.webp" alt="Avatar 3" onclick="selectAvatar('chica3.webp')" style="max-width: 100px;">
-                <img src="../../../public/img/avatar/chica4.webp" alt="Avatar 4" onclick="selectAvatar('chica4.webp')" style="max-width: 100px;">
-                <img src="../../../public/img/avatar/chica5.webp" alt="Avatar 5" onclick="selectAvatar('chica5.webp')" style="max-width: 100px;">
+                <?php
+                for ($i = 1; $i <= $numAvatars; $i++) {
+                    echo '<img src="/TFG/public/img/avatar/chica' . $i . '.webp" alt="Avatar ' . $i . '" onclick="selectAvatar(\'chica' . $i . '.webp\')" style="max-width: 100px; margin: 1px; border-radius: 50px;">';
+                }
+                ?>
             </div>
-            <form action="../../../app/controller/processEditAvatar.php" id="editAvatarForm" method="post">
+            <form action="/TFG/app/controller/processEditAvatar.php" id="editAvatarForm" method="post">
                 <input type="hidden" id="avatarInput" name="avatarInput" value="">
                 <input type="submit" value="Guardar Avatar">
             </form>
         </div>
+
     </div>
 </div>
 
@@ -107,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Añade la clase 'selected' al avatar seleccionado
-        var selectedImg = document.querySelector('img[src="../../../public/img/avatar/' + avatar + '"]');
+        var selectedImg = document.querySelector('img[src="/TFG/public/img/avatar/' + avatar + '"]');
         selectedImg.classList.add('selected');
 
         selectedAvatar = avatar;
@@ -137,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .avatar-options {
     max-height: 50vh; /* Ajusta esta altura según sea necesario */
     overflow-y: auto; /* Habilita el desplazamiento vertical */
+
     }
     .avatar-options img.selected {
         border: 2px solid blue; /* Cambia el borde para resaltar el avatar seleccionado */

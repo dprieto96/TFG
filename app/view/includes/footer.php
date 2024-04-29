@@ -1,5 +1,5 @@
 <!-- Modal de footer -->
-<link rel="stylesheet" href="../../public/css/footer.css">
+<link rel="stylesheet" href="/TFG/public/css/footer.css">
 <script src="https://kit.fontawesome.com/1f0a6f415d.js" crossorigin="anonymous"></script>
 <footer class="site-footer">
     <div class="container">
@@ -17,16 +17,24 @@
             <div class="footer-column">
                 <h4>Innova</h4>
                 <div class="site-pages">
-                    <a href="#">Inicio</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Ranking</a>
-                    <a href="#">Reto</a><!--Esto debe aparecer solo si el usuario inicio sesion-->
+                    <?php
+                    if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
+                        echo '<a href=\'/TFG/index.php\'>Inicio</a>';
+                        echo '<a href=\'/TFG/app/view/aboutUs.php\'>About Us</a>';
+                    }
+                    else{
+                        echo '<a href=\'/TFG/index.php\'>Inicio</a>';
+                        echo '<a href=\'/TFG/app/view/aboutUs.php\'>About Us</a>';
+                        echo '<a href=\'/TFG/app/view/ranking.php\'>Ranking</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
         <div class="copyright">
             <p>&copy; 2023 - 2024 Innova. Todos los derechos reservados.</p>
             <p><a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a></p>
+            <p id="attribution">Imágenes diseñadas por <a href="https://www.freepik.com/">Freepik</a></p>
         </div>
     </div>
 </footer>

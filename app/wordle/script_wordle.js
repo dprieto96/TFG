@@ -9,8 +9,13 @@ var DateTime = luxon.DateTime;
 let temporizador;
 
 
-const indiceAleatorio = Math.floor(Math.random() * palabras.length);
-const palabra_aleatoria=palabras[indiceAleatorio];
+//const indiceAleatorio = Math.floor(Math.random() * palabras.length);
+//const palabra_aleatoria=palabras[indiceAleatorio];
+
+
+
+const palabra_aleatoria = palabras[calcular_palabra()];
+
 const modal = true;
 //---------GENERAL CONTROL PANEL---------
 
@@ -38,18 +43,29 @@ let letras_usadas = new Array(palabra_aleatoria.length);
 let registro_letras = new Array();
 
 
-const feedbackImages = [
-    "../../public/img/"+palabra_aleatoria+"/1.webp",
-    "../../public/img/"+palabra_aleatoria+"/2.webp",
-    "../../public/img/"+palabra_aleatoria+"/3.webp",
-    "../../public/img/"+palabra_aleatoria+"/4.webp",
-    "../../public/img/"+palabra_aleatoria+"/5.webp",
-    "../../public/img/"+palabra_aleatoria+"/6.webp",
-];
-let currentFeedbackImageIndex = 0;
+let currentPixelRate = 0;
 
+ //Inicialización foto
+ let pixelRate = [0.95, 0.9, 0.85, 0.8, 0.7, 0.5, 0];
+ var image = document.getElementById('feedback-image');
+ image.src = "/TFG/public/img/fotos_reto/"+palabra_aleatoria+".webp";
+
+ var pixelate = new Pixelate(image, {amount: pixelRate[currentPixelRate]});
 
 main();
+
+function calcular_palabra() {
+    var fechaInicio = new Date(palabras[0]);
+    var fechaActual = new Date();
+    
+    //Se calcula el numero de dias desde la fecha de inicio hasta la actual
+    var unDiaEnMilisegundos = 1000 * 60 * 60 * 24;
+    var diferenciaDias = Math.floor((fechaActual - fechaInicio) / unDiaEnMilisegundos);
+
+    console.log("Han pasado", diferenciaDias, "días desde la fecha de inicio hasta hoy.");
+
+    return diferenciaDias;
+}
 
 function iniciarTemporizador() {
     inicio = DateTime.local();
@@ -95,10 +111,11 @@ function actualizarTemporizador() {
 }
 
 function updateFeedbackImage() {
-    const feedbackImage = document.getElementById("feedback-image");
-    feedbackImage.src = feedbackImages[currentFeedbackImageIndex];
-    currentFeedbackImageIndex = (currentFeedbackImageIndex + 1) % feedbackImages.length;
+
+    pixelate.setAmount(pixelRate[currentPixelRate]).render();
+    currentPixelRate++;
 }
+
 
 function inicializar(){
     let tablero=document.getElementById("game-board");
@@ -129,6 +146,39 @@ function inicializar(){
     for (let i = 0; i < letras_usadas.length; ++i){
         letras_usadas[i] = 0;
     }
+
+
+    //Mandamos por AJAX un POST para indicar que el usuario ha entrado al reto y que así si sale ya no pueda volver a entrar
+
+    // Crear un objeto FormData para contener los datos
+    var formData = new FormData();
+
+    // Agregar los datos que deseas enviar al servidor
+    formData.append('gana', '0');
+
+    // Crear un objeto XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Definir la función de respuesta
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(xhr.responseText);
+            } else {
+                // Manejar errores de la solicitud AJAX
+                console.error('Error al realizar la solicitud AJAX: ' + xhr.status);
+            }
+        }
+    };
+
+    // Abrir una solicitud POST al archivo PHP
+    xhr.open('POST', 'controlChallenge.php', true);
+
+    // No es necesario establecer el encabezado Content-Type para FormData
+
+    // Enviar la solicitud con los datos
+    xhr.send(formData);
 
 }
 
@@ -204,19 +254,133 @@ function popup_incompleto(){
 }
 
 function popup_ganador(tiempo_tardado){
+
+    //Se manda con AJAX un mensaje para indicar que hay que cambiar la bd y las variables de sesión
+    // Crear un objeto FormData para contener los datos
+    var formData = new FormData();
+
+    // Agregar los datos que deseas enviar al servidor
+    formData.append('gana', '1');
+
+    // Crear un objeto XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Definir la función de respuesta
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(xhr.responseText);
+            } else {
+                // Manejar errores de la solicitud AJAX
+                console.error('Error al realizar la solicitud AJAX: ' + xhr.status);
+            }
+        }
+    };
+
+    // Abrir una solicitud POST al archivo PHP
+    xhr.open('POST', 'controlChallenge.php', true);
+
+    // No es necesario establecer el encabezado Content-Type para FormData
+
+    // Enviar la solicitud con los datos
+    xhr.send(formData);
+
+
+
+    //Se manda con AJAX un mensaje para actualizar los puntos del usuario que ha ganado
+    var formData2 = new FormData();
+
+    formData2.append('score', puntuacion_calculo(tiempo_tardado));
+
+    var xhr2 = new XMLHttpRequest();
+
+    xhr2.onreadystatechange = function() {
+        if (xhr2.readyState === XMLHttpRequest.DONE) {
+            if (xhr2.status === 200) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(xhr2.responseText);
+            } else {
+                // Manejar errores de la solicitud AJAX
+                console.error('Error al realizar la solicitud AJAX: ' + xhr2.status);
+            }
+        }
+    };
+
+    xhr2.open('POST', 'controlPoints.php', true);
+    xhr2.send(formData2);
+
+
+
+
+    //Se muestra el popup
     const popup_incompleto = new Popup({
         id: "ganador",
         title: "ENHORABUENA",
-        content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos`,
+        content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos.
+        {btn-popup-ganador}[                   Ver información de la palabra del día                    ]`,
+        css: `
+        body .popup.ganador .popup-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            background-color: #e3f2d5;
+        }
+        .popup.ganador .popup-content .popup-header {
+            height: 15vh;
+        }
+        .popup.ganador .popup-content .popup-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            height: 20vh;
+        }
+        .popup.ganador .popup-content .popup-body p {
+            margin: 10px 0;
+        }
+        .popup.ganador button {
+            background-color: #7fd391;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .popup.ganador button:hover{
+            background-color: #789461;
+        }`,
+        loadCallback: () => {
+            document.querySelector(".popup.ganador button").addEventListener("click", () => {
+                window.location.href = "daily_info.php";
+            });
+        },
     });
+
     while (popup_incompleto.show());
 }
 
-function popup_perdedor(){
+function popup_perdedor(){    
     const popup_incompleto = new Popup({
         id: "perdedor",
         title: "HAS PERDIDO",
         content: `La palabra era ${palabra_aleatoria} `,
+        css: `
+        body .popup.perdedor .popup-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            background-color: #e3f2d5;
+        }
+        .popup.perdedor .popup-content .popup-header {
+            height: 10vh;
+        }
+        .popup.perdedor .popup-content .popup-body p {
+            margin: 10px 0;
+        }`,
     });
     while (popup_incompleto.show());
 }
@@ -295,12 +459,13 @@ function comprueba(){
         popup_ganador(tiempo_tardado/1000);
 
         //Para que al acertar se pueda ver la imagen sin pixelar
-        currentFeedbackImageIndex = feedbackImages.length-1;
+        pixelate.setAmount(0).render();
 
     }
 
     if (intentos_restantes === 0 ) {
         popup_perdedor();
+        pixelate.setAmount(0).render();
         return;
     }
     else{
@@ -524,8 +689,6 @@ function descartarLetraAleatoria() {
 document.getElementById("discard-letter-btn").addEventListener("click", () => {
     descartarLetraAleatoria();
 });
-
-
 
 
 function main(){

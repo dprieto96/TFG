@@ -2,11 +2,10 @@
     class DB {
 	    private $host = "localhost";
         private $dbName = "innova";
-        private $dbUser = "dani";
-        private $dbPassword = ".bSVRi98zDpeA7m";
+        private $dbUser = "root";
+        private $dbPassword = "";
 		private $conexion = null;
 		private static $instance;
-   
 		
 		public static function getInstance(){
 			if( is_null( self::$instance )){

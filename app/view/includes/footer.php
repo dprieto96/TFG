@@ -23,6 +23,8 @@
                         echo '<a href=\'/TFG/app/view/aboutUs.php\'>About Us</a>';
                     }
                     else{
+                        echo '<a href=\'/TFG/index.php\'>Inicio</a>';
+                        echo '<a href=\'/TFG/app/view/aboutUs.php\'>About Us</a>';
                         echo '<a href=\'/TFG/app/view/ranking.php\'>Ranking</a>';
                     }
                     ?>

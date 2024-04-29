@@ -30,6 +30,11 @@ main {
     color: rgb(32, 47, 29);
 }
 
+/* Estilo para separación entre botones */
+.main-container button {
+    margin: 1%;
+}
+
 /* Para hacer la página responsive */
 
 @media screen and (max-width: 768px) {

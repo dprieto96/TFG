@@ -10,14 +10,13 @@
     <div id="logo"><a href='/TFG/index.php'>Innova</a></div>
     <nav>
         <ul>
-            <li><a href='/TFG/app/view/ranking.php'>Ranking</a></li>
             <li><a href='/TFG/app/view/aboutUs.php'>About us</a></li>
-            <li><a href="#Blog">Blog</a></li>
             <?php
             if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
                 echo '<li id="loginBtn"><button id="login" onclick="openModal(\'myModal\')">Iniciar sesión</button></li>';
             }
             else{
+                echo '<li><a href=\'/TFG/app/view/ranking.php\'>Ranking</a></li>';
                 echo'<li><button id="login" onclick="openModal(\'perfil\')">Mi perfil</button></li>';
             }
             ?>

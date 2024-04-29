@@ -1,12 +1,19 @@
 /* ------------------------------ Estilos del botón id=login ------------------------- */
 #login {
     background-color: #345a18;
+    
     color: #ffffff;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#login:disabled{
+    background-color: #dddddd; 
+    color: #666666; 
+    cursor: not-allowed; 
 }
 
 #login:hover {

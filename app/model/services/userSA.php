@@ -46,6 +46,25 @@ class UserSA{
         return $this->dao->deleteUser($nickUser, $password);
     }
 
+<<<<<<< HEAD
+=======
+    public function winner($nickUser){
+        return $this->dao->winner($nickUser);
+    }
+
+    public function loser($nickUser){
+        return $this->dao->loser($nickUser);
+    }
+
+    public function addScore($nickUser, $score){
+        return $this->dao->addScore($nickUser, $score);
+    }
+
+    public function addExtraScore($nickUser, $extraScore){
+        return $this->dao->addExtraScore($nickUser, $extraScore);
+    }
+
+>>>>>>> main
 }
 
 ?>

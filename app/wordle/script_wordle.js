@@ -204,10 +204,116 @@ function popup_incompleto(){
 }
 
 function popup_ganador(tiempo_tardado){
+<<<<<<< HEAD
     const popup_incompleto = new Popup({
         id: "ganador",
         title: "ENHORABUENA",
         content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos`,
+=======
+
+    //Se manda con AJAX un mensaje para indicar que hay que cambiar la bd y las variables de sesión
+    // Crear un objeto FormData para contener los datos
+    var formData = new FormData();
+
+    // Agregar los datos que deseas enviar al servidor
+    formData.append('gana', '1');
+
+    // Crear un objeto XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Definir la función de respuesta
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(xhr.responseText);
+            } else {
+                // Manejar errores de la solicitud AJAX
+                console.error('Error al realizar la solicitud AJAX: ' + xhr.status);
+            }
+        }
+    };
+
+    // Abrir una solicitud POST al archivo PHP
+    xhr.open('POST', 'controlChallenge.php', true);
+
+    // No es necesario establecer el encabezado Content-Type para FormData
+
+    // Enviar la solicitud con los datos
+    xhr.send(formData);
+
+
+
+    //Se manda con AJAX un mensaje para actualizar los puntos del usuario que ha ganado
+    var formData2 = new FormData();
+
+    formData2.append('score', puntuacion_calculo(tiempo_tardado));
+
+    var xhr2 = new XMLHttpRequest();
+
+    xhr2.onreadystatechange = function() {
+        if (xhr2.readyState === XMLHttpRequest.DONE) {
+            if (xhr2.status === 200) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(xhr2.responseText);
+            } else {
+                // Manejar errores de la solicitud AJAX
+                console.error('Error al realizar la solicitud AJAX: ' + xhr2.status);
+            }
+        }
+    };
+
+    xhr2.open('POST', 'controlPoints.php', true);
+    xhr2.send(formData2);
+
+
+
+
+    //Se muestra el popup
+    const popup_incompleto = new Popup({
+        id: "ganador",
+        title: "ENHORABUENA",
+        content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos.
+        {btn-popup-ganador}[                   Ver información de la palabra del día                    ]`,
+        css: `
+        body .popup.ganador .popup-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            background-color: #e3f2d5;
+        }
+        .popup.ganador .popup-content .popup-header {
+            height: 15vh;
+        }
+        .popup.ganador .popup-content .popup-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            height: 20vh;
+        }
+        .popup.ganador .popup-content .popup-body p {
+            margin: 10px 0;
+        }
+        .popup.ganador button {
+            background-color: #7fd391;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .popup.ganador button:hover{
+            background-color: #789461;
+        }`,
+        loadCallback: () => {
+            document.querySelector(".popup.ganador button").addEventListener("click", () => {
+                window.location.href = "daily_info.php";
+            });
+        },
+>>>>>>> main
     });
     while (popup_incompleto.show());
 }
@@ -217,6 +323,20 @@ function popup_perdedor(){
         id: "perdedor",
         title: "HAS PERDIDO",
         content: `La palabra era ${palabra_aleatoria} `,
+        css: `
+        body .popup.perdedor .popup-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            background-color: #e3f2d5;
+        }
+        .popup.perdedor .popup-content .popup-header {
+            height: 10vh;
+        }
+        .popup.perdedor .popup-content .popup-body p {
+            margin: 10px 0;
+        }`,
     });
     while (popup_incompleto.show());
 }
@@ -524,8 +644,6 @@ function descartarLetraAleatoria() {
 document.getElementById("discard-letter-btn").addEventListener("click", () => {
     descartarLetraAleatoria();
 });
-
-
 
 
 function main(){

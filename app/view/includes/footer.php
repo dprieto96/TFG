@@ -17,17 +17,10 @@
             <div class="footer-column">
                 <h4>Innova</h4>
                 <div class="site-pages">
-                    <?php
-                    if (!isset($_SESSION["login"]) || ($_SESSION["login"] === false)) {
-                        echo '<a href=\'/TFG/index.php\'>Inicio</a>';
-                        echo '<a href=\'/TFG/app/view/aboutUs.php\'>About Us</a>';
-                    }
-                    else{
-                        echo '<a href=\'/TFG/index.php\'>Inicio</a>';
-                        echo '<a href=\'/TFG/app/view/aboutUs.php\'>About Us</a>';
-                        echo '<a href=\'/TFG/app/view/ranking.php\'>Ranking</a>';
-                    }
-                    ?>
+                    <a href="#">Inicio</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Ranking</a>
+                    <a href="#">Reto</a><!--Esto debe aparecer solo si el usuario inicio sesion-->
                 </div>
             </div>
         </div>

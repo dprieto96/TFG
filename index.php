@@ -34,6 +34,7 @@
                     echo '<button class="button" onclick="window.location.href=\'app/wordle/Index.php\'">Acceder al reto</button>';
                     echo '<button class="button" onclick="window.location.href=\'Infinity_game/Infinity_game.php\'">¡Consigue más puntos!</button>';
 
+<<<<<<< HEAD
 =======
                     //Si el último reto realizado es hoy se desactiva el botón para que no pueda repetir el reto
                     if(isset($_SESSION['lastPlay']) && $_SESSION['lastPlay'] == date('Y-m-d')){
@@ -50,6 +51,8 @@
                        echo '<button id="login" class="button" disabled onclick="window.location.href=\'app/Infinity_game/Infinity_game.php\'">¡Necesitas superar el reto diario para acceder al juego extra!</button>';
                     }
 >>>>>>> main
+=======
+>>>>>>> parent of f4edd1e (mergeo de server)
                     }
                 ?>
             </div>

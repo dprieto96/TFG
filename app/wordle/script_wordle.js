@@ -320,13 +320,34 @@ function popup_ganador(tiempo_tardado){
         content: `Lo has resuelto en ${tiempo_tardado.toFixed(1)} segundos, con lo que obtienes una puntuacion de ${puntuacion_calculo(tiempo_tardado)} puntos.
         {btn-popup-ganador}[                   Ver información de la palabra del día                    ]`,
         css: `
+        body .popup.ganador .popup-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            background-color: #e3f2d5;
+        }
+        .popup.ganador .popup-content .popup-header {
+            height: 15vh;
+        }
+        .popup.ganador .popup-content .popup-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            height: 20vh;
+        }
+        .popup.ganador .popup-content .popup-body p {
+            margin: 10px 0;
+        }
         .popup.ganador button {
-            background-color: #345a18;
+            background-color: #7fd391;
             color: #ffffff;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 20px;
         }
         .popup.ganador button:hover{
             background-color: #789461;
@@ -346,6 +367,20 @@ function popup_perdedor(){
         id: "perdedor",
         title: "HAS PERDIDO",
         content: `La palabra era ${palabra_aleatoria} `,
+        css: `
+        body .popup.perdedor .popup-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Alinea verticalmente */
+            align-items: center; /* Alinea horizontalmente */
+            background-color: #e3f2d5;
+        }
+        .popup.perdedor .popup-content .popup-header {
+            height: 10vh;
+        }
+        .popup.perdedor .popup-content .popup-body p {
+            margin: 10px 0;
+        }`,
     });
     while (popup_incompleto.show());
 }
@@ -654,8 +689,6 @@ function descartarLetraAleatoria() {
 document.getElementById("discard-letter-btn").addEventListener("click", () => {
     descartarLetraAleatoria();
 });
-
-
 
 
 function main(){

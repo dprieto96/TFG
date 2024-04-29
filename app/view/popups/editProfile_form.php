@@ -39,13 +39,13 @@
                 <?php
                 $numAvatars = 5; // Número total de avatares
                 for ($i = 1; $i <= $numAvatars; $i++) {
-                    echo '<img src="/TFG/public/img/avatar/chico' . $i . '.webp" alt="Avatar ' . $i . '" onclick="selectAvatar(\'chico' . $i . '.webp\')" style="max-width: 100px;">';
+                    echo '<img src="/TFG/public/img/avatar/chico' . $i . '.webp" alt="Avatar ' . $i . '" onclick="selectAvatar(\'chico' . $i . '.webp\')" style="max-width: 100px; margin: 1px; border-radius: 50px;">';
                 }
                 ?>
                 <h3>Avatares Femeninos</h3>
                 <?php
                 for ($i = 1; $i <= $numAvatars; $i++) {
-                    echo '<img src="/TFG/public/img/avatar/chica' . $i . '.webp" alt="Avatar ' . $i . '" onclick="selectAvatar(\'chica' . $i . '.webp\')" style="max-width: 100px;">';
+                    echo '<img src="/TFG/public/img/avatar/chica' . $i . '.webp" alt="Avatar ' . $i . '" onclick="selectAvatar(\'chica' . $i . '.webp\')" style="max-width: 100px; margin: 1px; border-radius: 50px;">';
                 }
                 ?>
             </div>

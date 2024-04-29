@@ -30,10 +30,12 @@
                         echo '<button id="login" onclick="openModal(\'myModal\')">Iniciar sesión</button>';
                     }
                     else{
+<<<<<<< HEAD
                     echo '<button class="button" onclick="window.location.href=\'app/wordle/Index.php\'">Acceder al reto</button>';
                     echo '<button class="button" onclick="window.location.href=\'Infinity_game/Infinity_game.php\'">¡Consigue más puntos!</button>';
 
 =======
+                    //Si el último reto realizado es hoy se desactiva el botón para que no pueda repetir el reto
                     if(isset($_SESSION['lastPlay']) && $_SESSION['lastPlay'] == date('Y-m-d')){
                         echo '<button id="login" class="button" disabled onclick="window.location.href=\'/TFG/app/wordle/Index.php\'">Reto diario realizado</button>';
                     }

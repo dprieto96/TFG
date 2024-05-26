@@ -25,6 +25,15 @@
     require('../view/includes/header.php');
 ?>
 
+<?php
+    session_start();
+
+    if (!isset($_SESSION['lastPlay']) || $_SESSION['lastPlay'] == date('Y-m-d')) {
+        header('Location: ../../index.php');
+        exit;
+    }
+?>
+
 
 <main>
 <div class="image-container">
@@ -76,7 +85,38 @@
         </div>
     </div>
     <div class="feedback-images-div">
-        <h2>Tema de la semana: Energía eólica</h2>
+
+        <?php
+            //Se obtiene el array de palabras para saber cuál es la palabra del día
+
+            $ruta_archivo = 'listaTemas.js';
+            // Leer el contenido del archivo JavaScript
+            $contenido = file_get_contents($ruta_archivo);
+
+            // Buscar la cadena que contiene las palabras
+            $inicio = strpos($contenido, '[') + 1;
+            $fin = strrpos($contenido, ']');
+            $contenido_palabras = substr($contenido, $inicio, $fin - $inicio);
+
+            // Dividir las palabras en un array
+            $palabras_array = explode(',', $contenido_palabras);
+
+            // Limpiar las palabras (eliminar comillas y espacios)
+            foreach ($palabras_array as &$palabra) {
+                $palabra = trim($palabra, " \t\n\r\0\x0B\"");
+            }
+
+
+            //Se obtiene el índice de la lista que toca en función a la cantidad de días que lleva el juego en funcionamiento
+
+            $fechaInicio = strtotime($palabras_array[0]);
+            $fechaActual = time();
+            
+            $diferenciaSegundos = $fechaActual - $fechaInicio;
+            $diferenciaDias = floor($diferenciaSegundos / (60 * 60 * 24));
+        ?>
+
+        <h2>Tema de la semana: <?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h2>
         <div class="image-container">
             <img class="feedback-images" id="feedback-image" src="" alt="Feedback Image">
         </div>

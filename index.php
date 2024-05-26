@@ -60,7 +60,13 @@
     <?php include('app/view/popups/perfil.php'); ?>
     <?php include('app/view/popups/editProfile_form.php'); ?>
     
-
+    <?php
+    // Verificar si hay un mensaje de error en la URL
+    $error_message = isset($_GET['error_message']) ? $_GET['error_message'] : null;
+    if($error_message){
+        echo '<script>window.onload = function() { alert("' . htmlspecialchars($error_message) . '"); history.replaceState(null, "", window.location.href.split("?")[0]); }</script>';
+    }
+    ?>
 
     
 </body>

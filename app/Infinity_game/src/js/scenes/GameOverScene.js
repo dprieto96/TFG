@@ -48,7 +48,7 @@ export default class GameOverScene extends Phaser.Scene{
 
         this.gameOver.setScale(0.8);
 
-        this.textSTART=this.add.text(SCREEN_MAX_WIDTH/6,SCREEN_MAX_HEIGHT, "TOUCH SCREEN OR SPACEBAR TO RETRY ",{ fontStyle: 'strong',font: '30px Arial', fill: '#ffffff' });
+        this.textSTART=this.add.text(10,SCREEN_MAX_HEIGHT, "CLICA LA PANTALLA O PULSA BARRA ESPACIADORA",{ fontStyle: 'strong',font: '30px Arial', fill: '#ffffff' });
         this.textSTART.setDepth(999);
 
 

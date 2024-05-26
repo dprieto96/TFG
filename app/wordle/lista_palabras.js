@@ -1,13 +1,5 @@
-//Energía solar
-//Energía eólica
-//Energía hidráulica
-//Energía geotérmica
-//Energía mareomotriz y undimotriz
-//Biomasa y biogas
-//Bioetanol y biodiésel
-
 export const PALABRAS = [
-    "2024-04-18",
+    "2024-04-05",
     
     "radiacion",
     "energia limpia",

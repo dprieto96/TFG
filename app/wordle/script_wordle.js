@@ -29,7 +29,7 @@ let letra_actual=0;
 let GANAR=false;
 
 //Segundos que se restan al pulsar los botones de desbloqueo y descarte de letra
-const TIEMPO_DESBLOQUEO_LETRA = 10;
+const TIEMPO_DESBLOQUEO_LETRA = 20;
 const TIEMPO_DESCARTE_LETRA = 5;
 //Palabra que hay que adivinar
 let palabra_correcta=Array.from(palabra_aleatoria);

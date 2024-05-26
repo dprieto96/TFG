@@ -61,7 +61,7 @@
 }
 
 .option-btn:after {
-    content: "(-10 segundos)";
+    content: "(-20 segundos)";
     position: absolute;
     opacity: 0;
     font-size: 12px;

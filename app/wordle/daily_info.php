@@ -40,6 +40,29 @@
             }
 
 
+
+            //Se obtiene el array de textos para saber cuál es el texto de la palabra del día
+            $ruta_archivo2 = 'listaTextos.js';
+
+            // Leer el contenido del archivo JavaScript
+            $contenido2 = file_get_contents($ruta_archivo2);
+
+            // Buscar la cadena que contiene los textos
+            $inicio2 = strpos($contenido2, '[');
+            $fin2 = strrpos($contenido2, ']') + 1;
+            $contenido_textos = substr($contenido2, $inicio2, $fin2 - $inicio2);
+
+            // Decodificar el JSON para obtener un array de textos
+            $textos_array = json_decode($contenido_textos, true);
+
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                // Manejar el error en caso de que la decodificación falle
+                echo "Error al decodificar JSON: " . json_last_error_msg();
+                $textos_array = [];
+            }
+
+
+
             //Se obtiene el índice de la lista que toca en función a la cantidad de días que lleva el juego en funcionamiento
 
             $fechaInicio = strtotime($palabras_array[0]);
@@ -49,7 +72,20 @@
             $diferenciaDias = floor($diferenciaSegundos / (60 * 60 * 24));
 
 
-            echo $_SESSION['ganador'];
+
+            // Asegurarse de que el índice no exceda el tamaño del array
+            if ($diferenciaDias >= count($textos_array)) {
+                $diferenciaDias = count($textos_array) - 1;
+            }
+
+            // Obtener los tres textos del día correspondiente
+            $textos_del_dia = $textos_array[$diferenciaDias];
+
+            // Asegurarse de que hay tres textos para el día
+            if (count($textos_del_dia) < 3) {
+                echo "No hay suficientes textos para el día " . ($diferenciaDias + 1);
+                $textos_del_dia = array_pad($textos_del_dia, 3, "Texto no disponible");
+            }
 
         ?>
 
@@ -60,7 +96,7 @@
 
                 <div id="card5" class="card">
                     <div class="text">
-                        <h3 class="title-mini">PALABRA DEL DÍA (Boceto página)</h3>
+                        <h3 class="title-mini">PALABRA DEL DÍA</h3>
                         <h1 class="title"><?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h1>
                     </div>
                 </div>
@@ -69,7 +105,7 @@
                     <div class="text">
                         <h3 class="title-mini"><?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h3>
                         <h1 class="title">Qué significa?</h1>
-                        <p class="paragraph-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eius totam accusamus voluptatum enim saepe perferendis pariatur quae eligendi iusto, architecto repellat in facilis ducimus dolor temporibus! Incidunt, rerum commodi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magni vero eaque provident debitis non iste ratione error maxime, dolore perferendis nisi, accusantium animi similique sunt maiores, vitae impedit a?</p>
+                        <p class="paragraph-content"><?php echo $textos_del_dia[0] ?></p>
                     </div>
                     <div class="img">
                         <img src="../../public/img/fotos_reto/<?php echo $palabras_array[$diferenciaDias] ?>.webp" alt="">
@@ -84,7 +120,7 @@
                     <div class="text">
                         <h3 class="title-mini"><?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h3>
                         <h1 class="title">¿Qué necesito saber sobre este término?</h1>
-                        <p class="paragraph-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur corrupti quae reiciendis expedita veniam, architecto similique corporis eveniet ipsam dolore. Animi nisi, nulla voluptates cupiditate aspernatur deserunt excepturi nam nemo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque iure voluptatibus tempore aperiam cupiditate deleniti. Blanditiis, id omnis iusto quod, libero hic reprehenderit qui eligendi, facere earum in. Id, consectetur.</p>
+                        <p class="paragraph-content"><?php echo $textos_del_dia[1] ?></p>
                     </div>
                 </div>
                 
@@ -105,7 +141,7 @@
                     <div class="text">
                         <h3 class="title-mini"><?php echo strtoupper($palabras_array[$diferenciaDias]) ?></h3>
                         <h1 class="title">¿Cómo puedo aplicarlo en mi día a día?</h1>
-                        <p class="paragraph-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eius totam accusamus voluptatum enim saepe perferendis pariatur quae eligendi iusto, architecto repellat in facilis ducimus dolor temporibus! Incidunt, rerum commodi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magni vero eaque provident debitis non iste ratione error maxime, dolore perferendis nisi, accusantium animi similique sunt maiores, vitae impedit a?</p>
+                        <p class="paragraph-content"><?php echo $textos_del_dia[2] ?></p>
                     </div>
                     <div class="img">
                         <img src="../../public/img/tips.webp" alt="">
